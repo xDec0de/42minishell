@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/04/07 18:20:41 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/04/30 19:43:07 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 # define MINISHELL_H
 
 /* bool type */
-#include <stdbool.h>
+# include <stdbool.h>
 
 /* readline */
-#include <stdio.h>
-#include <readline/readline.h>
-#include <readline/history.h>
+# include <stdio.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 
 /* malloc */
-#include <stdlib.h>
+# include <stdlib.h>
 
 typedef struct s_shell
 {

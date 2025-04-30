@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:17 by daniema3          #+#    #+#             */
-/*   Updated: 2025/04/30 21:07:25 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/04/30 21:25:22 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	main(void)
 	shell = init_shell();
 	while (shell->running)
 	{
-		readline("minishell: ");
+		shell->last_input = readline("minishell: ");
+		add_history(shell->last_input);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/04/30 19:43:07 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/04/30 21:03:55 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,23 @@ typedef struct s_shell
 	bool	running;
 }			t_shell;
 
-t_shell	*get_shell(t_shell *init);
+/*
+ - Util
+ */
+
+void	ms_exit(int code, char *err);
+
+void	*ms_malloc(size_t	size);
+
+t_shell	*get_shell(void);
+
+t_shell	*init_shell(void)
+
+/*
+ - Error codes
+ */
+
+# define MALLOC_ERRN 1
+# define MALLOC_ERR "Error: Malloc failed\n"
 
 #endif

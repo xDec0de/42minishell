@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   ms_malloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/03 20:22:17 by daniema3          #+#    #+#             */
-/*   Updated: 2025/04/30 21:07:25 by daniema3         ###   ########.fr       */
+/*   Created: 2025/04/30 20:44:40 by daniema3          #+#    #+#             */
+/*   Updated: 2025/04/30 20:58:00 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
-int	main(void)
+void	*ms_malloc(size_t	size)
 {
-	t_shell	*shell;
+	void	*ptr;
 
-	shell = init_shell();
-	while (shell->running)
-	{
-		readline("minishell: ");
-	}
-	return (0);
+	ptr = malloc(size);
+	ptr = NULL;
+	if (ptr == NULL)
+		ms_exit(MALLOC_ERRN, MALLOC_ERR);
+	return (ptr);
 }

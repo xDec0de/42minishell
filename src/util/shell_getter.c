@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
+/*   shell_getter.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/03 20:22:17 by daniema3          #+#    #+#             */
-/*   Updated: 2025/04/30 21:07:25 by daniema3         ###   ########.fr       */
+/*   Created: 2025/04/30 21:00:22 by daniema3          #+#    #+#             */
+/*   Updated: 2025/04/30 21:06:51 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(void)
+t_shell	*store_shell(t_shell *init)
 {
-	t_shell	*shell;
+	static t_shell	*shell;
 
-	shell = init_shell();
-	while (shell->running)
-	{
-		readline("minishell: ");
-	}
-	return (0);
+	if (init != NULL)
+		shell = init;
+	return (shell);
+}
+
+t_shell	*get_shell(void)
+{
+	return (store_shell(NULL));
+}
+
+t_shell	*init_shell(void)
+{
+	t_shell	*init;
+
+	init = ms_malloc(sizeof(t_shell));
+	init->running = true;
+	return (store_shell(init));
 }

@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/04/07 18:26:04 by daniema3         ###   ########.fr        #
+#    Updated: 2025/04/30 21:04:12 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,12 @@ OBJ_DIR = ./objs
 # > ~ Main project files
 
 SRCS =	minishell.c
+
+# > ~ Util
+
+SRCS +=	util/ms_exit.c \
+		util/ms_malloc.c \
+		util/shell_getter.c
 
 SRCS := $(addprefix $(SRC_DIR)/, $(SRCS))
 

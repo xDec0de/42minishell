@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/04/30 21:03:55 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/04/30 21:11:15 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	*ms_malloc(size_t	size);
 
 t_shell	*get_shell(void);
 
-t_shell	*init_shell(void)
+t_shell	*init_shell(void);
 
 /*
  - Error codes

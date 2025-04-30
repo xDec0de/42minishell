@@ -6,11 +6,11 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 21:00:22 by daniema3          #+#    #+#             */
-/*   Updated: 2025/04/30 21:06:51 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/04/30 21:11:26 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
 t_shell	*store_shell(t_shell *init)
 {

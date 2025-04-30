@@ -21,6 +21,8 @@ int	main(void)
 	while (shell->running)
 	{
 		shell->last_input = readline("minishell: ");
+		if (shell->last_input == NULL)
+			ms_exit(0, NULL);
 		add_history(shell->last_input);
 	}
 	return (0);

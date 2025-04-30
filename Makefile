@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+         #
+#    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/04/30 21:04:12 by daniema3         ###   ########.fr        #
+#    Updated: 2025/04/30 21:56:06 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,10 @@ OBJ_DIR = ./objs
 # > ~ Main project files
 
 SRCS =	minishell.c
+
+# > ~ Signal
+
+SRCS +=	signal/signal_handler.c
 
 # > ~ Util
 

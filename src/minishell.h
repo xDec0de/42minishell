@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/04/30 21:24:35 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/04/30 21:55:33 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,20 @@
 /* malloc */
 # include <stdlib.h>
 
+/* signal */
+# include <signal.h>
+
 typedef struct s_shell
 {
 	bool	running;
 	char	*last_input;
 }			t_shell;
+
+/*
+ - Signal
+ */
+
+void	init_sighandler(void);
 
 /*
  - Util

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell_getter.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 21:00:22 by daniema3          #+#    #+#             */
-/*   Updated: 2025/04/30 21:24:57 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/04/30 22:28:31 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ t_shell	*init_shell(void)
 
 	init = ms_malloc(sizeof(t_shell));
 	init->running = true;
-	init->last_input = "";
+	init->last_input = NULL;
 	return (store_shell(init));
 }

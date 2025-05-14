@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/04/30 21:55:33 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/05/14 17:10:16 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ typedef struct s_shell
 	bool	running;
 	char	*last_input;
 }			t_shell;
+
+typedef struct s_cmd
+{
+	int		exit_code;
+	char	*output;
+}			t_cmd;
 
 /*
  - Signal

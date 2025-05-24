@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/05/14 17:10:16 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/05/24 21:58:41 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,14 @@ void	*ms_malloc(size_t	size);
 t_shell	*get_shell(void);
 
 t_shell	*init_shell(void);
+
+/*
+ - String utils
+ */
+
+size_t	ms_strlen(char *str);
+
+bool	ms_strequals(char *str, char *other);
 
 /*
  - Error codes

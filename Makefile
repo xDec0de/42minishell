@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/04/30 21:56:06 by daniema3         ###   ########.fr        #
+#    Updated: 2025/05/24 21:55:48 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,10 @@ SRCS +=	signal/signal_handler.c
 SRCS +=	util/ms_exit.c \
 		util/ms_malloc.c \
 		util/shell_getter.c
+
+# > ~ String utils
+
+SRCS +=	util/str/ms_strlen.c
 
 SRCS := $(addprefix $(SRC_DIR)/, $(SRCS))
 

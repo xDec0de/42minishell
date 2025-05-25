@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:17 by daniema3          #+#    #+#             */
-/*   Updated: 2025/04/30 22:28:04 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/05/25 23:03:04 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(void)
 		shell->last_input = readline("minishell: ");
 		if (shell->last_input == NULL)
 			ms_exit(0, NULL);
+		shell->last_cmd = parse_cmd_input(shell);
 		add_history(shell->last_input);
 	}
 	return (0);

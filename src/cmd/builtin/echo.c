@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell_getter.c                                     :+:      :+:    :+:   */
+/*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/30 21:00:22 by daniema3          #+#    #+#             */
-/*   Updated: 2025/05/25 22:20:14 by daniema3         ###   ########.fr       */
+/*   Created: 2025/05/14 17:11:48 by daniema3          #+#    #+#             */
+/*   Updated: 2025/05/25 23:08:02 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "../../minishell.h"
 
-t_shell	*store_shell(t_shell *init)
+t_cmd	*ms_echo(char **args)
 {
-	static t_shell	*shell;
+	int	i;
 
-	if (init != NULL)
-		shell = init;
-	return (shell);
-}
-
-t_shell	*get_shell(void)
-{
-	return (store_shell(NULL));
-}
-
-t_shell	*init_shell(void)
-{
-	t_shell	*init;
-
-	init = ms_malloc(sizeof(t_shell));
-	init->running = true;
-	init->last_input = NULL;
-	init->last_cmd = NULL;
-	return (store_shell(init));
+	i = 0;
+	while (args[i] != NULL)
+	{
+		printf("%s ", args[i]);
+		i++;
+	}
+	printf("\n");
+	return (build_cmd(0, NULL));
 }

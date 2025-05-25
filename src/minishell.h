@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/05/25 22:29:24 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/05/25 23:04:56 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,17 +27,36 @@
 /* signal */
 # include <signal.h>
 
-typedef struct s_shell
-{
-	bool	running;
-	char	*last_input;
-}			t_shell;
+/*
+ - Command struct
+ */
 
 typedef struct s_cmd
 {
 	int		exit_code;
 	char	*output;
 }			t_cmd;
+
+/*
+ - Minishell struct
+ */
+
+typedef struct s_shell
+{
+	bool	running;
+	char	*last_input;
+	t_cmd	*last_cmd;
+}			t_shell;
+
+/*
+ - Command functions
+ */
+
+t_cmd	*build_cmd(int exit_code, char *output);
+
+t_cmd	*parse_cmd_input(t_shell *shell);
+
+t_cmd	*ms_echo(char **args);
 
 /*
  - Signal

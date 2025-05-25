@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell_getter.c                                     :+:      :+:    :+:   */
+/*   cmd_executor.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/30 21:00:22 by daniema3          #+#    #+#             */
-/*   Updated: 2025/05/25 22:20:14 by daniema3         ###   ########.fr       */
+/*   Created: 2025/05/24 22:00:01 by daniema3          #+#    #+#             */
+/*   Updated: 2025/05/25 23:05:59 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-t_shell	*store_shell(t_shell *init)
+t_cmd	*execute_builtins(char *cmd, char *context, char **args)
 {
-	static t_shell	*shell;
-
-	if (init != NULL)
-		shell = init;
-	return (shell);
+	(void) context;
+	if (ms_strequals(cmd, "echo"))
+		return (ms_echo(args));
+	return (NULL);
 }
 
-t_shell	*get_shell(void)
+t_cmd	*parse_cmd_input(t_shell *shell)
 {
-	return (store_shell(NULL));
-}
+	char	*cmd_name;
+	char	**args;
 
-t_shell	*init_shell(void)
-{
-	t_shell	*init;
-
-	init = ms_malloc(sizeof(t_shell));
-	init->running = true;
-	init->last_input = NULL;
-	init->last_cmd = NULL;
-	return (store_shell(init));
+	cmd_name = "echo";
+	args = ms_split(shell->last_input, ' ');
+	return (execute_builtins(cmd_name, NULL, args));
 }

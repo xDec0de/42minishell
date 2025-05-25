@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/05/24 21:57:33 by daniema3         ###   ########.fr        #
+#    Updated: 2025/05/25 22:30:38 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,8 +34,9 @@ SRCS +=	util/ms_exit.c \
 
 # > ~ String utils
 
-SRCS +=	util/str/ms_strlen.c \
-		util/str/ms_strequals.c
+SRCS +=	util/str/ms_split.c \
+		util/str/ms_strequals.c \
+		util/str/ms_strlen.c
 
 SRCS := $(addprefix $(SRC_DIR)/, $(SRCS))
 

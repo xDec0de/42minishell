@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/05/24 21:58:41 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/05/25 22:29:24 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,11 @@ t_shell	*init_shell(void);
  - String utils
  */
 
-size_t	ms_strlen(char *str);
+char	**ms_split(const char *s, char c);
 
 bool	ms_strequals(char *str, char *other);
+
+size_t	ms_strlen(char *str);
 
 /*
  - Error codes

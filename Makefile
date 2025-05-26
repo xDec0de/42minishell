@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/05/26 13:45:09 by daniema3         ###   ########.fr        #
+#    Updated: 2025/05/26 13:58:06 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,8 @@ SRCS +=	util/ms_exit.c \
 
 # > ~ Array utils
 
-SRCS +=	util/array/ms_arrlen.c
+SRCS +=	util/array/ms_arrdup.c \
+		util/array/ms_arrlen.c
 
 # > ~ String utils
 

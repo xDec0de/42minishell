@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_executor.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 22:00:01 by daniema3          #+#    #+#             */
-/*   Updated: 2025/05/26 14:09:05 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/05/26 18:10:01 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_cmd	*parse_cmd_input(t_shell *shell)
 	char	*cmd_name;
 	char	**args;
 
-	cmd_name = args[0];
 	args = ms_split(shell->last_input, ' ');
+	cmd_name = args[0];
 	return (execute_builtins(cmd_name, NULL, ms_arrdup(1, args)));
 }

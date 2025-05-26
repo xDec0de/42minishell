@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/05/26 13:58:36 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/05/26 18:09:43 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ t_shell	*init_shell(void);
  - Array utils
  */
 
-char	**ms_arrdup(const size_t from, const char **arr);
+char	**ms_arrdup(size_t from, char **arr);
 
 size_t	ms_arrlen(void **arr);
 

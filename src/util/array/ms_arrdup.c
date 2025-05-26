@@ -3,22 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ms_arrdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 11:58:48 by daniema3          #+#    #+#             */
-/*   Updated: 2025/05/26 13:58:23 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/05/26 18:10:31 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-char	**ms_arrdup(const size_t from, const char **arr)
+char	**ms_arrdup(size_t from, char **arr)
 {
 	size_t	i;
 	size_t	len;
 	char	**clone;
 
 	len = 0;
+	i = 0;
 	while (i < from)
 	{
 		if (arr[i] == NULL)

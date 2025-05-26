@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
+#    By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/05/25 22:42:14 by daniema3         ###   ########.fr        #
+#    Updated: 2025/05/26 12:22:05 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,10 @@ SRCS +=	signal/signal_handler.c
 SRCS +=	util/ms_exit.c \
 		util/ms_malloc.c \
 		util/shell_getter.c
+
+# > ~ Array utils
+
+SRCS +=	util/array/ms_arrlen.c
 
 # > ~ String utils
 

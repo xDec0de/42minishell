@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/05/26 12:21:19 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/05/26 13:44:04 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ size_t	ms_arrlen(void **arr);
  */
 
 char	**ms_split(const char *s, char c);
+
+char	*ms_strdup(const char *str);
 
 bool	ms_strequals(char *str, char *other);
 

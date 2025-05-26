@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/05/26 12:22:05 by daniema3         ###   ########.fr        #
+#    Updated: 2025/05/26 13:45:09 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ SRCS +=	util/array/ms_arrlen.c
 # > ~ String utils
 
 SRCS +=	util/str/ms_split.c \
+		util/str/ms_strdup.c \
 		util/str/ms_strequals.c \
 		util/str/ms_strlen.c
 

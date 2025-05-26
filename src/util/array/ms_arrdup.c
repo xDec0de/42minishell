@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 11:58:48 by daniema3          #+#    #+#             */
-/*   Updated: 2025/05/26 18:10:31 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/05/26 18:15:40 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ char	**ms_arrdup(size_t from, char **arr)
 	{
 		if (arr[i] == NULL)
 			return (NULL);
+		i++;
 		len++;
 	}
 	clone = ms_malloc(len - from + 1 * sizeof(char *));

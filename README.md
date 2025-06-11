@@ -1,0 +1,64 @@
+# 42minishell
+
+42 project "minishell", code follows the norm used at 42. The objective of
+this project is to create a basic replica of a bash shell, built in C.
+
+## Allowed functions
+
+For this rather complex task, we are allowed to use the following table of
+functions. Note that You may need to install the readline library with
+`sudo apt-get install libreadline-dev`
+
+| Name | Library | Basic description | Used |
+| :---: | :---: | :---: | :---: |
+| [readline](https://linux.die.net/man/3/readline) | readline/readline.h | Get a line from a user with editing | ✅ |
+| [rl_clear_history](https://tiswww.case.edu/php/chet/readline/readline.html#index-rl_005fclear_005fhistory) | readline/readline.h | Clear history list | ❌ |
+| [rl_on_new_line](https://tiswww.case.edu/php/chet/readline/readline.html#index-rl_005fon_005fnew_005fline) | readline/readline.h | Move onto a new line with prompt displayed | ✅ |
+| [rl_replace_line](https://tiswww.case.edu/php/chet/readline/readline.html#index-rl_005freplace_005fline) | readline/readline.h | Replace the contents of the rl_line_buffer | ✅ |
+| [rl_redisplay](https://tiswww.case.edu/php/chet/readline/readline.html#index-rl_005fredisplay) | readline/readline.h | Update the display of rl_line_buffer | ✅ |
+| [add_history](https://linux.die.net/man/3/history) | readline/history.h | Place a string at the end of history list | ✅ |
+| [printf](https://linux.die.net/man/3/printf) | stdio.h | Formatted output conversion | ✅ |
+| [malloc](https://linux.die.net/man/3/malloc) | stdlib.h | Allocate dynamic memory | ✅ |
+| [free](https://linux.die.net/man/3/free) | stdlib.h | Free dynamic memory | ✅ |
+| [write](https://linux.die.net/man/3/write) | unistd.h | Write on a file | ❌ |
+| [access](https://linux.die.net/man/2/access) | unistd.h | Check real user's permissions for a file | ❌ |
+| [open](https://linux.die.net/man/3/open) | fcntl.h | Open a file | ❌ |
+| [read](https://linux.die.net/man/3/read) | unistd.h | Read from a file | ❌ |
+| [close](https://linux.die.net/man/2/close) | unistd.h | Close a file descriptor | ❌ |
+| [fork](https://linux.die.net/man/2/fork) | unistd.h | Create a child process | ❌ |
+| [wait](https://linux.die.net/man/2/wait) | sys/wait.h | Wait for process to change state | ❌ |
+| [waitpid](https://linux.die.net/man/2/waitpid) | sys/wait.h | Wait for process to change state | ❌ |
+| [wait3](https://linux.die.net/man/2/wait3) | sys/wait.h | Wait for process to change state, BSD style | ❌ |
+| [wait4](https://linux.die.net/man/2/wait4) | sys/wait.h | Wait for process to change state, BSD style | ❌ |
+| [signal](https://linux.die.net/man/2/signal) | signal.h | ANSI C signal handling | ✅ |
+| [sigaction](https://linux.die.net/man/2/sigaction) | signal.h | Examine and change a signal action | ❌ |
+| [kill](https://linux.die.net/man/1/kill) | signal.h | Terminate a process | ❌ |
+| [exit](https://linux.die.net/man/3/exit) | stdlib.h | Cause normal process termination | ✅ |
+| [getcwd](https://linux.die.net/man/3/getcwd) | unistd.h | Get current working directory | ❌ |
+| [chdir](https://linux.die.net/man/2/chdir) | unistd.h | Change working directory | ❌ |
+| [stat](https://linux.die.net/man/2/stat) | unistd.h | Get file status | ❌ |
+| [lstat](https://linux.die.net/man/2/lstat) | unistd.h | Get file status | ❌ |
+| [fstat](https://linux.die.net/man/2/fstat) | unistd.h | Get file status | ❌ |
+| [unlink](https://linux.die.net/man/2/unlink) | unistd.h | Delete a name and possibly the file it refers to | ❌ |
+| [execve](https://linux.die.net/man/2/execve) | unistd.h | Execute a program | ❌ |
+| [dup](https://linux.die.net/man/2/dup) | unistd.h | Duplicate a file descriptor | ❌ |
+| [dup2](https://linux.die.net/man/2/dup2) | unistd.h | Duplicate a file descriptor | ❌ |
+| [pipe](https://linux.die.net/man/2/pipe) | unistd.h | Create pipe | ❌ |
+| [opendir](https://linux.die.net/man/3/opendir) | dirent.h | Open a directory | ❌ |
+| [readdir](https://linux.die.net/man/3/readdir) | dirent.h | Read a directory | ❌ |
+| [closedir](https://linux.die.net/man/3/closedir) | dirent.h | Close a directory | ❌ |
+| [strerror](https://linux.die.net/man/3/strerror) | string.h | Return string describing error number | ❌ |
+| [perror](https://linux.die.net/man/3/perror) | errno.h | Print system error message | ❌ |
+| [isatty](https://linux.die.net/man/3/isatty) | unistd.h | Test whether a file descriptor refers to a terminal | ❌ |
+| [ttyname](https://linux.die.net/man/3/ttyname) | unistd.h | Return name of a terminal | ❌ |
+| [ttyslot](https://linux.die.net/man/3/ttyslot) | unistd.h | Find the slot of the current user's terminal in some file | ❌ |
+| [ioctl](https://linux.die.net/man/2/ioctl) | sys/ioctl.h | Control device | ❌ |
+| [getenv](https://linux.die.net/man/3/getenv) | stdlib.h | Get an environment variable | ❌ |
+| [tcsetattr](https://linux.die.net/man/3/tcsetattr) | unistd.h | Set terminal attributes | ❌ |
+| [tcgetattr](https://linux.die.net/man/3/tcgetattr) | unistd.h | Get terminal attributes | ❌ |
+| [tgetent](https://linux.die.net/man/3/tgetent) | term.h | Load entry | ❌ |
+| [tgetflag](https://linux.die.net/man/3/tgetflag) | term.h | Get boolean entry | ❌ |
+| [tgetnum](https://linux.die.net/man/3/tgetnum) | term.h | Get numeric entry | ❌ |
+| [tgetstr](https://linux.die.net/man/3/tgetstr) | term.h | Get string entry | ❌ |
+| [tgoto](https://linux.die.net/man/3/tgoto) | term.h | Instantiate parameters into a given capability | ❌ |
+| [tputs](https://linux.die.net/man/3/tputs) | term.h | Retrieve capabilities | ❌ |

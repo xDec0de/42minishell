@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 14:53:01 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/11 17:21:39 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/11 18:11:38 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@ bool	is_atoi_space(char ch)
 {
 	return (ch == '\t' || ch == '\n' || ch == '\v'
 		|| ch == '\f' || ch == '\r' || ch == ' ');
+}
+
+int	to_signed(unsigned long long res, bool negative)
+{
+	if (negative)
+		return (-res);
+	return (res);
 }
 
 int	ms_atoi(const char *str, bool allow_spaces, int def)
@@ -36,11 +43,13 @@ int	ms_atoi(const char *str, bool allow_spaces, int def)
 	if (str[i] == '-' || str[i] == '+')
 		if (str[i++] == '-')
 			negative = true;
-	while (ms_isdigit(str[i]))
+	while (str[i] != '\0')
+	{
+		if (!ms_isdigit(str[i]))
+			return (def);
 		res = (res * 10) + (str[i++] - '0');
+	}
 	if (res > __LONG_MAX__)
 		return (def);
-	if (negative)
-		return (-res);
-	return (res);
+	return (to_signed(res, negative));
 }

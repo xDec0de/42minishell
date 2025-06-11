@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/11 17:40:03 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/11 18:38:53 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,21 @@ t_shell	*init_shell(void);
  - Array utils
  */
 
+/**
+ * @brief Returns a `NULL` terminated array duplicate
+ * of the provided `arr`, starting at the `from` index.
+ * Strings inside the array are also duplicated with
+ * `ms_strdup`
+ * 
+ * @param from The index at which the duplication will start.
+ * @param arr The array to duplicated. It is expected
+ * that this array is `NULL` terminated, the behaviour
+ * is undefined otherwise.
+ * 
+ * @return A duplicate of `arr`, from `from` to its end.
+ * `NULL` if `from` is bigger than the length of `arr`, or
+ * if `arr` itself is `NULL`.
+ */
 char	**ms_arrdup(size_t from, char **arr);
 
 /**

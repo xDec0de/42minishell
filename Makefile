@@ -45,6 +45,7 @@ SRCS +=	util/ms_exit.c \
 # > ~ Array utils
 
 SRCS +=	util/array/ms_arrdup.c \
+		util/array/ms_arrfree.c \
 		util/array/ms_arrlen.c
 
 # > ~ Char utils

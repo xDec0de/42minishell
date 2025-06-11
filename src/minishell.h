@@ -91,6 +91,15 @@ t_shell	*init_shell(void);
 
 char	**ms_arrdup(size_t from, char **arr);
 
+/**
+ * @brief Frees the provided `arr` and all of its contents.
+ * 
+ * @param arr The array to free. It is expected
+ * that this array is `NULL` terminated, the behaviour
+ * is undefined otherwise.
+ */
+void	ms_arrfree(char **arr);
+
 size_t	ms_arrlen(void **arr);
 
 /*

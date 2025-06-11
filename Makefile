@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+         #
+#    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/05/26 13:58:06 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/11 17:44:22 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRCS += cmd/cmd_builder.c \
 
 # > ~ Commands - Builtins
 
-SRCS += cmd/builtin/echo.c
+SRCS += cmd/builtin/echo.c \
+		cmd/builtin/exit.c
 
 # > ~ Signal
 
@@ -46,9 +47,14 @@ SRCS +=	util/ms_exit.c \
 SRCS +=	util/array/ms_arrdup.c \
 		util/array/ms_arrlen.c
 
+# > ~ Char utils
+
+SRCS += util/char/ms_isdigit.c
+
 # > ~ String utils
 
-SRCS +=	util/str/ms_split.c \
+SRCS +=	util/str/ms_atoi.c \
+		util/str/ms_split.c \
 		util/str/ms_strdup.c \
 		util/str/ms_strequals.c \
 		util/str/ms_strlen.c

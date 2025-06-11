@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/05/26 18:09:43 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/11 17:40:03 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,16 @@ t_cmd	*build_cmd(int exit_code, char *output);
 
 t_cmd	*parse_cmd_input(t_shell *shell);
 
-t_cmd	*ms_echo(char **args);
+/*
+ - Builtins
+ */
+
+t_cmd	*bltn_echo(char **args);
+
+t_cmd	*bltn_exit(t_shell *shell, char **args);
+
+# define EXIT_NOT_NUMERIC_ERRN 2
+# define EXIT_NOT_NUMERIC "bash: exit: %s: numeric argument required\n"
 
 /*
  - Signal
@@ -85,8 +94,16 @@ char	**ms_arrdup(size_t from, char **arr);
 size_t	ms_arrlen(void **arr);
 
 /*
+ - Char utils
+ */
+
+bool	ms_isdigit(char ch);
+
+/*
  - String utils
  */
+
+int		ms_atoi(const char *str, bool allow_spaces, int def);
 
 char	**ms_split(const char *s, char c);
 
@@ -96,8 +113,11 @@ bool	ms_strequals(char *str, char *other);
 
 size_t	ms_strlen(char *str);
 
+/** Command or program execution was successful. */
+# define EXEC_OK 0
+
 /*
- - Error codes
+ - Internal error codes
  */
 
 # define MALLOC_ERRN 1

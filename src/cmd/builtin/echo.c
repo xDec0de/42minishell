@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 17:11:48 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/11 17:37:18 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/11 18:54:27 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,27 @@
 
 t_cmd	*bltn_echo(char **args)
 {
-	int	i;
+	int		i;
+	bool	nl;
+	bool	first_written;
 
 	i = 0;
+	nl = true;
+	first_written = false;
 	while (args[i] != NULL)
 	{
-		printf("%s ", args[i]);
+		if (ms_strequals("-n", args[i]))
+			nl = false;
+		else if (!first_written)
+		{
+			printf("%s", args[i]);
+			first_written = true;
+		}
+		else
+			printf(" %s", args[i]);
 		i++;
 	}
-	printf("\n");
+	if (nl)
+		printf("\n");
 	return (build_cmd(EXEC_OK, NULL));
 }

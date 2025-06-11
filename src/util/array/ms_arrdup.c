@@ -18,6 +18,8 @@ char	**ms_arrdup(size_t from, char **arr)
 	size_t	arrlen;
 	char	**clone;
 
+	if (arr == NULL)
+		return (NULL);
 	i = 0;
 	arrlen = ms_arrlen((void **) arr);
 	if (arrlen < from)

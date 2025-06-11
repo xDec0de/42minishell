@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/11 18:33:03 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/11 20:31:14 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,4 +97,15 @@ fclean: clean
 
 re: fclean $(NAME)
 
-.PHONY: all clean fclean re
+norm:
+	@echo -n "\r⏳ \e[0;33mExecuting norminette on $(NAME).                     "
+	@norminette | grep "Error:" > norm_errors.txt || true
+	@if [ -s norm_errors.txt ]; then \
+		echo -n "\r❌ \e[0;31mNorm errors found on \e[1;31m$(NAME):    \e[0m\n";\
+		cat norm_errors.txt | sed 's/^Error:/-/'; \
+	else \
+		echo -n "\r✅ \e[0;32mNo norm errors found on \e[1;36m$(NAME)!     \n"; \
+	fi
+	@rm -f norm_errors.txt
+
+.PHONY: all clean fclean re norm

@@ -39,5 +39,6 @@ jobs:
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
         run: |
+          make covonly
           curl -Ls https://coverage.codacy.com/get.sh | bash
           ./codacy-coverage-reporter report -l lcov -r test/coverage/coverage.info

@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:17 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/11 18:08:25 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/12 13:22:02 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ int	main(void)
 		add_history(shell->last_input);
 	}
 	if (shell->last_cmd != NULL)
-		return (shell->last_cmd->exit_code);
-	return (EXEC_OK);
+		ms_exit(shell->last_cmd->exit_code, NULL);
+	ms_exit(EXEC_OK, NULL);
 }

@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/12 14:47:25 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/12 14:52:37 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -119,21 +119,21 @@ fclean: clean
 re: fclean $(NAME)
 
 LOG_DIR = ./logs
-NORM_FILE = $(LOG_DIR)/norm_errors.txt
+NORM_ERRFILE = $(LOG_DIR)/norm_errors.txt
 
 # > ~ Norminette check
 
 norm:
 	@mkdir -p $(LOG_DIR)
-	@rm -rf $(NORM_FILE)
+	@rm -rf $(NORM_ERRFILE)
 	@echo -n "\r⏳ $(YLW)Executing norminette on $(WNAME)$(GRAY)...$(RES)"
-	@norminette $(SRC_DIR) | grep "Error:" > $(NORM_FILE) || true
-	@if [ -s $(NORM_FILE) ]; then \
+	@norminette $(SRC_DIR) | grep "Error:" > $(NORM_ERRFILE) || true
+	@if [ -s $(NORM_ERRFILE) ]; then \
 		echo -n "\r❌ $(RED)Norm errors found on $(ERRNAME)$(GRAY):$(RES)\n";\
-		cat $(NORM_FILE) | sed 's/^Error:/-/'; \
+		cat $(NORM_ERRFILE) | sed 's/^Error:/-/'; \
 	else \
 		echo -n "\r✅ $(GREEN)No norm errors found on $(OKNAME)!$(RES)\n"; \
-		rm -rf $(NORM_FILE); \
+		rm -rf $(NORM_ERRFILE); \
 	fi
 
 build: norm re
@@ -151,14 +151,34 @@ TEST_SRC =	$(filter-out $(SRC_DIR)/minishell.c, $(SRCS)) \
 			$(TEST_DIR)/test_minishell.c \
 			$(UNITY_DIR)/src/unity.c
 
+TEST_LOGFILE = $(LOG_DIR)/tests.txt
+
 # > ~ Tests - Char utils
 
 TEST_SRC += $(TEST_DIR)/util/char/test_ms_isdigit.c
 
 test: build
-	@echo "🧪 $(YLW)Running tests for $(WNAME)$(GRAY)...$(RES)"
+	@mkdir -p $(LOG_DIR)
+	@rm -f $(TEST_NAME) $(TEST_LOGFILE)
+	@echo -n "\r⏳ $(YLW)Running tests for $(WNAME)$(GRAY)...$(RES)"
 	@$(CC) $(CFLAGS) $(TEST_SRC) $(TEST_INC) -o $(TEST_NAME) -lreadline
-	@./$(TEST_NAME)
-	@rm -f $(TEST_NAME)
+	@./$(TEST_NAME) > $(TEST_LOGFILE) 2>&1; \
+	echo -n "\r"; \
+	TESTS=$$(grep -oP 'test_\w+(?=:PASS|:FAIL)' $(TEST_LOGFILE)); \
+	FAILED=0; \
+	for t in $$TESTS; do \
+		if grep -q "$$t.*:PASS" $(TEST_LOGFILE); then \
+			echo "✅ $(GREEN)Test $${t#test_}$(RES)"; \
+		else \
+			echo "❌ $(RED)Test $(BRED)$${t#test_}$(GRAY):$(RES)"; \
+			grep "$$t" $(TEST_LOGFILE) | grep -v ":PASS"; \
+			FAILED=$$((FAILED + 1)); \
+		fi \
+	done; \
+	if [ $$FAILED -eq 0 ]; then \
+		echo "$(GREEN)✅ All tests have passed!$(RES)"; \
+	else \
+		echo "$(RED)❌ $$FAILED test(s) failed.$(RES)"; \
+	fi
 
 .PHONY: all clean fclean re norm build test

@@ -29,6 +29,7 @@
 *.dylib
 
 # Executables
+test_minishell
 minishell
 *.exe
 *.out

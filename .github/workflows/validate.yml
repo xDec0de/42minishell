@@ -44,5 +44,4 @@ jobs:
         run: |
           make covonly
           ls -l test/coverage/coverage.info
-          curl -Ls https://coverage.codacy.com/get.sh | bash
-          ./codacy-coverage-reporter report -l lcov -r $(pwd)/test/coverage/coverage.info
+          bash <(curl -Ls https://coverage.codacy.com/get.sh) -l lcov -r $(pwd)/test/coverage/coverage.info

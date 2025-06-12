@@ -6,16 +6,22 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/12 17:18:29 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/12 18:54:23 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 MAKEFLAGS += --no-print-directory
 
 NAME = minishell
+TEST_NAME = test_$(NAME)
 
 SRC_DIR = ./src
 OBJ_DIR = ./objs
+
+LOG_DIR = ./logs
+TEST_DIR = ./test
+UNITY_DIR = $(TEST_DIR)/unity
+COV_DIR = $(TEST_DIR)/coverage
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g3 -fdiagnostics-color=always -I$(SRC_DIR)
@@ -120,7 +126,6 @@ fclean: clean
 
 re: fclean $(NAME)
 
-LOG_DIR = ./logs
 NORM_ERRFILE = $(LOG_DIR)/norm_errors.txt
 
 # > ~ Norminette check
@@ -145,10 +150,7 @@ build:
 
 # > ~ Tests
 
-TEST_NAME = test_$(NAME)
-
-TEST_DIR = ./test
-UNITY_DIR = $(TEST_DIR)/unity
+CFLAGS += -fprofile-arcs -ftest-coverage
 
 TEST_INC = -I$(UNITY_DIR)/src -I$(TEST_DIR)
 
@@ -194,5 +196,21 @@ testonly:
 test:
 	@$(MAKE) build
 	@$(MAKE) testonly 2>/dev/null
+	@$(MAKE) cov
 
-.PHONY: all clean fclean re norm build testonly test
+COV_INFO = $(COV_DIR)/coverage.info
+
+cov:
+	@if command -v lcov >/dev/null 2>&1; then \
+		echo -n "\r⏳ $(YLW)Generating coverage report$(GRAY)...$(RES)"; \
+		lcov --capture --directory . --output-file $(COV_INFO) >/dev/null 2>&1; \
+		lcov --remove $(COV_INFO) '/usr/*' 'test/*' --output-file $(COV_INFO) >/dev/null 2>&1; \
+		genhtml $(COV_INFO) --output-directory $(COV_DIR) >/dev/null 2>&1; \
+		echo -n "\r✅ $(GREEN)Coverage reports generated at $(COV_DIR)$(RES)\n"; \
+	else \
+		echo -n "\r❌ $(RED)Install lcov for coverage reports.$(RES)\n"; \
+	fi
+	@rm -rf *.gcda
+	@rm -rf *.gcno
+
+.PHONY: all clean fclean re norm build testonly test cov

@@ -16,6 +16,8 @@ requirements:
   validation.
 - [Unity](https://github.com/ThrowTheSwitch/Unity) is used for testing
   (Added as a git module).
+- (Optional) [lcov](https://github.com/linux-test-project/lcov),
+  for code coverate reports: `sudo apt install lcov`
 
 ## Building, validating and testing the project
 

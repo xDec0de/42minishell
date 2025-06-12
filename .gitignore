@@ -58,3 +58,8 @@ dkms.conf
 
 # Logs
 logs
+
+# Coverage
+test/coverage
+*.gcda
+*.gcno

@@ -34,3 +34,10 @@ jobs:
 
       - name: Pass tests
         run: make testonly
+
+      - name: Upload coverage to Codacy
+        env:
+          CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+        run: |
+          curl -Ls https://coverage.codacy.com/get.sh | bash
+          ./codacy-coverage-reporter report -l lcov -r test/coverage/coverage.info

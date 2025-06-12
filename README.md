@@ -3,6 +3,20 @@
 42 project "minishell", code follows the norm used at 42. The objective of
 this project is to create a basic replica of a bash shell, built in C.
 
+## Requirements
+
+This project is designed to work on Linux. Don't expect it to work on
+Windows unless you are using WSL. That being said, it still has some
+requirements:
+
+- The project compiles with `cc`.
+- The readline library. Install it with `sudo apt-get install libreadline-dev`.
+- Makefile is used for build logic: `sudo apt install make`.
+- [Norminette](https://github.com/42School/norminette) is used for code style
+  validation.
+- [Unity](https://github.com/ThrowTheSwitch/Unity) is used for testing
+  (Added as a git module).
+
 ## Building, validating and testing the project
 
 As previously stated, 42minishell follows the norm used at 42. This means
@@ -24,8 +38,7 @@ we use Makefile. Here is the full table of commands:
 ## Allowed functions
 
 For this rather complex task, we are allowed to use the following table of
-functions. Note that You may need to install the readline library with
-`sudo apt-get install libreadline-dev`
+functions:
 
 | Name | Library | Basic description | Used |
 | :---: | :---: | :---: | :---: |

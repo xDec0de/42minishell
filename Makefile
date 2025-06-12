@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/12 16:28:40 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/12 16:31:15 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -157,7 +157,7 @@ TEST_LOGFILE = $(LOG_DIR)/tests.txt
 
 TEST_SRC += $(TEST_DIR)/util/char/test_ms_isdigit.c
 
-test: build
+testonly:
 	@mkdir -p $(LOG_DIR)
 	@rm -f $(TEST_NAME) $(TEST_LOGFILE)
 	@echo -n "\r⏳ $(YLW)Running tests for $(WNAME)$(GRAY)...$(RES)"
@@ -184,5 +184,7 @@ test: build
 	else \
 		echo "$(RED)❌ $$FAILED test(s) failed.$(RES)"; \
 	fi
+
+test: build testonly
 
 .PHONY: all clean fclean re norm build test

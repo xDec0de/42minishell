@@ -3,6 +3,24 @@
 42 project "minishell", code follows the norm used at 42. The objective of
 this project is to create a basic replica of a bash shell, built in C.
 
+## Building, validating and testing the project
+
+As previously stated, 42minishell follows the norm used at 42. This means
+the norminette program is used in order to validate that the code style
+of the project is up to standards. To build, validate and test the project
+we use Makefile. Here is the full table of commands:
+
+| Command | Description |
+| :---: | :---: |
+| `make norm` | Executes norminette on the src folder for style validation |
+| `make` or `make all` | Compiles updated files only |
+| `make re` | Recompiles the whole project (src) |
+| `make build` | `make norm` and `make re` |
+| `make testonly` | Runs tests only, assuming the project is compiled |
+| `make test` | `make build`, then `make testonly` |
+| `make clean` | Removes the objs folder produced when compiling |
+| `make fclean` | `make clean`, also removing program executables |
+
 ## Allowed functions
 
 For this rather complex task, we are allowed to use the following table of

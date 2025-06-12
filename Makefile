@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/12 15:45:23 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/12 16:28:40 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -145,7 +145,7 @@ TEST_NAME = test_$(NAME)
 TEST_DIR = ./test
 UNITY_DIR = $(TEST_DIR)/unity
 
-TEST_INC = -I$(UNITY_DIR)/src -I./include
+TEST_INC = -I$(UNITY_DIR)/src -I$(TEST_DIR)
 
 TEST_SRC =	$(filter-out $(SRC_DIR)/minishell.c, $(SRCS)) \
 			$(TEST_DIR)/test_minishell.c \

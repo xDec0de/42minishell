@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/12 18:56:50 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/12 19:02:20 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -207,7 +207,7 @@ testonly:
 test:
 	@$(MAKE) build
 	@$(MAKE) testonly 2>/dev/null
-	@$(MAKE) cov
+	@$(MAKE) covonly
 
 COV_INFO = $(COV_DIR)/coverage.info
 

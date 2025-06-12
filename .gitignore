@@ -54,3 +54,6 @@ dkms.conf
 
 # Visual Studio
 .vscode/
+
+# Logs
+logs

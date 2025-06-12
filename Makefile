@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/12 14:08:35 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/12 14:47:25 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -118,18 +118,23 @@ fclean: clean
 
 re: fclean $(NAME)
 
+LOG_DIR = ./logs
+NORM_FILE = $(LOG_DIR)/norm_errors.txt
+
 # > ~ Norminette check
 
 norm:
+	@mkdir -p $(LOG_DIR)
+	@rm -rf $(NORM_FILE)
 	@echo -n "\r⏳ $(YLW)Executing norminette on $(WNAME)$(GRAY)...$(RES)"
-	@norminette $(SRC_DIR) | grep "Error:" > norm_errors.txt || true
-	@if [ -s norm_errors.txt ]; then \
+	@norminette $(SRC_DIR) | grep "Error:" > $(NORM_FILE) || true
+	@if [ -s $(NORM_FILE) ]; then \
 		echo -n "\r❌ $(RED)Norm errors found on $(ERRNAME)$(GRAY):$(RES)\n";\
-		cat norm_errors.txt | sed 's/^Error:/-/'; \
+		cat $(NORM_FILE) | sed 's/^Error:/-/'; \
 	else \
 		echo -n "\r✅ $(GREEN)No norm errors found on $(OKNAME)!$(RES)\n"; \
+		rm -rf $(NORM_FILE); \
 	fi
-	@rm -f norm_errors.txt
 
 build: norm re
 

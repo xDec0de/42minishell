@@ -35,6 +35,9 @@ jobs:
       - name: Pass tests
         run: make testonly
 
+      - name: Install lcov
+        run: sudo apt-get install lcov
+
       - name: Upload coverage to Codacy
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}

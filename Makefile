@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/12 18:54:23 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/12 18:56:50 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,15 +111,26 @@ $(NAME): $(OBJS)
 # > ~ Cleaning
 
 clean:
-	@echo -n "\r⏳ $(YLW)Removing $(WNAME) objs.$(RES)"
+	@echo -n "\r⏳ $(YLW)Removing $(WNAME) objs$(GRAY)...$(RES)"
 	@rm -rf $(OBJ_DIR)
 	@echo -n "\r✅ $(GREEN)Removed $(OKNAME) objs$(GRAY).$(RES)"
 	@echo 
+	@echo -n "\r⏳ $(YLW)Removing $(WNAME) coverage files$(GRAY)...$(RES)"
+	@rm -rf $(COV_DIR)
+	@rm -rf *.gcda
+	@rm -rf *.gcno
+	@echo -n "\r✅ $(GREEN)Removed $(OKNAME) coverage files$(GRAY).$(RES)"
+	@echo 
+	@echo -n "\r⏳ $(YLW)Removing $(WNAME) logs$(GRAY)...$(RES)"
+	@rm -rf $(LOG_DIR)
+	@echo -n "\r✅ $(GREEN)Removed $(OKNAME) logs$(GRAY).$(RES)"
+	@echo 
 
 fclean: clean
-	@echo -n "\r⏳ $(YLW)Removing $(WNAME) executable$(GRAY)...$(RES)"
+	@echo -n "\r⏳ $(YLW)Removing $(WNAME) executables$(GRAY)...$(RES)"
 	@rm -rf $(NAME)
-	@echo -n "\r✅ $(GREEN)Removed $(OKNAME) executable$(GRAY).$(RES)"
+	@rm -rf $(TEST_NAME)
+	@echo -n "\r✅ $(GREEN)Removed $(OKNAME) executables$(GRAY).$(RES)"
 	@echo 
 
 # > ~ Clean & compile
@@ -200,7 +211,7 @@ test:
 
 COV_INFO = $(COV_DIR)/coverage.info
 
-cov:
+covonly:
 	@if command -v lcov >/dev/null 2>&1; then \
 		echo -n "\r⏳ $(YLW)Generating coverage report$(GRAY)...$(RES)"; \
 		lcov --capture --directory . --output-file $(COV_INFO) >/dev/null 2>&1; \
@@ -213,4 +224,4 @@ cov:
 	@rm -rf *.gcda
 	@rm -rf *.gcno
 
-.PHONY: all clean fclean re norm build testonly test cov
+.PHONY: all clean fclean re norm build testonly test covonly

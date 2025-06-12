@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/12 19:02:20 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/12 19:18:26 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -117,8 +117,7 @@ clean:
 	@echo 
 	@echo -n "\r⏳ $(YLW)Removing $(WNAME) coverage files$(GRAY)...$(RES)"
 	@rm -rf $(COV_DIR)
-	@rm -rf *.gcda
-	@rm -rf *.gcno
+	@rm -rf *.gcda *.gcno
 	@echo -n "\r✅ $(GREEN)Removed $(OKNAME) coverage files$(GRAY).$(RES)"
 	@echo 
 	@echo -n "\r⏳ $(YLW)Removing $(WNAME) logs$(GRAY)...$(RES)"
@@ -210,18 +209,19 @@ test:
 	@$(MAKE) covonly
 
 COV_INFO = $(COV_DIR)/coverage.info
+COV_EXCLUDE = '/usr/*' '*/test/*'
 
 covonly:
+	@mkdir -p $(COV_DIR)
 	@if command -v lcov >/dev/null 2>&1; then \
 		echo -n "\r⏳ $(YLW)Generating coverage report$(GRAY)...$(RES)"; \
 		lcov --capture --directory . --output-file $(COV_INFO) >/dev/null 2>&1; \
-		lcov --remove $(COV_INFO) '/usr/*' 'test/*' --output-file $(COV_INFO) >/dev/null 2>&1; \
+		lcov --remove $(COV_INFO) $(COV_EXCLUDE) --output-file $(COV_INFO) >/dev/null 2>&1; \
 		genhtml $(COV_INFO) --output-directory $(COV_DIR) >/dev/null 2>&1; \
 		echo -n "\r✅ $(GREEN)Coverage reports generated at $(COV_DIR)$(RES)\n"; \
 	else \
 		echo -n "\r❌ $(RED)Install lcov for coverage reports.$(RES)\n"; \
 	fi
-	@rm -rf *.gcda
-	@rm -rf *.gcno
+	@rm -rf *.gcda *.gcno
 
 .PHONY: all clean fclean re norm build testonly test covonly

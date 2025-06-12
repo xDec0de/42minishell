@@ -114,7 +114,7 @@ re: fclean $(NAME)
 
 norm:
 	@echo -n "\r⏳ $(YLW)Executing norminette on $(WNAME)$(GRAY)...$(RES)"
-	@norminette | grep "Error:" > norm_errors.txt || true
+	@norminette $(SRC_DIR) | grep "Error:" > norm_errors.txt || true
 	@if [ -s norm_errors.txt ]; then \
 		echo -n "\r❌ $(RED)Norm errors found on $(ERRNAME)$(GRAY):$(RES)\n";\
 		cat norm_errors.txt | sed 's/^Error:/-/'; \

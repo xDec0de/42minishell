@@ -1,4 +1,4 @@
-name: Minishell validation
+name: Build and test
 
 on:
   push:
@@ -17,8 +17,8 @@ jobs:
       - name: Install readline
         run: sudo apt-get install libreadline-dev
 
-      - name: Make project
+      - name: Build project
         run: make
 
-      - name: Pass norminette
-        uses: alexandregv/norminette-action@v3
+      - name: Pass tests
+        run: make testonly

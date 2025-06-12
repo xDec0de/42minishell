@@ -6,11 +6,11 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 22:25:39 by daniema3          #+#    #+#             */
-/*   Updated: 2025/05/25 22:28:14 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/12 14:11:41 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "minishell.h"
 
 static int	get_word_nbr(const char *s, char c)
 {

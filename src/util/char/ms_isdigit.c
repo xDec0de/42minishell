@@ -6,11 +6,11 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 17:11:41 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/11 17:21:51 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/12 14:11:26 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "minishell.h"
 
 bool	ms_isdigit(char ch)
 {

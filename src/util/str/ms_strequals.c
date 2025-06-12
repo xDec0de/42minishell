@@ -6,11 +6,11 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 21:46:58 by daniema3          #+#    #+#             */
-/*   Updated: 2025/05/24 21:56:22 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/12 14:11:55 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "minishell.h"
 
 bool	ms_strequals(char *str, char *other)
 {

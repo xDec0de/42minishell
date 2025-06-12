@@ -6,11 +6,11 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 18:29:31 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/11 18:36:25 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/12 14:11:11 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "minishell.h"
 
 void	ms_arrfree(char **arr)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ms_malloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 20:44:40 by daniema3          #+#    #+#             */
-/*   Updated: 2025/04/30 21:10:37 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/12 14:12:15 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "minishell.h"
 
 void	*ms_malloc(size_t	size)
 {

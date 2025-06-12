@@ -6,11 +6,11 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 20:46:52 by daniema3          #+#    #+#             */
-/*   Updated: 2025/04/30 22:27:35 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/12 14:12:08 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "minishell.h"
 
 void	ms_free(t_shell	*shell)
 {

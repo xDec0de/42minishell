@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/12 14:52:37 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/12 15:45:23 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -161,7 +161,8 @@ test: build
 	@mkdir -p $(LOG_DIR)
 	@rm -f $(TEST_NAME) $(TEST_LOGFILE)
 	@echo -n "\r⏳ $(YLW)Running tests for $(WNAME)$(GRAY)...$(RES)"
-	@$(CC) $(CFLAGS) $(TEST_SRC) $(TEST_INC) -o $(TEST_NAME) -lreadline
+	@$(CC) $(CFLAGS) $(TEST_SRC) $(TEST_INC) \
+		-o $(TEST_NAME) -lreadline
 	@./$(TEST_NAME) > $(TEST_LOGFILE) 2>&1; \
 	echo -n "\r"; \
 	TESTS=$$(grep -oP 'test_\w+(?=:PASS|:FAIL)' $(TEST_LOGFILE)); \
@@ -170,10 +171,13 @@ test: build
 		if grep -q "$$t.*:PASS" $(TEST_LOGFILE); then \
 			echo "✅ $(GREEN)Test $${t#test_}$(RES)"; \
 		else \
-			echo "❌ $(RED)Test $(BRED)$${t#test_}$(GRAY):$(RES)"; \
-			grep "$$t" $(TEST_LOGFILE) | grep -v ":PASS"; \
+			LINE=$$(grep "$$t" $(TEST_LOGFILE) | grep -v ":PASS"); \
+			NUM=$$(echo $$LINE | grep -oP 'FAIL: \K[0-9]+'); \
+			NAME=$${t#test_}; \
+			printf "❌ $(RED)Test $(BRED)%s$(GRAY): " "$$NAME"; \
+			printf "$(RED)Failed test $(BRED)%s$(RES)\n" "$$NUM"; \
 			FAILED=$$((FAILED + 1)); \
-		fi \
+		fi; \
 	done; \
 	if [ $$FAILED -eq 0 ]; then \
 		echo "$(GREEN)✅ All tests have passed!$(RES)"; \

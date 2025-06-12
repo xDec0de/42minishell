@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/12 17:11:03 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/12 17:18:29 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -188,8 +188,11 @@ testonly:
 		echo "$(GREEN)✅ All tests have passed!$(RES)"; \
 	else \
 		echo "$(RED)❌ $$FAILED test(s) failed.$(RES)"; \
+		exit 1; \
 	fi
 
-test: build testonly
+test:
+	@$(MAKE) build
+	@$(MAKE) testonly 2>/dev/null
 
-.PHONY: all clean fclean re norm build test
+.PHONY: all clean fclean re norm build testonly test

@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/12 19:18:26 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/12 19:28:39 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -206,6 +206,11 @@ testonly:
 test:
 	@$(MAKE) build
 	@$(MAKE) testonly 2>/dev/null
+	@rm -rf *.gcda *.gcno
+
+testcov:
+	@$(MAKE) build
+	@$(MAKE) testonly 2>/dev/null
 	@$(MAKE) covonly
 
 COV_INFO = $(COV_DIR)/coverage.info
@@ -224,4 +229,4 @@ covonly:
 	fi
 	@rm -rf *.gcda *.gcno
 
-.PHONY: all clean fclean re norm build testonly test covonly
+.PHONY: all clean fclean re norm build testonly test testcov covonly

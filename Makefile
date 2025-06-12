@@ -6,9 +6,11 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/12 16:31:15 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/12 17:11:03 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+MAKEFLAGS += --no-print-directory
 
 NAME = minishell
 
@@ -131,12 +133,15 @@ norm:
 	@if [ -s $(NORM_ERRFILE) ]; then \
 		echo -n "\r❌ $(RED)Norm errors found on $(ERRNAME)$(GRAY):$(RES)\n";\
 		cat $(NORM_ERRFILE) | sed 's/^Error:/-/'; \
+		exit 1; \
 	else \
 		echo -n "\r✅ $(GREEN)No norm errors found on $(OKNAME)!$(RES)\n"; \
 		rm -rf $(NORM_ERRFILE); \
 	fi
 
-build: norm re
+build:
+	@$(MAKE) norm 2>/dev/null || true
+	@$(MAKE) re
 
 # > ~ Tests
 

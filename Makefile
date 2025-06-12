@@ -6,17 +6,17 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/11 21:49:22 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/12 14:08:35 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = minishell
 
-CC = cc
-CFLAGS = -Wall -Werror -Wextra -g3 -fdiagnostics-color=always
-
 SRC_DIR = ./src
 OBJ_DIR = ./objs
+
+CC = cc
+CFLAGS = -Wall -Werror -Wextra -g3 -fdiagnostics-color=always -I$(SRC_DIR)
 
 # > ~ Main project files
 
@@ -79,6 +79,8 @@ WNAME = $(BYLW)$(NAME)$(YLW)
 OKNAME = $(BLUE)$(NAME)$(GREEN)
 ERRNAME = $(BRED)$(NAME)$(RED)
 
+# > ~ Compile
+
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(dir $@)
 	@echo -n "\r⏳ $(YLW)Compiling $(BYLW)$(notdir $<)$(GRAY)...$(RES)"
@@ -98,6 +100,8 @@ $(NAME): $(OBJS)
 	@echo -n "\r✅ $(OKNAME) successfully compiled!$(RES)"
 	@echo 
 
+# > ~ Cleaning
+
 clean:
 	@echo -n "\r⏳ $(YLW)Removing $(WNAME) objs.$(RES)"
 	@rm -rf $(OBJ_DIR)
@@ -110,7 +114,11 @@ fclean: clean
 	@echo -n "\r✅ $(GREEN)Removed $(OKNAME) executable$(GRAY).$(RES)"
 	@echo 
 
+# > ~ Clean & compile
+
 re: fclean $(NAME)
+
+# > ~ Norminette check
 
 norm:
 	@echo -n "\r⏳ $(YLW)Executing norminette on $(WNAME)$(GRAY)...$(RES)"
@@ -125,4 +133,27 @@ norm:
 
 build: norm re
 
-.PHONY: all clean fclean re norm build
+# > ~ Tests
+
+TEST_NAME = test_$(NAME)
+
+TEST_DIR = ./test
+UNITY_DIR = $(TEST_DIR)/unity
+
+TEST_INC = -I$(UNITY_DIR)/src -I./include
+
+TEST_SRC =	$(filter-out $(SRC_DIR)/minishell.c, $(SRCS)) \
+			$(TEST_DIR)/test_minishell.c \
+			$(UNITY_DIR)/src/unity.c
+
+# > ~ Tests - Char utils
+
+TEST_SRC += $(TEST_DIR)/util/char/test_ms_isdigit.c
+
+test: build
+	@echo "🧪 $(YLW)Running tests for $(WNAME)$(GRAY)...$(RES)"
+	@$(CC) $(CFLAGS) $(TEST_SRC) $(TEST_INC) -o $(TEST_NAME) -lreadline
+	@./$(TEST_NAME)
+	@rm -f $(TEST_NAME)
+
+.PHONY: all clean fclean re norm build test

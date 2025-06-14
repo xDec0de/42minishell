@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+         #
+#    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/14 13:55:14 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/14 17:56:45 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -164,20 +164,24 @@ CFLAGS += -fprofile-arcs -ftest-coverage
 
 TEST_INC = -I$(UNITY_DIR)/src -I$(TEST_DIR)
 
-TEST_SRC =	$(filter-out $(SRC_DIR)/minishell.c, $(SRCS)) \
-			$(TEST_DIR)/test_minishell.c \
-			$(UNITY_DIR)/src/unity.c
-
 TEST_LOGFILE = $(LOG_DIR)/tests.txt
 
 # > ~ Tests - Char utils
 
-TEST_SRC += $(TEST_DIR)/util/char/test_ms_isdigit.c
+TEST_SRC = util/char/test_ms_isdigit.c
 
 # > ~ Tests - String utils
 
-TEST_SRC +=	$(TEST_DIR)/util/str/test_ms_strequals.c \
-			$(TEST_DIR)/util/str/test_ms_strlen.c
+TEST_SRC +=	util/str/test_ms_strequals.c \
+			util/str/test_ms_strlen.c
+
+# > ~ Tests - Add directory prefix
+
+TEST_SRC := $(addprefix $(TEST_DIR)/, $(TEST_SRC))
+
+TEST_SRC +=	$(filter-out $(SRC_DIR)/minishell.c, $(SRCS)) \
+			$(TEST_DIR)/test_minishell.c \
+			$(UNITY_DIR)/src/unity.c
 
 testonly:
 	@mkdir -p $(LOG_DIR)

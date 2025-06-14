@@ -43,10 +43,10 @@ jobs:
         run: sudo apt install -y make
 
       - name: Install valgrind
-        run: apt install -y valgrind
+        run: sudo apt install -y valgrind
 
       - name: Install lcov
-        run: apt install -y lcov
+        run: sudo apt install -y lcov
 
       - name: Pass tests
         run: sudo make testonly

@@ -69,4 +69,8 @@ if [ "$OPTIONALS" = true ]; then
 	setup "apt install -y lcov" "lcov -v" "[Optional] lcov"
 fi
 
-make
+if make -v > /dev/null 2>&1 && dpkg -s libreadline-dev > /dev/null 2>&1; then
+	make
+else
+	echo Could not make project. Missing required dependencies.
+fi

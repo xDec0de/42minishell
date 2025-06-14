@@ -14,6 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install dependencies with setup
+        run: sudo ./setup -y -optional
+
       - name: Pass norminette
         run: make norm
   build:
@@ -23,20 +26,15 @@ jobs:
     steps:
       - name: Checkout repository with submodules
         uses: actions/checkout@v4
-        with:
-          submodules: recursive
 
-      - name: Install readline
-        run: sudo apt-get install libreadline-dev
+      - name: Install dependencies with setup
+        run: sudo ./setup -y -optional
 
       - name: Build project
         run: make
 
       - name: Pass tests
         run: make testonly
-
-      - name: Install lcov
-        run: sudo apt-get install lcov
 
       - name: Upload coverage to Codacy
         env:

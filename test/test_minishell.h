@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 13:53:14 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/14 21:03:53 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/14 21:58:43 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define STR(x) _STR(x)
 
 /*
- - Assertions
+ - Assertions - Bool
  */
 
 #define ASSERT_TRUE(expr, test_num) do {\
@@ -39,6 +39,28 @@
 		exit(test_num);\
 	}\
 } while (0)
+
+/*
+ - Assertions - NULL
+ */
+
+#define ASSERT_NULL(expr, test_num) do {\
+	if ((expr) != NULL) {\
+		fprintf(stderr, "Got NOT NULL when expecting NULL");\
+		exit(test_num);\
+	}\
+} while (0)
+
+#define ASSERT_NOT_NULL(expr, test_num) do {\
+	if ((expr) == NULL) {\
+		fprintf(stderr, "Got NULL when expecting NOT NULL");\
+		exit(test_num);\
+	}\
+} while (0)
+
+/*
+ - Assertions - Numeric
+ */
 
 #define ASSERT_ULONG_EQUALS(actual, expected, test_num) do {\
 	if ((actual) != (expected)) {\

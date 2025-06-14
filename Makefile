@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/14 21:12:23 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/14 21:16:33 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -178,8 +178,8 @@ TEST_SRC := $(addprefix $(TEST_DIR)/, $(TEST_SRC))
 TEST_SRC +=	$(filter-out $(SRC_DIR)/minishell.c, $(SRCS))
 
 testonly:
+	@$(MAKE) fclean
 	@mkdir -p $(LOG_DIR)
-	@rm -f $(LOG_DIR)/*.valgrind
 	@FAILED=0; \
 	TESTFILES="$(TEST_SRC)"; \
 	for FILE in $$TESTFILES; do \

@@ -58,7 +58,7 @@ we use Makefile. Here is the full table of commands:
 | `make` or `make all` | Compiles updated files only |
 | `make re` | Recompiles the whole project (src) |
 | `make build` | `make norm` and `make re` |
-| `make testonly` | Runs tests only, assuming the project is compiled |
+| `make testonly` | `make fclean` and run tests |
 | `make covonly` | Generate coverage report, assuming tests have been done |
 | `make test` | `make norm` and `make testonly` |
 | `make testcov` | `make testonly` and `make covonly` |

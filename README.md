@@ -7,11 +7,36 @@ this project is to create a basic replica of a bash shell, built in C.
 
 This project is designed to work on Linux. Don't expect it to work on
 Windows unless you are using WSL. That being said, it still has some
-requirements:
+requirements.
+
+### Fast setup
+
+A bash script is provided to install all required dependencies. You can
+run it with `sudo ./setup`. This script **does require sudo or root**
+privileges to run, as it uses apt to install dependencies. It also  will 
+compile the project with `make` and has two flags to choose from:
+
+| Flag | Description |
+| :---: | :---: |
+| -y | Automatically accepts installing dependencies |
+| -optional | Install optional dependencies too (List below) |
+
+If you are just testing the project and not planning to contribute to it,
+then the recommended command is `sudo ./setup -y`
+
+
+### List of dependencies
+
+If you prefer a manual install, then here is the list of dependencies:
+
+Required:
 
 - The project compiles with `cc`.
 - The readline library. Install it with `sudo apt-get install libreadline-dev`.
 - Makefile is used for build logic: `sudo apt install make`.
+
+Optional:
+
 - [Norminette](https://github.com/42School/norminette) is used for code style
   validation.
 - [Unity](https://github.com/ThrowTheSwitch/Unity) is used for testing

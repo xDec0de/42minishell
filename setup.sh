@@ -62,8 +62,8 @@ if [ "$OPTIONALS" = true ]; then
 	# Setup Norminette
 	setup "pip3 install norminette --break-system-packages" "command norminette -v" "[Optional] Norminette (GLOBAL INSTALL)"
 
-	# Setup Unity
-	setup "git submodule update --init --recursive" "ls -A test/unity/src" "[Optional] Unity"
+	# Setup Valgrind
+	setup "apt install valgrind" "valgrind --version" "[Optional] Valgrind"
 
 	# Setup lcov
 	setup "apt install -y lcov" "lcov -v" "[Optional] lcov"

@@ -41,5 +41,4 @@ jobs:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
         run: |
           sudo make covonly
-          sudo ls -l test/coverage/coverage.info
-          sudo bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r ./test/coverage/coverage.info
+          bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r ./test/coverage/coverage.info

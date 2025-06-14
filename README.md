@@ -1,4 +1,5 @@
-# 42minishell ![](https://app.codacy.com/project/badge/Grade/84a0ed73021a434384e03ccf107f1268) ![](https://app.codacy.com/project/badge/Coverage/84a0ed73021a434384e03ccf107f1268)
+# 42minishell ![Code quality](https://app.codacy.com/project/badge/Grade/84a0ed73021a434384e03ccf107f1268) ![Test coverage](https://app.codacy.com/project/badge/Coverage/84a0ed73021a434384e03ccf107f1268)
+
 42 project "minishell", code follows the norm used at 42. The objective of
 this project is to create a basic replica of a bash shell, built in C.
 
@@ -15,7 +16,7 @@ requirements.
 
 A bash script is provided to install all required dependencies. You can
 run it with `sudo ./setup`. This script **does require sudo or root**
-privileges to run, as it uses apt to install dependencies. It also  will 
+privileges to run, as it uses apt to install dependencies. It will also
 compile the project with `make` and has two flags to choose from:
 
 | Flag | Description |
@@ -25,7 +26,6 @@ compile the project with `make` and has two flags to choose from:
 
 If you are just testing the project and not planning to contribute to it,
 then the recommended command is `sudo ./setup -y`
-
 
 ### List of dependencies
 

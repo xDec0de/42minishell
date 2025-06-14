@@ -18,7 +18,7 @@ jobs:
         run: sudo ./setup.sh -y -optional
 
       - name: Pass norminette
-        run: make norm
+        run: sudo make norm
   build:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[ci-skip]')"
@@ -31,15 +31,15 @@ jobs:
         run: sudo ./setup.sh -y -optional
 
       - name: Build project
-        run: make
+        run: sudo make
 
       - name: Pass tests
-        run: make testonly
+        run: sudo make testonly
 
       - name: Upload coverage to Codacy
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
         run: |
-          make covonly
-          ls -l test/coverage/coverage.info
-          bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r ./test/coverage/coverage.info
+          sudo make covonly
+          sudo ls -l test/coverage/coverage.info
+          sudo bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r ./test/coverage/coverage.info

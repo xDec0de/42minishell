@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   test_ms_strequals.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 13:43:25 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/14 13:50:40 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/14 20:22:06 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test_minishell.h"
 
-void	test_ms_strequals(void)
+int	main(void)
 {
 	ASSERT_TRUE(ms_strequals(NULL, NULL), 1);
 	ASSERT_TRUE(ms_strequals("", ""), 2);

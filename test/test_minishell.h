@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_minishell.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 13:53:14 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/14 13:44:44 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/14 20:51:24 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,6 @@
 
 #include "unity.h"
 #include "minishell.h"
-
-/*
- - util/char
- */
-
-void	test_ms_isdigit(void);
-
-/*
- - util/str
- */
-
-void	test_ms_strequals(void);
-void	test_ms_strlen(void);
 
 /*
  - Utility macros
@@ -40,13 +27,25 @@ void	test_ms_strlen(void);
  - Assertions
  */
 
-# define ASSERT_TRUE(expr, num) \
-	TEST_ASSERT_TRUE_MESSAGE((expr), STR(num))
+#define ASSERT_TRUE(expr, test_num) do {\
+	if (!(expr)) {\
+		fprintf(stderr, "Got FALSE when expecting TRUE");\
+		exit(test_num);\
+	}\
+} while (0)
 
-# define ASSERT_FALSE(expr, num) \
-	TEST_ASSERT_FALSE_MESSAGE((expr), STR(num))
+#define ASSERT_FALSE(expr, test_num) do {\
+	if ((expr)) {\
+		fprintf(stderr, "Got TRUE when expecting FALSE");\
+		exit(test_num);\
+	}\
+} while (0)
 
-# define ASSERT_INT_EQUALS(actual, expected, num) \
-	TEST_ASSERT_EQUAL_INT_MESSAGE((expected), (actual), STR(num))
+#define ASSERT_ULONG_EQUALS(actual, expected, test_num) do {\
+	if ((actual) != (expected)) {\
+		fprintf(stderr, "Got %ld when expecting %ld", (actual), (expected));\
+		exit(test_num);\
+	}\
+} while (0)
 
 #endif

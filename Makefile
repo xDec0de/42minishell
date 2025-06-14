@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/14 17:56:45 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/14 20:59:09 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -179,41 +179,55 @@ TEST_SRC +=	util/str/test_ms_strequals.c \
 
 TEST_SRC := $(addprefix $(TEST_DIR)/, $(TEST_SRC))
 
-TEST_SRC +=	$(filter-out $(SRC_DIR)/minishell.c, $(SRCS)) \
-			$(TEST_DIR)/test_minishell.c \
-			$(UNITY_DIR)/src/unity.c
+TEST_SRC +=	$(filter-out $(SRC_DIR)/minishell.c, $(SRCS))
 
 testonly:
 	@mkdir -p $(LOG_DIR)
-	@rm -f $(TEST_NAME) $(TEST_LOGFILE)
-	@echo -n "\r⏳ $(YLW)Running tests for $(WNAME)$(GRAY)...$(RES)"
-	@$(CC) $(CFLAGS) $(TEST_SRC) $(TEST_INC) \
-		-o $(TEST_NAME) -lreadline
-	@./$(TEST_NAME) > $(TEST_LOGFILE) 2>&1; \
-	echo -n "\r"; \
-	TESTS=$$(grep -oP 'test_\w+(?=:PASS|:FAIL)' $(TEST_LOGFILE)); \
-	FAILED=0; \
-	for t in $$TESTS; do \
-		if grep -q "$$t.*:PASS" $(TEST_LOGFILE); then \
-			echo "✅ $(GREEN)Test $${t#test_}$(RES)"; \
-		else \
-			LINE=$$(grep "$$t" $(TEST_LOGFILE) | grep -v ":PASS"); \
-			NUM=$$(echo $$LINE | grep -oP 'FAIL: \K[0-9]+'); \
-			NAME=$${t#test_}; \
-			printf "❌ $(RED)Test $(BRED)%s$(GRAY): " "$$NAME"; \
-			printf "$(RED)Failed test $(BRED)%s$(RES)\n" "$$NUM"; \
-			FAILED=$$((FAILED + 1)); \
+	@rm -f $(LOG_DIR)/*.valgrind
+	@FAILED=0; \
+	TESTFILES="$(TEST_SRC)"; \
+	for FILE in $$TESTFILES; do \
+		BASENAME=$$(basename $$FILE .c); \
+		if echo $$BASENAME | grep -q "^test_"; then \
+			EXEC="./$(LOG_DIR)/$$BASENAME.bin"; \
+			LOG="./$(LOG_DIR)/$$BASENAME.valgrind"; \
+			ERR="./$(LOG_DIR)/$$BASENAME.stderr"; \
+			SRCS="$$FILE $(filter-out $(SRC_DIR)/minishell.c, $(SRCS))"; \
+			COMPILE_OUTPUT=$$( $(CC) $(CFLAGS) $$SRCS $(TEST_INC) -o $$EXEC -lreadline 2>&1 ); \
+			if [ $$? -ne 0 ]; then \
+				printf "❌ $(RED)Failed to compile test $(BRED)%s$(GRAY):$(RES)\n" "$$BASENAME"; \
+				echo "$$COMPILE_OUTPUT"; \
+				FAILED=$$((FAILED + 1)); \
+				continue; \
+			fi; \
+			valgrind --leak-check=full --error-exitcode=123 --log-file="$$LOG" $$EXEC 2> $$ERR; \
+			STATUS=$$?; \
+			if [ $$STATUS -eq 0 ]; then \
+				printf "✅ $(GREEN)%s passed$(RES)\n" "$$BASENAME"; \
+			elif [ $$STATUS -eq 123 ]; then \
+				printf "⚠️  $(BYLW)%s passed but has memory leaks$(RES)\n" "$$BASENAME"; \
+				FAILED=$$((FAILED + 1)); \
+			elif [ $$STATUS -gt 0 ] && [ $$STATUS -lt 128 ]; then \
+				printf "❌ $(RED)%s failed test #%d$(GRAY):$(RED) " "$$BASENAME" "$$STATUS"; \
+				cat $$ERR; \
+				printf "$(RES)\n"; \
+				FAILED=$$((FAILED + 1)); \
+			else \
+				SIGNAL=$$(( $$STATUS - 128 )); \
+				printf "💥 $(BRED)%s crashed with signal %d$(RES)\n" "$$BASENAME" "$$SIGNAL"; \
+				FAILED=$$((FAILED + 1)); \
+			fi; \
+			rm -f $$ERR; \
 		fi; \
 	done; \
 	if [ $$FAILED -eq 0 ]; then \
-		echo "$(GREEN)✅ All tests have passed!$(RES)"; \
+		echo "$(GREEN)✅ All tests passed!$(RES)"; \
 	else \
 		echo "$(RED)❌ $$FAILED test(s) failed.$(RES)"; \
 		exit 1; \
 	fi
 
 test:
-	@$(MAKE) build
 	@$(MAKE) testonly 2>/dev/null
 	@rm -rf *.gcda *.gcno
 

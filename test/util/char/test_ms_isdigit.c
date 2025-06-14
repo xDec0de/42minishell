@@ -6,13 +6,13 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 13:24:13 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/12 15:59:15 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/14 20:57:37 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test_minishell.h"
 
-void	test_ms_isdigit(void)
+int	main(void)
 {
 	ASSERT_FALSE(ms_isdigit('0' - 1), 1);
 	ASSERT_TRUE(ms_isdigit('0'), 2);

@@ -6,6 +6,7 @@ if [ $(id -u) -ne 0 ]
 	exit
 fi
 
+# Function to check and install de
 setup () {
 
 	install_cmd=$1
@@ -45,3 +46,5 @@ setup "git submodule update --init --recursive" "ls -A test/unity/src" "[Optiona
 
 # Setup lcov
 setup "apt install -y lcov" "lcov -v" "[Optional] lcov"
+
+make

@@ -63,7 +63,7 @@ if [ "$OPTIONALS" = true ]; then
 	setup "pip3 install norminette --break-system-packages" "command norminette -v" "[Optional] Norminette (GLOBAL INSTALL)"
 
 	# Setup Valgrind
-	setup "apt install valgrind" "valgrind --version" "[Optional] Valgrind"
+	setup "apt install -y valgrind" "valgrind --version" "[Optional] Valgrind"
 
 	# Setup lcov
 	setup "apt install -y lcov" "lcov -v" "[Optional] lcov"

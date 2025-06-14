@@ -14,8 +14,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install dependencies with setup
-        run: sudo ./setup.sh -y -optional
+      - name: Install python3
+        run: sudo apt install -y python3
+
+      - name: Install pip
+        run: sudo apt install -y python3-pip
+
+      - name: Install norminette
+        run: sudo pip3 install norminette --break-system-packages
 
       - name: Pass norminette
         run: sudo make norm
@@ -27,11 +33,20 @@ jobs:
       - name: Checkout repository with submodules
         uses: actions/checkout@v4
 
-      - name: Install dependencies with setup
-        run: sudo ./setup.sh -y -optional
+      - name: Install make
+        run: sudo apt install -y make
 
-      - name: Build project
-        run: sudo make
+      - name: Install readline library
+        run: sudo apt install -y libreadline-dev
+
+      - name: Install readline
+        run: sudo apt install -y make
+
+      - name: Install valgrind
+        run: apt install -y valgrind
+
+      - name: Install lcov
+        run: apt install -y lcov
 
       - name: Pass tests
         run: sudo make testonly

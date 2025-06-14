@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/14 21:16:33 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/14 21:18:47 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -168,7 +168,8 @@ TEST_SRC = util/char/test_ms_isdigit.c
 
 # > ~ Tests - String utils
 
-TEST_SRC +=	util/str/test_ms_strequals.c \
+TEST_SRC +=	util/str/test_ms_strdup.c \
+			util/str/test_ms_strequals.c \
 			util/str/test_ms_strlen.c
 
 # > ~ Tests - Add directory prefix

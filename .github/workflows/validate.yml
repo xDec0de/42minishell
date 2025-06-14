@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Install dependencies with setup
-        run: sudo ./setup -y -optional
+        run: sudo ./setup.sh -y -optional
 
       - name: Pass norminette
         run: make norm
@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install dependencies with setup
-        run: sudo ./setup -y -optional
+        run: sudo ./setup.sh -y -optional
 
       - name: Build project
         run: make

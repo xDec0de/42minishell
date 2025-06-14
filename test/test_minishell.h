@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_minishell.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 13:53:14 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/13 01:52:11 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/14 13:44:44 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	test_ms_isdigit(void);
  - util/str
  */
 
+void	test_ms_strequals(void);
 void	test_ms_strlen(void);
 
 /*

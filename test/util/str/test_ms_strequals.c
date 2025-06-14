@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_minishell.c                                   :+:      :+:    :+:   */
+/*   test_ms_strequals.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/12 13:52:17 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/14 13:55:00 by daniema3         ###   ########.fr       */
+/*   Created: 2025/06/14 13:43:25 by daniema3          #+#    #+#             */
+/*   Updated: 2025/06/14 13:50:40 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test_minishell.h"
 
-void	run_util_char(void)
+void	test_ms_strequals(void)
 {
-	RUN_TEST(test_ms_isdigit);
+	ASSERT_TRUE(ms_strequals(NULL, NULL), 1);
+	ASSERT_TRUE(ms_strequals("", ""), 2);
+	ASSERT_TRUE(ms_strequals("Hello", "Hello"), 3);
+	ASSERT_FALSE(ms_strequals("Helloo", "Hello"), 4);
+	ASSERT_FALSE(ms_strequals(NULL, ""), 5);
+	ASSERT_FALSE(ms_strequals("", NULL), 6);
+	ASSERT_FALSE(ms_strequals("HI", "Hi"), 7);
 }
-
-void	run_util_str(void)
-{
-	RUN_TEST(test_ms_strequals);
-	RUN_TEST(test_ms_strlen);
-}
-
-int	main(void)
-{
-	UNITY_BEGIN();
-	run_util_char();
-	run_util_str();
-	return UNITY_END();
-}
-
-void setUp(void) {}
-void tearDown(void) {}
-

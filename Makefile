@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/14 20:59:09 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/14 21:12:23 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ OBJ_DIR = ./objs
 
 LOG_DIR = ./logs
 TEST_DIR = ./test
-UNITY_DIR = $(TEST_DIR)/unity
 COV_DIR = $(TEST_DIR)/coverage
 
 CC = cc
@@ -161,10 +160,7 @@ build:
 # > ~ Tests
 
 CFLAGS += -fprofile-arcs -ftest-coverage
-
-TEST_INC = -I$(UNITY_DIR)/src -I$(TEST_DIR)
-
-TEST_LOGFILE = $(LOG_DIR)/tests.txt
+TEST_INC = -I$(TEST_DIR)
 
 # > ~ Tests - Char utils
 
@@ -226,10 +222,12 @@ testonly:
 		echo "$(RED)❌ $$FAILED test(s) failed.$(RES)"; \
 		exit 1; \
 	fi
+	@rm -rf logs/*.bin
 
 test:
+	@$(MAKE) norm
 	@$(MAKE) testonly 2>/dev/null
-	@rm -rf *.gcda *.gcno
+	@rm -rf logs/*.gcda logs/*.gcno
 
 testcov:
 	@$(MAKE) build

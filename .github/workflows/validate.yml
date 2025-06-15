@@ -14,17 +14,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install python3
-        run: sudo apt install -y python3
-
-      - name: Install pip
-        run: sudo apt install -y python3-pip
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
 
       - name: Install norminette
-        run: sudo pip3 install norminette --break-system-packages
+        run: pip install norminette
 
-      - name: Pass norminette
-        run: sudo make norm
+      - name: Run norm check
+        run: make norm
+
   build:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[ci-skip]')"
@@ -33,27 +33,17 @@ jobs:
       - name: Checkout repository with submodules
         uses: actions/checkout@v4
 
-      - name: Install make
-        run: sudo apt install -y make
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y make libreadline-dev valgrind lcov
 
-      - name: Install readline library
-        run: sudo apt install -y libreadline-dev
-
-      - name: Install readline
-        run: sudo apt install -y make
-
-      - name: Install valgrind
-        run: sudo apt install -y valgrind
-
-      - name: Install lcov
-        run: sudo apt install -y lcov
-
-      - name: Pass tests
-        run: sudo make testonly
+      - name: Run tests
+        run: make testonly
 
       - name: Upload coverage to Codacy
         env:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
         run: |
-          sudo make covonly
+          make covonly
           bash <(curl -Ls https://coverage.codacy.com/get.sh) report -r ./test/coverage/coverage.info

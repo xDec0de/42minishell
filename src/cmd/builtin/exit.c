@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 14:50:17 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/15 17:56:01 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/15 19:48:56 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 t_cmd	*bltn_exit(t_shell *shell, char **args)
 {
 	unsigned char	code;
-	int				atoi_res;
+	char			*code_str;
 
 	code = EXEC_OK;
-	if (args[0] != NULL)
+	code_str = args[0];
+	if (code_str != NULL)
 	{
-		atoi_res = ms_atoi(args[0]);
-		if (atoi_res == -1)
+		if (!ms_strisnumeric(code_str, true))
 		{
 			code = EXIT_NOT_NUMERIC_ERRN;
-			printf(EXIT_NOT_NUMERIC, args[0]);
+			printf(EXIT_NOT_NUMERIC, code_str);
 		}
 		else
-			code = (unsigned char) atoi_res;
+			code = (unsigned char) ms_atoi(code_str);
 	}
 	shell->running = false;
 	return (build_cmd(code, NULL));

@@ -162,9 +162,13 @@ build:
 CFLAGS += -fprofile-arcs -ftest-coverage
 TEST_INC = -I$(TEST_DIR)
 
+# > ~ Tests - Array utils
+
+TEST_SRC =	util/array/test_ms_arrlen.c
+
 # > ~ Tests - Char utils
 
-TEST_SRC = util/char/test_ms_isdigit.c
+TEST_SRC +=	util/char/test_ms_isdigit.c
 
 # > ~ Tests - String utils
 

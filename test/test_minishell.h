@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 13:53:14 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/14 21:58:43 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/15 16:32:55 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,13 @@
 /*
  - Assertions - Numeric
  */
+
+#define ASSERT_INT_EQUALS(actual, expected, test_num) do {\
+	if ((actual) != (expected)) {\
+		fprintf(stderr, "Got %i when expecting %i", (actual), (expected));\
+		exit(test_num);\
+	}\
+} while (0)
 
 #define ASSERT_ULONG_EQUALS(actual, expected, test_num) do {\
 	if ((actual) != (expected)) {\

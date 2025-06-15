@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/15 19:36:05 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/15 20:21:44 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -166,7 +166,7 @@ TEST_INC = -I$(TEST_DIR)
 
 # > ~ Tests - Array utils
 
-TEST_SRC =	util/array/test_ms_arr_dup_free.c \
+TEST_SRC =	util/array/test_ms_arr_dup_free_vg.c \
 			util/array/test_ms_arrlen.c
 
 # > ~ Tests - Char utils
@@ -176,7 +176,7 @@ TEST_SRC +=	util/char/test_ms_isdigit.c \
 
 # > ~ Tests - String utils
 
-TEST_SRC +=	util/str/test_ms_strdup.c \
+TEST_SRC +=	util/str/test_ms_strdup_vg.c \
 			util/str/test_ms_strequals.c \
 			util/str/test_ms_strisnumeric.c \
 			util/str/test_ms_strlen.c
@@ -206,7 +206,11 @@ testonly:
 				FAILED=$$((FAILED + 1)); \
 				continue; \
 			fi; \
-			valgrind --leak-check=full --error-exitcode=123 --log-file="$$LOG" $$EXEC 2> $$ERR; \
+			if echo "$$BASENAME" | grep -q "_vg$$"; then \
+				valgrind --leak-check=full --error-exitcode=123 --log-file="$$LOG" $$EXEC 2> $$ERR; \
+			else \
+				$$EXEC 2> $$ERR; \
+			fi; \
 			STATUS=$$?; \
 			if [ $$STATUS -eq 0 ]; then \
 				printf "✅ $(GREEN)%s passed$(RES)\n" "$$BASENAME"; \

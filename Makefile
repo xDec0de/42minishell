@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/15 17:55:21 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/15 19:36:05 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ SRCS +=	util/str/ms_atoi.c \
 		util/str/ms_split.c \
 		util/str/ms_strdup.c \
 		util/str/ms_strequals.c \
+		util/str/ms_strisnumeric.c \
 		util/str/ms_strlen.c
 
 SRCS := $(addprefix $(SRC_DIR)/, $(SRCS))
@@ -177,6 +178,7 @@ TEST_SRC +=	util/char/test_ms_isdigit.c \
 
 TEST_SRC +=	util/str/test_ms_strdup.c \
 			util/str/test_ms_strequals.c \
+			util/str/test_ms_strisnumeric.c \
 			util/str/test_ms_strlen.c
 
 # > ~ Tests - Add directory prefix

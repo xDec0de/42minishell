@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/11 18:38:53 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/15 17:48:30 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,8 @@ char	**ms_split(const char *s, char c);
 char	*ms_strdup(const char *str);
 
 bool	ms_strequals(char *str, char *other);
+
+bool	ms_strisnumeric(const char *str, bool allow_spaces);
 
 size_t	ms_strlen(char *str);
 

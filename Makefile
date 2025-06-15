@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/14 21:18:47 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/15 16:46:10 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -217,18 +217,19 @@ testonly:
 			rm -f $$ERR; \
 		fi; \
 	done; \
+	rm -rf $(LOG_DIR)/*.bin; \
 	if [ $$FAILED -eq 0 ]; then \
 		echo "$(GREEN)✅ All tests passed!$(RES)"; \
 	else \
 		echo "$(RED)❌ $$FAILED test(s) failed.$(RES)"; \
 		exit 1; \
 	fi
-	@rm -rf logs/*.bin
 
 test:
 	@$(MAKE) norm
-	@$(MAKE) testonly 2>/dev/null
-	@rm -rf logs/*.gcda logs/*.gcno
+	@$(MAKE) testonly; TEST_RESULT=$$?; \
+	rm -f $(LOG_DIR)/*.gcda $(LOG_DIR)/*.gcno; \
+	exit $$TEST_RESULT
 
 testcov:
 	@$(MAKE) build

@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/15 16:46:10 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/15 17:02:28 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -164,7 +164,8 @@ TEST_INC = -I$(TEST_DIR)
 
 # > ~ Tests - Array utils
 
-TEST_SRC =	util/array/test_ms_arrlen.c
+TEST_SRC =	util/array/test_ms_arr_dup_free.c \
+			util/array/test_ms_arrlen.c
 
 # > ~ Tests - Char utils
 

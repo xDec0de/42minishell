@@ -11,36 +11,27 @@ jobs:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[ci-skip]')"
 
+    container:
+      image: ghcr.io/xdec0de/42ghcr:latest
+
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install python3 & pip
-        run: |
-          sudo apt-get update
-          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y python3 python3-pip
-
-      - name: Install norminette
-        run: sudo pip3 install norminette --break-system-packages
-
       - name: Pass norminette
-        run: sudo make norm
+        run: make norm
 
   build:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[ci-skip]')"
 
-    steps:
-      - name: Checkout repository with submodules
-        uses: actions/checkout@v4
+    container:
+      image: ghcr.io/xdec0de/42ghcr:latest
 
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y \
-            make libreadline-dev valgrind lcov
+    steps:
+      - uses: actions/checkout@v4
 
       - name: Run tests
-        run: sudo make testonly
+        run: make testonly
 
       - name: Upload coverage to Codacy
         env:

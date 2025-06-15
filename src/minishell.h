@@ -123,11 +123,13 @@ size_t	ms_arrlen(void **arr);
 
 bool	ms_isdigit(char ch);
 
+bool	ms_isspace(char ch);
+
 /*
  - String utils
  */
 
-int		ms_atoi(const char *str, bool allow_spaces, int def);
+int		ms_atoi(const char *str);
 
 char	**ms_split(const char *s, char c);
 

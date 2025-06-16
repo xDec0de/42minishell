@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/15 20:21:44 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/16 05:34:13 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,10 @@ SRCS += cmd/cmd_builder.c \
 
 SRCS += cmd/builtin/echo.c \
 		cmd/builtin/exit.c
+
+# > ~ Parser
+
+SRCS +=	parser/input_parser.c
 
 # > ~ Signal
 
@@ -164,9 +168,13 @@ build:
 CFLAGS += -fprofile-arcs -ftest-coverage
 TEST_INC = -I$(TEST_DIR)
 
+# > ~ Tests - Parser
+
+TEST_SRC =	parser/test_check_quotes.c
+
 # > ~ Tests - Array utils
 
-TEST_SRC =	util/array/test_ms_arr_dup_free_vg.c \
+TEST_SRC +=	util/array/test_ms_arr_dup_free_vg.c \
 			util/array/test_ms_arrlen.c
 
 # > ~ Tests - Char utils

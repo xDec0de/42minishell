@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/16 05:34:13 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/16 05:57:10 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -168,31 +168,7 @@ build:
 CFLAGS += -fprofile-arcs -ftest-coverage
 TEST_INC = -I$(TEST_DIR)
 
-# > ~ Tests - Parser
-
-TEST_SRC =	parser/test_check_quotes.c
-
-# > ~ Tests - Array utils
-
-TEST_SRC +=	util/array/test_ms_arr_dup_free_vg.c \
-			util/array/test_ms_arrlen.c
-
-# > ~ Tests - Char utils
-
-TEST_SRC +=	util/char/test_ms_isdigit.c \
-			util/char/test_ms_isspace.c
-
-# > ~ Tests - String utils
-
-TEST_SRC +=	util/str/test_ms_strdup_vg.c \
-			util/str/test_ms_strequals.c \
-			util/str/test_ms_strisnumeric.c \
-			util/str/test_ms_strlen.c
-
-# > ~ Tests - Add directory prefix
-
-TEST_SRC := $(addprefix $(TEST_DIR)/, $(TEST_SRC))
-
+TEST_SRC := $(shell find $(TEST_DIR) -type f -name '*.c')
 TEST_SRC +=	$(filter-out $(SRC_DIR)/minishell.c, $(SRCS))
 
 testonly:

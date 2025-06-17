@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/17 16:57:18 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/17 17:38:45 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,6 @@ void	init_sighandler(void);
 
 void	ms_exit(int code, char *err);
 
-void	*ms_malloc(size_t	size);
-
 t_shell	*get_shell(void);
 
 t_shell	*init_shell(void);
@@ -137,6 +135,16 @@ bool	ms_isdigit(char ch);
 bool	ms_isquote(char c);
 
 bool	ms_isspace(char ch);
+
+/*
+ - Memory utils
+ */
+
+void	ms_bzero(void	*str, size_t n);
+
+void	*ms_calloc(size_t amount, size_t size);
+
+void	*ms_malloc(size_t	size);
 
 /*
  - String utils

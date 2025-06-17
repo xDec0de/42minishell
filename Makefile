@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/17 16:51:35 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/17 17:39:43 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,6 @@ SRCS +=	signal/signal_handler.c
 # > ~ Util
 
 SRCS +=	util/ms_exit.c \
-		util/ms_malloc.c \
 		util/shell_getter.c
 
 # > ~ Array utils
@@ -65,6 +64,12 @@ SRCS +=	util/array/ms_arrdup.c \
 SRCS += util/char/ms_isdigit.c \
 		util/char/ms_isquote.c \
 		util/char/ms_isspace.c
+
+# > ~ Memory utils
+
+SRCS +=	util/mem/ms_bzero.c \
+		util/mem/ms_calloc.c \
+		util/mem/ms_malloc.c
 
 # > ~ String utils
 

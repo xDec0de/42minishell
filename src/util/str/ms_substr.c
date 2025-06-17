@@ -6,13 +6,13 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 17:18:10 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/17 17:41:21 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/17 17:51:14 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*ms_substr(char const *str, unsigned int start, size_t len)
+char	*ms_substr(const char *str, unsigned int start, size_t len)
 {
 	char	*substr;
 	size_t	size;

@@ -6,17 +6,19 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:17 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/12 13:22:02 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/17 17:09:37 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(void)
+int	main(int argc, char **argv, char **envp)
 {
 	t_shell	*shell;
 
-	shell = init_shell();
+	(void) argc;
+	(void) argv;
+	shell = init_shell(envp);
 	init_sighandler();
 	while (shell->running)
 	{

@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/17 17:42:45 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/17 17:59:29 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,10 @@ SRCS += cmd/cmd_builder.c \
 
 SRCS += cmd/builtin/echo.c \
 		cmd/builtin/exit.c
+
+# > ~ Env
+
+SRCS +=	env/env_provider.c
 
 # > ~ Parser
 
@@ -75,6 +79,7 @@ SRCS +=	util/mem/ms_bzero.c \
 
 SRCS +=	util/str/ms_atoi.c \
 		util/str/ms_split.c \
+		util/str/ms_strchr.c \
 		util/str/ms_strdup.c \
 		util/str/ms_strequals.c \
 		util/str/ms_strisnumeric.c \

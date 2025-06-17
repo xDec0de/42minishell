@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 16:56:25 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/17 16:58:42 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/17 17:10:39 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,7 @@ typedef struct s_env
 	char			*value;
 	struct s_env	*next;
 }			t_env;
+
+t_env	*init_env(char **env);
 
 #endif

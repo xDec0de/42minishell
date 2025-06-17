@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell_getter.c                                     :+:      :+:    :+:   */
+/*   ms_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/30 21:00:22 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/17 17:10:53 by daniema3         ###   ########.fr       */
+/*   Created: 2025/06/17 17:58:06 by daniema3          #+#    #+#             */
+/*   Updated: 2025/06/17 17:58:50 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_shell	*store_shell(t_shell *init)
+char	*ms_strchr(const char *s, int c)
 {
-	static t_shell	*shell;
+	int		i;
+	char	*str;
+	char	ch;
 
-	if (init != NULL)
-		shell = init;
-	return (shell);
-}
-
-t_shell	*get_shell(void)
-{
-	return (store_shell(NULL));
-}
-
-t_shell	*init_shell(char **env)
-{
-	t_shell	*init;
-
-	init = ms_malloc(sizeof(t_shell));
-	init->running = true;
-	init->last_input = NULL;
-	init->last_cmd = NULL;
-	init->env = init_env(env);
-	return (store_shell(init));
+	i = 0;
+	ch = (char) c;
+	str = (char *) s;
+	while (str[i] != '\0')
+	{
+		if (str[i] == ch)
+			return (&str[i]);
+		i++;
+	}
+	if (str[i] == ch)
+		return (&str[i]);
+	return (NULL);
 }

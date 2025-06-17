@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/17 17:38:45 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/17 17:59:09 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_shell
 	bool	running;
 	char	*last_input;
 	t_cmd	*last_cmd;
+	t_env	*env;
 }			t_shell;
 
 /*
@@ -92,7 +93,7 @@ void	ms_exit(int code, char *err);
 
 t_shell	*get_shell(void);
 
-t_shell	*init_shell(void);
+t_shell	*init_shell(char **env);
 
 /*
  - Array utils
@@ -154,6 +155,8 @@ int		ms_atoi(const char *str);
 
 char	**ms_split(const char *s, char c);
 
+char	*ms_strchr(const char *s, int c);
+
 char	*ms_strdup(const char *str);
 
 bool	ms_strequals(char *str, char *other);
@@ -162,9 +165,9 @@ bool	ms_strisnumeric(const char *str, bool allow_spaces);
 
 size_t	ms_strlcpy(char *dest, const char *src, size_t dstsize);
 
-size_t	ms_strlen(char *str);
+size_t	ms_strlen(const char *str);
 
-char	*ms_substr(char const *str, unsigned int start, size_t len);
+char	*ms_substr(const char *str, unsigned int start, size_t len);
 
 /** Command or program execution was successful. */
 # define EXEC_OK 0

@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/16 05:10:53 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/17 16:25:07 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,8 @@ size_t	ms_arrlen(void **arr);
  */
 
 bool	ms_isdigit(char ch);
+
+bool	ms_isquote(char c);
 
 bool	ms_isspace(char ch);
 

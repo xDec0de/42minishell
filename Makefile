@@ -62,6 +62,7 @@ SRCS +=	util/array/ms_arrdup.c \
 # > ~ Char utils
 
 SRCS += util/char/ms_isdigit.c \
+		util/char/ms_isquote.c \
 		util/char/ms_isspace.c
 
 # > ~ String utils

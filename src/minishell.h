@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/17 16:25:07 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/17 16:57:18 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
  - Modules
  */
 
+# include "env/env.h"
 # include "parser/parser.h"
 
 /*

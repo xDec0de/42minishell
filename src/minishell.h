@@ -160,7 +160,11 @@ bool	ms_strequals(char *str, char *other);
 
 bool	ms_strisnumeric(const char *str, bool allow_spaces);
 
+size_t	ms_strlcpy(char *dest, const char *src, size_t dstsize);
+
 size_t	ms_strlen(char *str);
+
+char	*ms_substr(char const *str, unsigned int start, size_t len);
 
 /** Command or program execution was successful. */
 # define EXEC_OK 0

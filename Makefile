@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/16 05:57:10 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/17 16:51:35 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,8 @@ SRCS += cmd/builtin/echo.c \
 
 # > ~ Parser
 
-SRCS +=	parser/input_parser.c
+SRCS +=	parser/input_validator.c \
+		parser/tokenizer.c
 
 # > ~ Signal
 

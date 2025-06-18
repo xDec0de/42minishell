@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/17 18:11:41 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/18 18:13:33 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRCS += cmd/cmd_builder.c \
 # > ~ Commands - Builtins
 
 SRCS += cmd/builtin/echo.c \
+		cmd/builtin/env.c \
 		cmd/builtin/exit.c
 
 # > ~ Env

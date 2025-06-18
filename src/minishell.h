@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/17 17:59:09 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/18 18:13:11 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ t_cmd	*parse_cmd_input(t_shell *shell);
  */
 
 t_cmd	*bltn_echo(char **args);
+
+t_cmd	*bltn_env(t_shell *shell);
 
 t_cmd	*bltn_exit(t_shell *shell, char **args);
 

@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 22:00:01 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/11 18:35:52 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/18 18:13:59 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ t_cmd	*execute_builtins(t_shell *shell, char *cmd, char **args)
 {
 	if (ms_strequals(cmd, "exit"))
 		return (bltn_exit(shell, args));
+	if (ms_strequals(cmd, "env"))
+		return (bltn_env(shell));
 	if (ms_strequals(cmd, "echo"))
 		return (bltn_echo(args));
 	return (NULL);

@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 13:53:14 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/15 17:03:19 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/20 21:39:16 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,12 @@
 		fprintf(stderr, "Got %s when expecting %s", (actual), (expected));\
 		exit(test_num);\
 	}\
+} while (0)
+
+#define FREE_ASSERT_STR_EQUALS(actual, expected, test_num) do {\
+	char *__fase_actual_str__ = (actual);\
+	ASSERT_STR_EQUALS(__fase_actual_str__, (expected), (test_num));\
+	free(__fase_actual_str__);\
 } while (0)
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 16:56:25 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/21 01:08:32 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/21 01:16:29 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ typedef struct s_env
 	char			*value;
 	struct s_env	*next;
 }			t_env;
-
 
 bool	env_export(struct s_shell *shell, char *env);
 

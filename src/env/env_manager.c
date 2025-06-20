@@ -6,27 +6,30 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 16:59:09 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/20 21:03:04 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/20 23:49:52 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	env_free(t_env *env)
+void	env_free(t_shell *shell)
 {
 	t_env	*tmp;
+	t_env	*next;
 
-	while (env)
+	tmp = shell->env;
+	while (tmp != NULL)
 	{
-		tmp = env->next;
-		free(env->key);
-		free(env->value);
-		free(env);
-		env = tmp;
+		next = tmp->next;
+		free(tmp->key);
+		free(tmp->value);
+		free(tmp);
+		tmp = next;
 	}
+	shell->env = NULL;
 }
 
-t_env*	env_get(t_shell *shell, char *key)
+t_env	*env_get(t_shell *shell, char *key)
 {
 	t_env	*tmp;
 

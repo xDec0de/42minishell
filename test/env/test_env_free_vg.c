@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_exit.c                                          :+:      :+:    :+:   */
+/*   test_env_free_vg.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/30 20:46:52 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/20 23:48:29 by daniema3         ###   ########.fr       */
+/*   Created: 2025/06/20 23:50:37 by daniema3          #+#    #+#             */
+/*   Updated: 2025/06/20 23:56:53 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "test_minishell.h"
 
-void	ms_free(t_shell	*shell)
+int	main(int argc, char **argv, char **env)
 {
-	if (shell == NULL)
-		return ;
-	rl_clear_history();
-	if (shell->last_input != NULL)
-		free(shell->last_input);
+	t_shell	*shell;
+
+	(void) argc;
+	(void) argv;
+	shell = ms_malloc(sizeof(t_shell));
+	shell->env = NULL;
+	env_init(shell, env);
+	ASSERT_NOT_NULL(shell->env, 1);
 	env_free(shell);
+	ASSERT_NULL(shell->env, 2);
 	free(shell);
-}
-
-void	ms_exit(int code, char *err)
-{
-	ms_free(get_shell());
-	if (err != NULL)
-		printf("%s", err);
-	exit(code);
+	return (0);
 }

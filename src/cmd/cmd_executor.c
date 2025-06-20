@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 22:00:01 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/18 18:13:59 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/20 21:14:12 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ t_cmd	*execute_builtins(t_shell *shell, char *cmd, char **args)
 		return (bltn_env(shell));
 	if (ms_strequals(cmd, "echo"))
 		return (bltn_echo(args));
+	if (ms_strequals(cmd, "export"))
+		return (bltn_export(shell, args));
 	return (NULL);
 }
 

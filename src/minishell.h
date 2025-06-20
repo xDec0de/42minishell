@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/20 21:11:43 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/20 21:30:36 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,6 +170,8 @@ bool	ms_strisnumeric(const char *str, bool allow_spaces);
 size_t	ms_strlcpy(char *dest, const char *src, size_t dstsize);
 
 size_t	ms_strlen(const char *str);
+
+char	*ms_strreplace(char *str, size_t from, size_t size, char *replacement);
 
 char	*ms_substr(const char *str, unsigned int start, size_t len);
 

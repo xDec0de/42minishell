@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/20 21:12:52 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/20 21:28:50 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,6 +87,7 @@ SRCS +=	util/str/ms_atoi.c \
 		util/str/ms_strisnumeric.c \
 		util/str/ms_strlcpy.c \
 		util/str/ms_strlen.c \
+		util/str/ms_strreplace.c \
 		util/str/ms_substr.c
 
 SRCS := $(addprefix $(SRC_DIR)/, $(SRCS))

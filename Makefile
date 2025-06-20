@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/21 01:03:52 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/21 01:10:37 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRCS += cmd/builtin/echo.c \
 		cmd/builtin/env.c \
 		cmd/builtin/exit.c \
 		cmd/builtin/export.c \
+		cmd/builtin/unset.c
 
 # > ~ Env
 

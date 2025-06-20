@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/20 21:30:36 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/21 01:10:18 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ t_cmd	*bltn_exit(t_shell *shell, char **args);
 # define EXIT_NOT_NUMERIC "bash: exit: %s: numeric argument required\n"
 
 t_cmd	*bltn_export(t_shell *shell, char **args);
+
+t_cmd	*bltn_unset(t_shell *shell, char **args);
 
 /*
  - Signal

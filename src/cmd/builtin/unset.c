@@ -1,38 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.h                                              :+:      :+:    :+:   */
+/*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/17 16:56:25 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/21 01:08:32 by daniema3         ###   ########.fr       */
+/*   Created: 2025/06/21 01:05:35 by daniema3          #+#    #+#             */
+/*   Updated: 2025/06/21 01:07:36 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENV_H
-# define ENV_H
+#include "minishell.h"
 
-# include <stdbool.h>
-
-struct	s_shell;
-
-typedef struct s_env
+t_cmd	*bltn_unset(t_shell *shell, char **args)
 {
-	char			*key;
-	char			*value;
-	struct s_env	*next;
-}			t_env;
-
-
-bool	env_export(struct s_shell *shell, char *env);
-
-void	env_free(struct s_shell *shell);
-
-t_env	*env_get(struct s_shell *shell, char *key);
-
-void	env_init(struct s_shell *shell, char **env);
-
-bool	env_unset(struct s_shell *shell, char *key);
-
-#endif
+	if (args[0] != NULL)
+		env_unset(shell, args[0]);
+	return (build_cmd(EXEC_OK, NULL));
+}

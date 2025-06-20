@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/18 18:13:33 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/20 20:42:09 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,8 +42,7 @@ SRCS += cmd/builtin/echo.c \
 
 # > ~ Env
 
-SRCS +=	env/env_provider.c \
-		env/free_env.c
+SRCS +=	env/env_manager.c
 
 # > ~ Parser
 

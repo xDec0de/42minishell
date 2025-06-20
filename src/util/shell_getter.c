@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 21:00:22 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/17 17:10:53 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/20 21:03:26 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ t_shell	*init_shell(char **env)
 	init->running = true;
 	init->last_input = NULL;
 	init->last_cmd = NULL;
-	init->env = init_env(env);
+	init->env = NULL;
+	env_init(init, env);
 	return (store_shell(init));
 }

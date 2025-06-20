@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 20:46:52 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/17 18:10:16 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/20 21:04:06 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ms_free(t_shell	*shell)
 	rl_clear_history();
 	if (shell->last_input != NULL)
 		free(shell->last_input);
-	free_env(shell->env);
+	env_free(shell->env);
 	free(shell);
 }
 

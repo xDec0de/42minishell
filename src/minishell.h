@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/21 10:56:41 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/21 11:58:44 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
  - Libraries
  */
 
+/* PATH_MAX and other limits */
+# include <linux/limits.h>
+
 /* bool type */
 # include <stdbool.h>
 
@@ -38,6 +41,10 @@
 
 /* signal */
 # include <signal.h>
+
+/* getcwd */
+
+# include <unistd.h>
 
 /*
  - Minishell struct
@@ -145,6 +152,9 @@ char	*ms_substr(const char *str, unsigned int start, size_t len);
 
 /** Command or program execution was successful. */
 # define EXEC_OK 0
+
+/** Command or program execution failed (Default). */
+# define EXEC_FAIL 1
 
 /*
  - Internal error codes

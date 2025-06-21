@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_executor.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 22:00:01 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/21 01:09:54 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/21 11:42:13 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ t_cmd	*execute_builtins(t_shell *shell, char *cmd, char **args)
 		return (bltn_echo(args));
 	if (ms_strequals(cmd, "export"))
 		return (bltn_export(shell, args));
+	if (ms_strequals(cmd, "pwd"))
+		return (bltn_pwd());
 	if (ms_strequals(cmd, "unset"))
 		return (bltn_unset(shell, args));
 	return (NULL);

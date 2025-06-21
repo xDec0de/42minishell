@@ -95,7 +95,7 @@ functions:
 | [sigaction](https://linux.die.net/man/2/sigaction) | signal.h | Examine and change a signal action | ❌ |
 | [kill](https://linux.die.net/man/1/kill) | signal.h | Terminate a process | ❌ |
 | [exit](https://linux.die.net/man/3/exit) | stdlib.h | Cause normal process termination | ✅ |
-| [getcwd](https://linux.die.net/man/3/getcwd) | unistd.h | Get current working directory | ❌ |
+| [getcwd](https://linux.die.net/man/3/getcwd) | unistd.h | Get current working directory | ✅ |
 | [chdir](https://linux.die.net/man/2/chdir) | unistd.h | Change working directory | ❌ |
 | [stat](https://linux.die.net/man/2/stat) | unistd.h | Get file status | ❌ |
 | [lstat](https://linux.die.net/man/2/lstat) | unistd.h | Get file status | ❌ |

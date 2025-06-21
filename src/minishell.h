@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/21 01:10:18 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/21 10:56:41 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
  - Modules
  */
 
+# include "cmd/cmd.h"
 # include "env/env.h"
 # include "parser/parser.h"
 
@@ -39,16 +40,6 @@
 # include <signal.h>
 
 /*
- - Command struct
- */
-
-typedef struct s_cmd
-{
-	int		exit_code;
-	char	*output;
-}			t_cmd;
-
-/*
  - Minishell struct
  */
 
@@ -59,31 +50,6 @@ typedef struct s_shell
 	t_cmd	*last_cmd;
 	t_env	*env;
 }			t_shell;
-
-/*
- - Command functions
- */
-
-t_cmd	*build_cmd(int exit_code, char *output);
-
-t_cmd	*parse_cmd_input(t_shell *shell);
-
-/*
- - Builtins
- */
-
-t_cmd	*bltn_echo(char **args);
-
-t_cmd	*bltn_env(t_shell *shell);
-
-t_cmd	*bltn_exit(t_shell *shell, char **args);
-
-# define EXIT_NOT_NUMERIC_ERRN 2
-# define EXIT_NOT_NUMERIC "bash: exit: %s: numeric argument required\n"
-
-t_cmd	*bltn_export(t_shell *shell, char **args);
-
-t_cmd	*bltn_unset(t_shell *shell, char **args);
 
 /*
  - Signal

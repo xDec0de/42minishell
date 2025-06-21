@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/21 11:58:44 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/21 12:52:46 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@
 /* getcwd */
 
 # include <unistd.h>
+
+# define SHELL_PROMPT "minishell: $ "
 
 /*
  - Minishell struct

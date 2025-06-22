@@ -6,11 +6,12 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 15:25:21 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/22 13:51:28 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/22 14:24:09 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "ms_types.h"
+#include "char_utils.h"
 
 t_ulong	get_token_count(const char *s)
 {

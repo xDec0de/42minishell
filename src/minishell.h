@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/22 13:49:37 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/22 14:23:24 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "cmd/cmd.h"
 # include "env/env.h"
 # include "parser/parser.h"
+# include "signal/ms_signal.h"
 
 /*
  - Libraries
@@ -40,11 +41,7 @@
 /* malloc */
 # include <stdlib.h>
 
-/* signal */
-# include <signal.h>
-
 /* getcwd */
-
 # include <unistd.h>
 
 # define SHELL_PROMPT "minishell: $ "

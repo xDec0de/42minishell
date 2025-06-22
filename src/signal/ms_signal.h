@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   signal_handler.c                                   :+:      :+:    :+:   */
+/*   ms_signal.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/30 21:30:47 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/22 14:21:26 by daniema3         ###   ########.fr       */
+/*   Created: 2025/06/22 14:20:16 by daniema3          #+#    #+#             */
+/*   Updated: 2025/06/22 14:24:33 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ms_signal.h"
+#ifndef MS_SIGNAL_H
+# define MS_SIGNAL_H
 
-void	sig_handler(int signum)
-{
-	if (signum == SIGINT)
-		printf("\n");
-	rl_on_new_line();
-	if (signum == SIGQUIT)
-	{
-		rl_replace_line("  ", 0);
-		rl_redisplay();
-	}
-	rl_replace_line("", 0);
-	rl_redisplay();
-}
+/* printf */
+# include <stdio.h>
 
-void	init_sighandler(void)
-{
-	signal(SIGINT, sig_handler);
-	signal(SIGQUIT, sig_handler);
-}
+/* signal functions & signal numbers */
+# include <signal.h>
+
+/* readline */
+# include <readline/readline.h>
+
+void	init_sighandler(void);
+
+#endif

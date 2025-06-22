@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 18:00:21 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/22 18:04:51 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/22 18:06:15 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,18 @@ int	main(int argc, char **argv, char **env)
 	ASSERT_NOT_NULL(shell->env, 1);
 	// Export and get
 	env_export(shell, "TEST_VAR=12345");
-	ASSERT_STR_EQUALS(env_get(shell, "TEST_VAR")->value, "12345", 2);
+	ASSERT_STR_EQUALS(env_get(shell, "TEST_VAR")->key, "TEST_VAR", 2);
+	ASSERT_STR_EQUALS(env_get(shell, "TEST_VAR")->value, "12345", 3);
 	// Redefinie and get
 	env_export(shell, "TEST_VAR=123");
-	ASSERT_STR_EQUALS(env_get(shell, "TEST_VAR")->value, "123", 3);
+	ASSERT_STR_EQUALS(env_get(shell, "TEST_VAR")->key, "TEST_VAR", 4);
+	ASSERT_STR_EQUALS(env_get(shell, "TEST_VAR")->value, "123", 5);
 	// Unset
 	env_unset(shell, "TEST_VAR");
-	ASSERT_NULL(env_get(shell, "TEST_VAR"), 4);
+	ASSERT_NULL(env_get(shell, "TEST_VAR"), 6);
 	// Free
 	env_free(shell);
-	ASSERT_NULL(shell->env, 5);
+	ASSERT_NULL(shell->env, 7);
 	free(shell);
 	return (0);
 }

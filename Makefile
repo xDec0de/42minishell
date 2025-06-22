@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/22 13:23:06 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/22 13:41:03 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,11 @@ TEST_DIR = ./test
 COV_DIR = $(TEST_DIR)/coverage
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g3 -fdiagnostics-color=always -I$(SRC_DIR)
+
+INCLUDE_DIRS =	-I$(SRC_DIR) -I$(SRC_DIR)/util/array -I$(SRC_DIR)/util/char\
+				-I$(SRC_DIR)/util/mem -I$(SRC_DIR)/util/str
+
+CFLAGS = -Wall -Werror -Wextra -g3 -fdiagnostics-color=always $(INCLUDE_DIRS)
 
 # > ~ Main project files
 

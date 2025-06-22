@@ -6,14 +6,14 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 13:29:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/22 13:38:23 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/22 13:41:10 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STR_UTILS_H
 # define STR_UTILS_H
 
-# include "../mem/mem_utils.h"
+# include "mem_utils.h"
 
 int		ms_atoi(const char *str);
 

@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/22 14:46:51 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/22 15:59:07 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -201,7 +201,7 @@ TEST_SRC := $(shell find $(TEST_DIR) -type f -name '*.c')
 CORE_OBJS := $(filter-out $(OBJ_DIR)/minishell.o, $(OBJS))
 
 testonly:
-	@$(MAKE)
+	@$(MAKE) | grep -q "Nothing to be done" || true
 	@mkdir -p $(LOG_DIR)
 	@FAILED=0; \
 	TESTFILES="$(TEST_SRC)"; \

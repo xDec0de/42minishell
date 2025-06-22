@@ -6,16 +6,16 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 13:05:55 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/22 13:09:27 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/22 13:52:17 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ms_strindexof(const char *str, const char *substr, size_t start)
+int	ms_strindexof(const char *str, const char *substr, t_ulong start)
 {
-	size_t	i;
-	size_t	j;
+	t_ulong	i;
+	t_ulong	j;
 
 	if (str == NULL || substr == NULL || start >= ms_strlen(str))
 		return (-1);

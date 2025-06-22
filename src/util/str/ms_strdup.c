@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 13:32:32 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/12 14:11:48 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/22 13:52:02 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ms_strdup(const char *str)
 {
 	char	*dup;
-	size_t	len;
+	t_ulong	len;
 
 	if (str == NULL)
 		return (NULL);

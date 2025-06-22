@@ -6,12 +6,12 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 13:35:50 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/22 13:41:23 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/22 13:51:37 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ARR_UTILS_H
-# define ARR_UTILS_H
+#ifndef ARRAY_UTILS_H
+# define ARRAY_UTILS_H
 
 # include "mem_utils.h"
 
@@ -30,7 +30,7 @@
  * `NULL` if `from` is bigger than the length of `arr`, or
  * if `arr` itself is `NULL`.
  */
-char	**ms_arrdup(size_t from, char **arr);
+char	**ms_arrdup(t_ulong from, char **arr);
 
 /**
  * @brief Frees the provided `arr` and all of its contents.
@@ -41,6 +41,6 @@ char	**ms_arrdup(size_t from, char **arr);
  */
 void	ms_arrfree(char **arr);
 
-size_t	ms_arrlen(void **arr);
+t_ulong	ms_arrlen(void **arr);
 
 #endif

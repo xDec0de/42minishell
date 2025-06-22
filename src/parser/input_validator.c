@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 05:23:00 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/17 15:25:02 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/22 13:51:07 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	check_quotes(const char *line)
 {
-	size_t	i;
+	t_ulong	i;
 	bool	in_single;
 	bool	in_double;
 

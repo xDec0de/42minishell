@@ -6,17 +6,17 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 21:19:14 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/20 23:05:28 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/22 13:52:44 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*ms_strreplace(char *str, size_t from, size_t size, char *replacement)
+char	*ms_strreplace(char *str, t_ulong from, t_ulong size, char *replacement)
 {
 	char	*replaced;
-	size_t	i;
-	size_t	rep_i;
+	t_ulong	i;
+	t_ulong	rep_i;
 
 	i = 0;
 	rep_i = 0;

@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 16:59:09 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/21 01:03:03 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/22 13:51:08 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	env_init(t_shell *shell, char **env)
 {
-	size_t	i;
+	t_ulong	i;
 
 	i = 0;
 	while (env[i] != NULL)

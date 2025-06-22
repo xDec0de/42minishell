@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_malloc.c                                        :+:      :+:    :+:   */
+/*   ms_types.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/30 20:44:40 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/22 13:48:20 by daniema3         ###   ########.fr       */
+/*   Created: 2025/06/22 13:43:04 by daniema3          #+#    #+#             */
+/*   Updated: 2025/06/22 13:46:47 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef MS_TYPES_H
+# define MS_TYPES_H
 
-void	*ms_malloc(t_ulong	size)
-{
-	void	*ptr;
+/** bool type */
+# include <stdbool.h>
 
-	ptr = malloc(size);
-	if (ptr == NULL)
-		ms_exit(MALLOC_ERRN, MALLOC_ERR);
-	return (ptr);
-}
+/** Unsigned long long type. */
+typedef unsigned long long	t_ulong;
+
+#endif

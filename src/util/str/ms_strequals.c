@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 21:46:58 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/14 17:58:35 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/22 13:52:07 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 bool	ms_strequals(char *str, char *other)
 {
-	size_t	len;
-	size_t	i;
+	t_ulong	len;
+	t_ulong	i;
 
 	if (str == NULL || other == NULL)
 		return (str == other);

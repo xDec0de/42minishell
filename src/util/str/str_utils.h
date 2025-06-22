@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 13:29:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/22 13:41:10 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/22 13:54:14 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,17 @@ char	*ms_strdup(const char *str);
 
 bool	ms_strequals(char *str, char *other);
 
-int		ms_strindexof(const char *str, const char *substr, size_t start);
+int		ms_strindexof(const char *str, const char *substr, t_ulong start);
 
 bool	ms_strisnumeric(const char *str, bool allow_spaces);
 
-size_t	ms_strlcpy(char *dest, const char *src, size_t dstsize);
+t_ulong	ms_strlcpy(char *dest, const char *src, t_ulong dstsize);
 
-size_t	ms_strlen(const char *str);
+t_ulong	ms_strlen(const char *str);
 
-char	*ms_strreplace(char *str, size_t from, size_t size, char *replacement);
+char	*ms_strreplace(char *str, t_ulong from, t_ulong size,
+			char *replacement);
 
-char	*ms_substr(const char *str, unsigned int start, size_t len);
+char	*ms_substr(const char *str, unsigned int start, t_ulong len);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/21 12:52:46 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/22 13:22:30 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,8 @@ char	*ms_strchr(const char *s, int c);
 char	*ms_strdup(const char *str);
 
 bool	ms_strequals(char *str, char *other);
+
+int		ms_strindexof(const char *str, const char *substr, size_t start);
 
 bool	ms_strisnumeric(const char *str, bool allow_spaces);
 

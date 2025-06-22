@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/22 13:49:16 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/22 14:46:51 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -198,10 +198,10 @@ CFLAGS += -fprofile-arcs -ftest-coverage
 TEST_INC = -I$(TEST_DIR)
 
 TEST_SRC := $(shell find $(TEST_DIR) -type f -name '*.c')
-TEST_SRC +=	$(filter-out $(SRC_DIR)/minishell.c, $(SRCS))
+CORE_OBJS := $(filter-out $(OBJ_DIR)/minishell.o, $(OBJS))
 
 testonly:
-	@$(MAKE) fclean
+	@$(MAKE)
 	@mkdir -p $(LOG_DIR)
 	@FAILED=0; \
 	TESTFILES="$(TEST_SRC)"; \
@@ -211,8 +211,7 @@ testonly:
 			EXEC="./$(LOG_DIR)/$$BASENAME.bin"; \
 			LOG="./$(LOG_DIR)/$$BASENAME.valgrind"; \
 			ERR="./$(LOG_DIR)/$$BASENAME.stderr"; \
-			SRCS="$$FILE $(filter-out $(SRC_DIR)/minishell.c, $(SRCS))"; \
-			COMPILE_OUTPUT=$$( $(CC) $(CFLAGS) $$SRCS $(TEST_INC) -o $$EXEC -lreadline 2>&1 ); \
+			COMPILE_OUTPUT=$$($(CC) $(CFLAGS) $$FILE $(CORE_OBJS) -o $$EXEC $(TEST_INC) -lreadline 2>&1); \
 			if [ $$? -ne 0 ]; then \
 				printf "❌ $(RED)Failed to compile test $(BRED)%s$(GRAY):$(RES)\n" "$$BASENAME"; \
 				echo "$$COMPILE_OUTPUT"; \

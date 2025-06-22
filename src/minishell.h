@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/22 13:28:15 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/22 13:32:16 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
  - Modules
  */
 
-# include "util/ms_util.h"
+# include "util/ms_utils.h"
 # include "cmd/cmd.h"
 # include "env/env.h"
 # include "parser/parser.h"

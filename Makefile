@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/22 15:59:07 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/22 16:12:25 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -197,7 +197,8 @@ build:
 CFLAGS += -fprofile-arcs -ftest-coverage
 TEST_INC = -I$(TEST_DIR)
 
-TEST_SRC := $(shell find $(TEST_DIR) -type f -name '*.c')
+TESTS ?= *
+TEST_SRC := $(shell find $(TEST_DIR) -type f -name '$(TESTS).c')
 CORE_OBJS := $(filter-out $(OBJ_DIR)/minishell.o, $(OBJS))
 
 testonly:

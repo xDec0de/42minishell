@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 18:00:21 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/22 18:06:15 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/22 18:38:13 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv, char **env)
 
 	(void) argc;
 	(void) argv;
-	shell = ms_malloc(sizeof(t_shell));
+	shell = init_shell(env);
 	shell->env = NULL;
 	// Init
 	env_init(shell, env);
@@ -38,6 +38,5 @@ int	main(int argc, char **argv, char **env)
 	// Free
 	env_free(shell);
 	ASSERT_NULL(shell->env, 7);
-	free(shell);
-	return (0);
+	ms_exit(0, NULL);
 }

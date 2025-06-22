@@ -6,11 +6,12 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 13:09:57 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/22 13:19:59 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/22 14:15:02 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_minishell.h"
+#include "ms_assertions.h"
+#include "str_utils.h"
 
 int	main(void)
 {

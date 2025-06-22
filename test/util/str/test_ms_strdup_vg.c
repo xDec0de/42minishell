@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_ms_strdup.c                                   :+:      :+:    :+:   */
+/*   test_ms_strdup_vg.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 19:19:22 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/14 21:59:48 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/22 14:14:51 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test_minishell.h"
+#include "ms_assertions.h"
+#include "str_utils.h"
 
 void	test(char *str, char *expected, int test_number)
 {

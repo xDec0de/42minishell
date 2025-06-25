@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 15:25:21 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/22 14:24:09 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/25 13:55:26 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ms_types.h"
 #include "char_utils.h"
+#include "parser.h"
+#include "str_utils.h"
 
 t_ulong	get_token_count(const char *s)
 {
@@ -40,4 +42,19 @@ t_ulong	get_token_count(const char *s)
 		i++;
 	}
 	return (count);
+}
+
+t_token_type	get_token_type(const char *s)
+{
+	if (ms_strequals(s, "|"))
+		return (T_PIPE);
+	if (ms_strequals(s, "<"))
+		return (T_REDIR_IN);
+	if (ms_strequals(s, ">"))
+		return (T_REDIR_OUT);
+	if (ms_strequals(s, ">>"))
+		return (T_REDIR_APPEND);
+	if (ms_strequals(s, "<<"))
+		return (T_HEREDOC);
+	return (T_WORD);
 }

@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 15:25:21 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/25 19:01:15 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/06/25 19:34:18 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ t_token	*tokenize(char **tokens)
 		i++;
 	}
 	if (value != NULL)
-		add_token(head, value, T_END);
+		head = add_token(head, value, T_END);
 	return (head);
 }
 

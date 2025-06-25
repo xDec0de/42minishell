@@ -6,7 +6,7 @@
 #    By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/25 15:24:08 by rexposit         ###   ########.fr        #
+#    Updated: 2025/06/26 01:05:03 by rexposit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,8 @@ SRCS += cmd/cmd_builder.c \
 
 # > ~ Commands - Builtins
 
-SRCS += cmd/builtin/echo.c \
+SRCS += cmd/builtin/cd.c \
+		cmd/builtin/echo.c \
 		cmd/builtin/env.c \
 		cmd/builtin/exit.c \
 		cmd/builtin/export.c \

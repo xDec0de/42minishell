@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 10:50:33 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/25 19:17:22 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/06/26 01:14:25 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	parse_cmd_input(struct s_shell *shell);
 /*
  - Builtins
  */
+
+t_cmd	*bltn_cd(char **args);
 
 t_cmd	*bltn_echo(char **args);
 

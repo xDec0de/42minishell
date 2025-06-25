@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 11:17:19 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/21 11:43:32 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/25 19:39:16 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,5 @@ t_cmd	*bltn_pwd(void)
 	if (!getcwd(pwd, PATH_MAX))
 		return (build_cmd(EXEC_FAIL, NULL));
 	printf("%s\n", pwd);
-	return (build_cmd(EXEC_OK, pwd));
+	return (build_cmd(EXEC_OK, ms_strdup(pwd)));
 }

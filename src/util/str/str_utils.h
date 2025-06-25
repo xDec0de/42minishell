@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 13:29:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/22 13:54:14 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/25 14:02:29 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ms_strchr(const char *s, int c);
 
 char	*ms_strdup(const char *str);
 
-bool	ms_strequals(char *str, char *other);
+bool	ms_strequals(const char *str, const char *other);
 
 int		ms_strindexof(const char *str, const char *substr, t_ulong start);
 

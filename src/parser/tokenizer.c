@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 15:25:21 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/25 15:02:33 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/06/25 16:06:10 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "char_utils.h"
 #include "parser.h"
 #include "str_utils.h"
+#include <stdlib.h>
 
 t_token_type	get_token_type(const char *s)
 {
@@ -49,4 +50,32 @@ t_token	*add_token(t_token *head, char *value, t_token_type type)
 		tmp->next = new;
 	}
 	return (head);
+}
+
+t_token	*tokenize(char **tokens)
+{
+	t_ulong			i;
+	t_token			*head;
+
+	i = 0;
+	head = NULL;
+	while (tokens[i] != NULL)
+	{
+		head = add_token(head, tokens[i], get_token_type(tokens[i]));
+		i++;
+	}
+	return (head);
+}
+
+void	free_token_list(t_token *head)
+{
+	t_token	*tmp;
+
+	while (head != NULL)
+	{
+		tmp = head->next;
+		free(head->value);
+		free(head);
+		head = tmp;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 15:25:21 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/25 16:06:10 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/06/25 18:50:24 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,46 @@ t_token	*add_token(t_token *head, char *value, t_token_type type)
 	return (head);
 }
 
+void	tokenize_one(t_token **head, char *token, char **value)
+{
+	char			*tmp;
+	t_token_type	type;
+
+	type = get_token_type(token);
+	if (type != T_WORD)
+	{
+		*head = add_token(*head, *value, type);
+		*value = NULL;
+	}
+	else
+	{
+		if (*value == NULL)
+			*value = ms_strdup(token);
+		else
+		{
+			tmp = *value;
+			*value = ms_strjoin(*value, token, ' ');
+			free(tmp);
+		}
+	}
+}
+
 t_token	*tokenize(char **tokens)
 {
 	t_ulong			i;
 	t_token			*head;
+	char			*value;
 
 	i = 0;
 	head = NULL;
+	value = NULL;
 	while (tokens[i] != NULL)
 	{
-		head = add_token(head, tokens[i], get_token_type(tokens[i]));
+		tokenize_one(&head, tokens[i], &value);
 		i++;
 	}
+	if (value != NULL)
+		add_token(head, value, T_WORD);
 	return (head);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 13:29:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/25 15:29:57 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/06/25 17:49:30 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		ms_strindexof(const char *str, const char *substr, t_ulong start);
 
 bool	ms_strisnumeric(const char *str, bool allow_spaces);
 
-char	*ms_strjoin(char const *s1, char const *s2);
+char	*ms_strjoin(char const *s1, char const *s2, char separator);
 
 t_ulong	ms_strlcpy(char *dest, const char *src, t_ulong dstsize);
 

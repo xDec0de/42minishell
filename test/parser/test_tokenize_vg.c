@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 16:07:55 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/25 18:24:21 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/06/25 19:29:32 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(void)
 	tmp = tmp->next;
 	ASSERT_NOT_NULL(tmp, 7);
 	ASSERT_STR_EQUALS(tmp->value, "output.txt", 8);
-	ASSERT_TRUE(tmp->type == T_WORD, 9);
+	ASSERT_TRUE(tmp->type == T_END, 9);
 	ms_arrfree(token_arr);
 	free_token_list(tokens);
 }

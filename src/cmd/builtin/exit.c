@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 14:50:17 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/15 19:48:56 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/25 19:53:57 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "minishell.h"
 
 t_cmd	*bltn_exit(t_shell *shell, char **args)
 {

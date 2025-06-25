@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 05:07:26 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/25 13:48:13 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/06/25 13:56:39 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ bool	check_quotes(const char *line);
  */
 
 t_ulong	get_token_count(const char *input);
+t_token_type	get_token_type(const char *s)
 
 #endif

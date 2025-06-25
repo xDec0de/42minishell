@@ -6,13 +6,13 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 13:49:09 by rexposit          #+#    #+#             */
-/*   Updated: 2025/06/25 15:21:16 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/06/25 15:30:15 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ms_strjoin(char const *s1, char const *s2)
 {
 	size_t	s1_s2_len;
 	size_t	i;

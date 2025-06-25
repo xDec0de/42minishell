@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 05:07:26 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/25 16:18:40 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/06/25 18:59:57 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_command
 
 typedef enum e_token_type
 {
-	T_WORD,
+	T_END,
 	T_PIPE,
 	T_REDIR_IN,
 	T_REDIR_OUT,

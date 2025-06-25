@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 15:25:21 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/25 18:50:24 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/06/25 19:01:15 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_token_type	get_token_type(const char *s)
 		return (T_REDIR_APPEND);
 	if (ms_strequals(s, "<<"))
 		return (T_HEREDOC);
-	return (T_WORD);
+	return (T_END);
 }
 
 t_token	*add_token(t_token *head, char *value, t_token_type type)
@@ -58,7 +58,7 @@ void	tokenize_one(t_token **head, char *token, char **value)
 	t_token_type	type;
 
 	type = get_token_type(token);
-	if (type != T_WORD)
+	if (type != T_END)
 	{
 		*head = add_token(*head, *value, type);
 		*value = NULL;
@@ -91,7 +91,7 @@ t_token	*tokenize(char **tokens)
 		i++;
 	}
 	if (value != NULL)
-		add_token(head, value, T_WORD);
+		add_token(head, value, T_END);
 	return (head);
 }
 

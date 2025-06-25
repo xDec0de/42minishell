@@ -6,11 +6,11 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 22:00:01 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/25 19:25:28 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/06/26 01:14:51 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minishell.h"
+#include "minishell.h"
 
 char	*get_last_output(t_shell *shell)
 {
@@ -33,6 +33,8 @@ t_cmd	*execute_builtins(t_shell *shell, char *cmd, char **args)
 		return (bltn_pwd());
 	if (ms_strequals(cmd, "unset"))
 		return (bltn_unset(shell, args));
+	if (ms_strequals(cmd, "cd"))
+		return (bltn_cd(args));
 	return (NULL);
 }
 

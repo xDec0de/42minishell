@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
+#    By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/22 16:12:25 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/25 15:24:08 by rexposit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,8 @@ SRCS +=	env/env_export.c \
 
 # > ~ Parser
 
-SRCS +=	parser/input_validator.c \
+SRCS +=	parser/input_splitter.c \
+		parser/input_validator.c \
 		parser/tokenizer.c
 
 # > ~ Signal
@@ -97,6 +98,7 @@ SRCS +=	util/str/ms_atoi.c \
 		util/str/ms_strequals.c \
 		util/str/ms_strindexof.c \
 		util/str/ms_strisnumeric.c \
+		util/str/ms_strjoin.c \
 		util/str/ms_strlcpy.c \
 		util/str/ms_strlen.c \
 		util/str/ms_strreplace.c \

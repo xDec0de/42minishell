@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_executor.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 22:00:01 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/25 13:19:16 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/25 19:25:28 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,36 @@ t_cmd	*execute_builtins(t_shell *shell, char *cmd, char **args)
 	return (NULL);
 }
 
-/*
- - Temporary parser for builtin testing
-*/
-
-t_cmd	*parse_cmd_input(t_shell *shell)
+t_cmd	*execute_cmd(t_shell *shell, t_token *token)
 {
 	t_cmd	*cmd;
-	char	*cmd_name;
-	char	**args;
+	char	**value;
 	char	**cmd_args;
 
-	args = ms_split(shell->last_input, ' ');
-	cmd_args = ms_arrdup(1, args);
-	cmd_name = args[0];
-	cmd = execute_builtins(shell, cmd_name, cmd_args);
-	ms_arrfree(args);
+	value = ms_split(token->value, ' ');
+	cmd_args = ms_arrdup(1, value);
+	cmd = execute_builtins(shell, value[0], cmd_args);
 	ms_arrfree(cmd_args);
+	ms_arrfree(value);
 	return (cmd);
+}
+
+void	parse_cmd_input(t_shell *shell)
+{
+	char	**token_arr;
+	t_token	*tokens;
+	t_token	*tmp;
+
+	token_arr = to_token_array(shell->last_input);
+	tokens = tokenize(token_arr);
+	tmp = tokens;
+	while (tmp != NULL)
+	{
+		if (shell->last_cmd != NULL && shell->last_cmd->output != NULL)
+			free(shell->last_cmd->output);
+		shell->last_cmd = execute_cmd(shell, tmp);
+		tmp = tmp->next;
+	}
+	free_token_list(tokens);
+	ms_arrfree(token_arr);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:17 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/21 12:56:49 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/25 19:13:48 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int argc, char **argv, char **envp)
 		free(prompt);
 		if (shell->last_input == NULL)
 			ms_exit(EXEC_OK, NULL);
-		shell->last_cmd = parse_cmd_input(shell);
+		parse_cmd_input(shell);
 		add_history(shell->last_input);
 	}
 	if (shell->last_cmd != NULL)

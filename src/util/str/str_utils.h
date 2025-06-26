@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   str_utils.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 13:29:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/25 17:49:30 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/06/26 19:17:21 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ char	*ms_strjoin(char const *s1, char const *s2, char separator);
 t_ulong	ms_strlcpy(char *dest, const char *src, t_ulong dstsize);
 
 t_ulong	ms_strlen(const char *str);
+
+char	*ms_strremchar(const char *str, const char ch);
 
 char	*ms_strreplace(char *str, t_ulong from, t_ulong size,
 			char *replacement);

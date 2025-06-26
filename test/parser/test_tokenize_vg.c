@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_tokenize_vg.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 16:07:55 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/25 19:29:32 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/06/26 19:40:05 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(void)
 	tokens = tokenize(token_arr);
 	tmp = tokens;
 	ASSERT_NOT_NULL(tmp, 1);
-	ASSERT_STR_EQUALS(tmp->value, "echo \"Hello, World!\"", 2);
+	ASSERT_STR_EQUALS(tmp->value, "echo Hello, World!", 2);
 	ASSERT_TRUE(tmp->type == T_PIPE, 3);
 	tmp = tmp->next;
 	ASSERT_NOT_NULL(tmp, 4);

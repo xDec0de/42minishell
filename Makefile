@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/27 12:58:43 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/27 13:06:45 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,10 @@ SRCS +=	env/env_export.c \
 		env/env_get.c \
 		env/env_init.c \
 		env/env_unset.c
+
+# > ~ Expander
+
+SRCS +=	expander/expander.c
 
 # > ~ Parser
 

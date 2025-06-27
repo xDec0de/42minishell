@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/22 14:23:24 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/27 13:05:34 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "ms_utils.h"
 # include "cmd/cmd.h"
 # include "env/env.h"
+# include "expander/expander.h"
 # include "parser/parser.h"
 # include "signal/ms_signal.h"
 

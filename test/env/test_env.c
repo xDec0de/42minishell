@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 18:00:21 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/22 18:38:13 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/27 20:02:02 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,6 @@ int	main(int argc, char **argv, char **env)
 	(void) argc;
 	(void) argv;
 	shell = init_shell(env);
-	shell->env = NULL;
-	// Init
-	env_init(shell, env);
 	ASSERT_NOT_NULL(shell->env, 1);
 	// Export and get
 	env_export(shell, "TEST_VAR=12345");

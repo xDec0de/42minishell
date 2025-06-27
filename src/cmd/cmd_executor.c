@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_executor.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 22:00:01 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/26 15:41:40 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/06/27 16:03:04 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,21 @@ t_cmd	*execute_builtins(t_shell *shell, char *cmd, char **args)
 	return (NULL);
 }
 
+void	expand_input(t_shell *shell, char **value)
+{
+	t_ulong	i;
+	char	*tmp;
+
+	i = 0;
+	while (value[i] != NULL)
+	{
+		tmp = expand(shell, value[i]);
+		free(value[i]);
+		value[i] = tmp;
+		i++;
+	}
+}
+
 t_cmd	*execute_cmd(t_shell *shell, t_token *token)
 {
 	t_cmd	*cmd;
@@ -45,6 +60,7 @@ t_cmd	*execute_cmd(t_shell *shell, t_token *token)
 	char	**cmd_args;
 
 	value = ms_split(token->value, ' ');
+	expand_input(shell, value);
 	cmd_args = ms_arrdup(1, value);
 	cmd = execute_builtins(shell, value[0], cmd_args);
 	ms_arrfree(cmd_args);

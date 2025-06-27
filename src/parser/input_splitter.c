@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 14:47:59 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/26 19:38:41 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/27 18:18:37 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,12 @@ static t_ulong	get_token_end(const char *input, t_ulong i)
 	char	quote;
 
 	if (is_sep(input[i]))
+	{
+		if ((input[i] == '>' && input[i + 1] == '>')
+			|| (input[i] == '<' && input[i + 1] == '<'))
+			return (i + 2);
 		return (i + 1);
+	}
 	quote = '\0';
 	while (input[i] != '\0')
 	{

@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 21:06:53 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/20 21:11:13 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/27 21:21:47 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@ t_cmd	*bltn_export(t_shell *shell, char **args)
 		return (bltn_env(shell));
 	else
 		env_export(shell, args[0]);
-	return (build_cmd(EXEC_OK, NULL));
+	return (build_cmd(EXEC_OK, NULL, true));
 }

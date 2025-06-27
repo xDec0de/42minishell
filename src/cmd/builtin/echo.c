@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 17:11:48 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/25 19:53:52 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/06/27 21:21:30 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,5 @@ t_cmd	*bltn_echo(char **args)
 	}
 	if (nl)
 		printf("\n");
-	return (build_cmd(EXEC_OK, NULL));
+	return (build_cmd(EXEC_OK, NULL, true));
 }

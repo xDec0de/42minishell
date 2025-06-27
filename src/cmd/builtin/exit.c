@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 14:50:17 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/25 19:53:57 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/06/27 21:21:42 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ t_cmd	*bltn_exit(t_shell *shell, char **args)
 			code = (unsigned char) ms_atoi(code_str);
 	}
 	shell->running = false;
-	return (build_cmd(code, NULL));
+	return (build_cmd(code, NULL, true));
 }

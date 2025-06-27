@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 10:50:33 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/27 20:49:49 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/27 21:21:14 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,14 @@ typedef struct s_cmd
 {
 	int		exit_code;
 	char	*output;
+	bool	is_builtin;
 }			t_cmd;
 
 /*
  - Command functions
  */
 
-t_cmd	*build_cmd(int exit_code, char *output);
+t_cmd	*build_cmd(int exit_code, char *output, bool is_builtin);
 
 void	parse_cmd_input(struct s_shell *shell);
 

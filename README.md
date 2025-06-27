@@ -93,7 +93,7 @@ functions:
 | [wait4](https://linux.die.net/man/2/wait4) | sys/wait.h | Wait for process to change state, BSD style | ❌ |
 | [signal](https://linux.die.net/man/2/signal) | signal.h | ANSI C signal handling | ✅ |
 | [sigaction](https://linux.die.net/man/2/sigaction) | signal.h | Examine and change a signal action | ❌ |
-| [kill](https://linux.die.net/man/1/kill) | signal.h | Terminate a process | ❌ |
+| [kill](https://linux.die.net/man/3/kill) | signal.h | Send a signal to a process or a group of processes | ❌ |
 | [exit](https://linux.die.net/man/3/exit) | stdlib.h | Cause normal process termination | ✅ |
 | [getcwd](https://linux.die.net/man/3/getcwd) | unistd.h | Get current working directory | ✅ |
 | [chdir](https://linux.die.net/man/2/chdir) | unistd.h | Change working directory | ✅ |
@@ -101,7 +101,7 @@ functions:
 | [lstat](https://linux.die.net/man/2/lstat) | unistd.h | Get file status | ❌ |
 | [fstat](https://linux.die.net/man/2/fstat) | unistd.h | Get file status | ❌ |
 | [unlink](https://linux.die.net/man/2/unlink) | unistd.h | Delete a name and possibly the file it refers to | ❌ |
-| [execve](https://linux.die.net/man/2/execve) | unistd.h | Execute a program | ❌ |
+| [execve](https://linux.die.net/man/2/execve) | unistd.h | Execute a program | ✅ |
 | [dup](https://linux.die.net/man/2/dup) | unistd.h | Duplicate a file descriptor | ❌ |
 | [dup2](https://linux.die.net/man/2/dup2) | unistd.h | Duplicate a file descriptor | ❌ |
 | [pipe](https://linux.die.net/man/2/pipe) | unistd.h | Create pipe | ❌ |

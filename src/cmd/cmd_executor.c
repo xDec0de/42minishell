@@ -6,11 +6,13 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 22:00:01 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/27 20:50:45 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/27 21:24:05 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+#include <sys/wait.h>
 
 t_cmd	*execute_builtins(t_shell *shell, char *cmd, char **args)
 {
@@ -46,7 +48,7 @@ void	expand_input(t_shell *shell, char **value)
 	}
 }
 
-t_cmd	*execute_cmd(t_shell *shell, t_token *token)
+void	execute_cmd(t_shell *shell, t_token *token)
 {
 	t_cmd	*cmd;
 	char	**value;
@@ -58,9 +60,11 @@ t_cmd	*execute_cmd(t_shell *shell, t_token *token)
 	cmd = execute_builtins(shell, value[0], cmd_args);
 	if (cmd == NULL)
 		cmd = execute_external(shell, value[0], cmd_args);
+	shell->last_cmd = cmd;
 	ms_arrfree(cmd_args);
 	ms_arrfree(value);
-	return (cmd);
+	if (cmd->is_builtin)
+		exit(cmd->exit_code);
 }
 
 void	parse_cmd_input(t_shell *shell)
@@ -68,6 +72,7 @@ void	parse_cmd_input(t_shell *shell)
 	char	**token_arr;
 	t_token	*tokens;
 	t_token	*tmp;
+	int		fork_val;
 
 	token_arr = to_token_array(shell->last_input);
 	tokens = tokenize(token_arr);
@@ -76,8 +81,15 @@ void	parse_cmd_input(t_shell *shell)
 	{
 		if (shell->last_cmd != NULL && shell->last_cmd->output != NULL)
 			free(shell->last_cmd->output);
-		shell->last_cmd = execute_cmd(shell, tmp);
-		tmp = tmp->next;
+		fork_val = fork();
+		if (fork_val == 0)
+			execute_cmd(shell, tmp);
+		else
+		{
+			shell->cmd_pid = fork_val;
+			waitpid(shell->cmd_pid, NULL, 0);
+			tmp = tmp->next;
+		}
 	}
 	free_token_list(tokens);
 	ms_arrfree(token_arr);

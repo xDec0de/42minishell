@@ -96,7 +96,7 @@ functions:
 | [kill](https://linux.die.net/man/1/kill) | signal.h | Terminate a process | ❌ |
 | [exit](https://linux.die.net/man/3/exit) | stdlib.h | Cause normal process termination | ✅ |
 | [getcwd](https://linux.die.net/man/3/getcwd) | unistd.h | Get current working directory | ✅ |
-| [chdir](https://linux.die.net/man/2/chdir) | unistd.h | Change working directory | ❌ |
+| [chdir](https://linux.die.net/man/2/chdir) | unistd.h | Change working directory | ✅ |
 | [stat](https://linux.die.net/man/2/stat) | unistd.h | Get file status | ❌ |
 | [lstat](https://linux.die.net/man/2/lstat) | unistd.h | Get file status | ❌ |
 | [fstat](https://linux.die.net/man/2/fstat) | unistd.h | Get file status | ❌ |
@@ -109,7 +109,7 @@ functions:
 | [readdir](https://linux.die.net/man/3/readdir) | dirent.h | Read a directory | ❌ |
 | [closedir](https://linux.die.net/man/3/closedir) | dirent.h | Close a directory | ❌ |
 | [strerror](https://linux.die.net/man/3/strerror) | string.h | Return string describing error number | ❌ |
-| [perror](https://linux.die.net/man/3/perror) | errno.h | Print system error message | ❌ |
+| [perror](https://linux.die.net/man/3/perror) | errno.h | Print system error message | ✅ |
 | [isatty](https://linux.die.net/man/3/isatty) | unistd.h | Test whether a file descriptor refers to a terminal | ❌ |
 | [ttyname](https://linux.die.net/man/3/ttyname) | unistd.h | Return name of a terminal | ❌ |
 | [ttyslot](https://linux.die.net/man/3/ttyslot) | unistd.h | Find the slot of the current user's terminal in some file | ❌ |

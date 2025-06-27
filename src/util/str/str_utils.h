@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 13:29:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/26 19:17:21 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/27 12:58:01 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include "mem_utils.h"
 
 int		ms_atoi(const char *str);
+
+char	*ms_itoa(int n);
 
 char	**ms_split(const char *s, char c);
 

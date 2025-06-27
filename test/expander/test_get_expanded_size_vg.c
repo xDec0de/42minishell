@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 13:36:13 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/27 15:02:55 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/27 16:11:42 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ int	main(int argc, char **argv, char **env)
 	env_export(shell, "TEST_VAR=42");
 	ASSERT_ULONG_EQUALS(get_expanded_size(shell, "echo $TEST_VAR"), 7L, 3);
 	ASSERT_ULONG_EQUALS(get_expanded_size(shell, "echo '$TEST_VAR'"), 14L, 4);
+	ASSERT_ULONG_EQUALS(get_expanded_size(shell, "echo $"), 6L, 2);
 	ms_exit(EXEC_OK, NULL);
 }

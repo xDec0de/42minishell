@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 21:11:00 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/27 15:58:06 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/27 16:09:09 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,12 @@ char	*get_expanded_value(t_shell *shell, char *str, t_ulong from)
 {
 	t_env	*env;
 	char	*key;
+	t_ulong	key_size;
 
-	key = ms_substr(str, from, get_key_size(str, from));
+	key_size = get_key_size(str, from);
+	if (key_size == 0)
+		return (ms_strdup("$"));
+	key = ms_substr(str, from, key_size);
 	if (ms_strequals(key, "?"))
 	{
 		if (shell->last_cmd == NULL)

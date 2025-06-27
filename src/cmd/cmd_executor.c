@@ -6,18 +6,11 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 22:00:01 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/27 16:03:04 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/27 20:50:45 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-char	*get_last_output(t_shell *shell)
-{
-	if (shell->last_cmd == NULL)
-		return (NULL);
-	return (shell->last_cmd->output);
-}
 
 t_cmd	*execute_builtins(t_shell *shell, char *cmd, char **args)
 {
@@ -63,6 +56,8 @@ t_cmd	*execute_cmd(t_shell *shell, t_token *token)
 	expand_input(shell, value);
 	cmd_args = ms_arrdup(1, value);
 	cmd = execute_builtins(shell, value[0], cmd_args);
+	if (cmd == NULL)
+		cmd = execute_external(shell, value[0], cmd_args);
 	ms_arrfree(cmd_args);
 	ms_arrfree(value);
 	return (cmd);

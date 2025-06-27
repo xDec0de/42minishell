@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 10:50:33 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/26 15:40:26 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/06/27 20:49:49 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ typedef struct s_cmd
 t_cmd	*build_cmd(int exit_code, char *output);
 
 void	parse_cmd_input(struct s_shell *shell);
+
+/*
+ - External command executor
+ */
+
+t_cmd	*execute_external(struct s_shell *shell, char *cmd, char **args);
 
 /*
  - Builtins

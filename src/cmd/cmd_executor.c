@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 22:00:01 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/27 21:24:05 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/29 16:18:44 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	execute_cmd(t_shell *shell, t_token *token)
 	shell->last_cmd = cmd;
 	ms_arrfree(cmd_args);
 	ms_arrfree(value);
+	if (cmd == NULL)
+		exit(127);
 	if (cmd->is_builtin)
 		exit(cmd->exit_code);
 }

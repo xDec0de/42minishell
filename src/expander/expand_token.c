@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_handler.c                                      :+:      :+:    :+:   */
+/*   expand_token.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/29 21:35:57 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/29 22:19:22 by daniema3         ###   ########.fr       */
+/*   Created: 2025/06/29 22:11:47 by daniema3          #+#    #+#             */
+/*   Updated: 2025/06/29 22:14:33 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	handle_cmd_input(t_shell *shell)
+void	expand_token(t_shell *shell, t_token *token)
 {
-	char	**token_arr;
-	t_token	*tokens;
-	t_token	*tmp;
+	char	*tmp;
+	t_ulong	i;
 
-	token_arr = to_token_array(shell->last_input);
-	tokens = tokenize(token_arr);
-	tmp = tokens;
-	while (tmp != NULL)
+	tmp = expand(shell, token->cmd);
+	free(token->cmd);
+	token->cmd = tmp;
+	if (token->args == NULL)
+		return ;
+	i = 0;
+	while (token->args[i] != NULL)
 	{
-		execute_cmd(shell, tmp);
-		shell->cmd_pid = 0;
-		tmp = tmp->next;
+		tmp = expand(shell, token->args[i]);
+		free(token->args[i]);
+		token->args[i] = tmp;
+		i++;
 	}
-	free_token_list(tokens);
-	ms_arrfree(token_arr);
 }

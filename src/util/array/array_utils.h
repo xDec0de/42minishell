@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 13:35:50 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/22 13:51:37 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/29 22:32:59 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define ARRAY_UTILS_H
 
 # include "mem_utils.h"
+
+char	**ms_arradd(char **arr, char *str);
 
 /**
  * @brief Returns a `NULL` terminated array duplicate

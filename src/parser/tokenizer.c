@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 15:25:21 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/25 19:34:18 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/06/30 00:27:45 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ms_types.h"
-#include "char_utils.h"
-#include "parser.h"
-#include "str_utils.h"
-#include <stdlib.h>
+#include "minishell.h"
 
 t_token_type	get_token_type(const char *s)
 {
@@ -31,15 +27,18 @@ t_token_type	get_token_type(const char *s)
 	return (T_END);
 }
 
-t_token	*add_token(t_token *head, char *value, t_token_type type)
+t_token	*add_token(t_token *head, char ***value, t_token_type type)
 {
 	t_token	*tmp;
 	t_token	*new;
 
 	new = ms_malloc(sizeof(t_token));
-	new->value = value;
+	new->cmd = ms_strdup(*value[0]);
+	new->args = ms_arrdup(1, *value);
 	new->type = type;
 	new->next = NULL;
+	ms_arrfree(*value);
+	*value = NULL;
 	tmp = head;
 	if (head == NULL)
 		return (new);
@@ -52,25 +51,22 @@ t_token	*add_token(t_token *head, char *value, t_token_type type)
 	return (head);
 }
 
-void	tokenize_one(t_token **head, char *token, char **value)
+void	tokenize_one(t_token **head, char *token, char ***value)
 {
-	char			*tmp;
+	char			**tmp;
 	t_token_type	type;
 
 	type = get_token_type(token);
 	if (type != T_END)
-	{
-		*head = add_token(*head, *value, type);
-		*value = NULL;
-	}
+		*head = add_token(*head, value, type);
 	else
 	{
 		if (*value == NULL)
-			*value = ms_strdup(token);
+			*value = ms_arradd(*value, ms_strdup(token));
 		else
 		{
 			tmp = *value;
-			*value = ms_strjoin(*value, token, ' ');
+			*value = ms_arradd(*value, ms_strdup(token));
 			free(tmp);
 		}
 	}
@@ -80,7 +76,7 @@ t_token	*tokenize(char **tokens)
 {
 	t_ulong			i;
 	t_token			*head;
-	char			*value;
+	char			**value;
 
 	i = 0;
 	head = NULL;
@@ -91,7 +87,7 @@ t_token	*tokenize(char **tokens)
 		i++;
 	}
 	if (value != NULL)
-		head = add_token(head, value, T_END);
+		head = add_token(head, &value, T_END);
 	return (head);
 }
 
@@ -102,7 +98,8 @@ void	free_token_list(t_token *head)
 	while (head != NULL)
 	{
 		tmp = head->next;
-		free(head->value);
+		free(head->cmd);
+		ms_arrfree(head->args);
 		free(head);
 		head = tmp;
 	}

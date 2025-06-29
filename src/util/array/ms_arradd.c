@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_handler.c                                      :+:      :+:    :+:   */
+/*   ms_arradd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/29 21:35:57 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/29 22:19:22 by daniema3         ###   ########.fr       */
+/*   Created: 2025/06/29 22:27:32 by daniema3          #+#    #+#             */
+/*   Updated: 2025/06/29 22:37:39 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "array_utils.h"
 
-void	handle_cmd_input(t_shell *shell)
+char	**ms_arradd(char **arr, char *str)
 {
-	char	**token_arr;
-	t_token	*tokens;
-	t_token	*tmp;
+	char	**new;
+	t_ulong	size;
+	t_ulong	i;
 
-	token_arr = to_token_array(shell->last_input);
-	tokens = tokenize(token_arr);
-	tmp = tokens;
-	while (tmp != NULL)
+	if (arr == NULL)
 	{
-		execute_cmd(shell, tmp);
-		shell->cmd_pid = 0;
-		tmp = tmp->next;
+		new = ms_malloc(2 * sizeof(char **));
+		new[0] = str;
+		new[1] = NULL;
+		return (new);
 	}
-	free_token_list(tokens);
-	ms_arrfree(token_arr);
+	size = ms_arrlen((void **) arr);
+	new = ms_malloc((size + 2) * sizeof(char **));
+	i = 0;
+	while (arr[i] != NULL)
+	{
+		new[i] = arr[i];
+		i++;
+	}
+	new[i] = str;
+	new[i + 1] = NULL;
+	return (new);
 }

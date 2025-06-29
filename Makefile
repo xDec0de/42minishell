@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/29 21:39:47 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/29 22:37:09 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,8 @@ SRCS +=	env/env_export.c \
 
 # > ~ Expander
 
-SRCS +=	expander/expander.c
+SRCS +=	expander/expand_token.c \
+		expander/expander.c
 
 # > ~ Parser
 
@@ -82,7 +83,8 @@ SRCS +=	util/ms_exit.c \
 
 # > ~ Array utils
 
-SRCS +=	util/array/ms_arrdup.c \
+SRCS +=	util/array/ms_arradd.c \
+		util/array/ms_arrdup.c \
 		util/array/ms_arrfree.c \
 		util/array/ms_arrlen.c
 

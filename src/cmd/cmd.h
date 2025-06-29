@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 10:50:33 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/29 21:42:32 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/29 22:20:13 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ struct	s_token;
  */
 
 void	handle_cmd_input(struct s_shell *shell);
-
-void	expand_cmd_input(struct s_shell *shell, char **input);
 
 /*
  - Command executor

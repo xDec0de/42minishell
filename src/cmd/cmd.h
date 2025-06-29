@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 10:50:33 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/29 22:20:13 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/30 01:19:12 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	execute_cmd(struct s_shell *shell, struct s_token *token);
  - External command executor
  */
 
-void	execute_external(struct s_shell *shell, char *cmd, char **args);
+void	execute_external(struct s_shell *shell, struct s_token *token);
 
 # define EXECVE_ERRN -1
 
@@ -42,9 +42,9 @@ void	execute_external(struct s_shell *shell, char *cmd, char **args);
 
 bool	is_state_builtin(char *cmd);
 
-int		execute_state_builtins(struct s_shell *shell, char *cmd, char **args);
+int		execute_state_builtins(struct s_shell *shell, struct s_token *token);
 
-void	execute_fork_builtins(struct s_shell *shell, char *cmd, char **args);
+void	execute_fork_builtins(struct s_shell *shell, struct s_token *token);
 
 /*
  - Builtins - cd
@@ -56,13 +56,13 @@ int		bltn_cd(struct s_shell *shell, char **args);
  - Builtins - echo
  */
 
-void	bltn_echo(char *cmd, char **args);
+void	bltn_echo(char **args);
 
 /*
  - Builtins - env
  */
 
-void	bltn_env(struct s_shell *shell, char *cmd, char **args);
+void	bltn_env(struct s_shell *shell);
 
 int		print_env(struct s_shell *shell);
 
@@ -85,7 +85,7 @@ int		bltn_export(struct s_shell *shell, char **args);
  - Builtins - pwd
  */
 
-void	bltn_pwd(char *cmd, char **args);
+void	bltn_pwd(void);
 
 /*
  - Builtins - unset

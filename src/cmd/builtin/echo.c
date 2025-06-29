@@ -6,13 +6,13 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 17:11:48 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/29 18:37:36 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/30 01:13:52 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	bltn_echo(char *cmd, char **args)
+void	bltn_echo(char **args)
 {
 	int		i;
 	bool	nl;
@@ -36,7 +36,5 @@ void	bltn_echo(char *cmd, char **args)
 	}
 	if (nl)
 		printf("\n");
-	free(cmd);
-	ms_arrfree(args);
 	ms_exit(EXEC_OK, NULL);
 }

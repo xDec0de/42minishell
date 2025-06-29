@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 18:10:16 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/29 18:37:22 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/30 01:13:09 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ int	print_env(t_shell *shell)
 	return (EXEC_OK);
 }
 
-void	bltn_env(t_shell *shell, char *cmd, char **args)
+void	bltn_env(t_shell *shell)
 {
-	free(cmd);
-	ms_arrfree(args);
 	ms_exit(print_env(shell), NULL);
 }

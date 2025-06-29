@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 21:00:22 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/29 18:57:11 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/30 01:08:01 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_shell	*init_shell(char **env)
 
 	init = ms_malloc(sizeof(t_shell));
 	init->last_input = NULL;
+	init->last_tokens = NULL;
 	init->last_exit_code = 0;
 	init->env = NULL;
 	env_init(init, env);

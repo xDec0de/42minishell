@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/29 21:45:51 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/30 01:19:19 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@
 /* waitpid */
 # include <sys/wait.h>
 
+/* errno */
+# include <errno.h>
+
 # define SHELL_PROMPT "minishell: $ "
 
 /*
@@ -57,6 +60,7 @@
 typedef struct s_shell
 {
 	char	*last_input;
+	t_token	*last_tokens;
 	pid_t	cmd_pid;
 	int		last_exit_code;
 	t_env	*env;

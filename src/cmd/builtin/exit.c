@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 14:50:17 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/29 18:26:01 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/30 01:15:37 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,5 @@ void	bltn_exit(char **args)
 		else
 			code = (unsigned char) ms_atoi(code_str);
 	}
-	ms_arrfree(args);
 	ms_exit(code, NULL);
 }

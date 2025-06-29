@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 21:35:57 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/29 22:19:22 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/30 01:16:38 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 void	handle_cmd_input(t_shell *shell)
 {
 	char	**token_arr;
-	t_token	*tokens;
 	t_token	*tmp;
 
 	token_arr = to_token_array(shell->last_input);
-	tokens = tokenize(token_arr);
-	tmp = tokens;
+	shell->last_tokens = tokenize(token_arr);
+	ms_arrfree(token_arr);
+	tmp = shell->last_tokens;
 	while (tmp != NULL)
 	{
 		execute_cmd(shell, tmp);
 		shell->cmd_pid = 0;
 		tmp = tmp->next;
 	}
-	free_token_list(tokens);
-	ms_arrfree(token_arr);
+	free_token_list(shell->last_tokens);
+	shell->last_tokens = NULL;
 }

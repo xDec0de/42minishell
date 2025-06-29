@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 10:50:33 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/29 17:37:06 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/29 18:41:10 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 struct	s_shell;
 
 /*
- - Command functions
+ - Command executor
  */
 
 void	parse_cmd_input(struct s_shell *shell);
@@ -30,24 +30,60 @@ void	execute_external(struct s_shell *shell, char *cmd, char **args);
 # define EXECVE_ERRN -1
 
 /*
- - Builtins
+ - Bultin command executor
  */
 
-void	bltn_cd(struct s_shell *shell, char **args);
+bool	is_state_builtin(char *cmd);
 
-void	bltn_echo(char **args);
+int		execute_state_builtins(struct s_shell *shell, char *cmd, char **args);
 
-void	bltn_env(struct s_shell *shell);
+void	execute_fork_builtins(struct s_shell *shell, char *cmd, char **args);
+
+/*
+ - Builtins - cd
+ */
+
+int		bltn_cd(struct s_shell *shell, char **args);
+
+/*
+ - Builtins - echo
+ */
+
+void	bltn_echo(char *cmd, char **args);
+
+/*
+ - Builtins - env
+ */
+
+void	bltn_env(struct s_shell *shell, char *cmd, char **args);
+
+int		print_env(struct s_shell *shell);
+
+/*
+ - Builtins - exit
+ */
 
 void	bltn_exit(char **args);
 
 # define EXIT_NOT_NUMERIC_ERRN 2
 # define EXIT_NOT_NUMERIC "bash: exit: %s: numeric argument required\n"
 
-void	bltn_export(struct s_shell *shell, char **args);
+/*
+ - Builtins - export
+ */
 
-void	bltn_pwd(void);
+int		bltn_export(struct s_shell *shell, char **args);
 
-void	bltn_unset(struct s_shell *shell, char **args);
+/*
+ - Builtins - pwd
+ */
+
+void	bltn_pwd(char *cmd, char **args);
+
+/*
+ - Builtins - unset
+ */
+
+int		bltn_unset(struct s_shell *shell, char **args);
 
 #endif

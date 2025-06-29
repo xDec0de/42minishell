@@ -6,31 +6,13 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 22:00:01 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/29 17:52:33 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/29 18:53:34 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 #include <sys/wait.h>
-
-void	execute_builtins(t_shell *shell, char *cmd, char **args)
-{
-	if (ms_strequals(cmd, "exit"))
-		bltn_exit(args);
-	if (ms_strequals(cmd, "env"))
-		bltn_env(shell);
-	if (ms_strequals(cmd, "echo"))
-		bltn_echo(args);
-	if (ms_strequals(cmd, "export"))
-		bltn_export(shell, args);
-	if (ms_strequals(cmd, "pwd"))
-		bltn_pwd();
-	if (ms_strequals(cmd, "unset"))
-		bltn_unset(shell, args);
-	if (ms_strequals(cmd, "cd"))
-		bltn_cd(shell, args);
-}
 
 void	expand_input(t_shell *shell, char **value)
 {
@@ -47,29 +29,43 @@ void	expand_input(t_shell *shell, char **value)
 	}
 }
 
-void	execute_cmd(t_shell *shell, t_token *token)
+void	fork_and_run(t_shell *shell, char *cmd, char **args, int *exit_code)
 {
-	char	**value;
-	char	**cmd_args;
 	int		fork_val;
 
-	value = ms_split(token->value, ' ');
-	expand_input(shell, value);
-	cmd_args = ms_arrdup(1, value);
 	fork_val = fork();
 	if (fork_val == 0)
 	{
-		execute_builtins(shell, value[0], cmd_args);
-		execute_external(shell, value[0], cmd_args);
+		execute_fork_builtins(shell, cmd, args);
+		execute_external(shell, cmd, args);
 	}
 	else
 	{
 		shell->cmd_pid = fork_val;
-		waitpid(shell->cmd_pid, &shell->last_exit_code, 0);
-		shell->last_exit_code = WEXITSTATUS(shell->last_exit_code);
+		waitpid(shell->cmd_pid, exit_code, 0);
+		*exit_code = WEXITSTATUS(*exit_code);
 	}
-	ms_arrfree(cmd_args);
+}
+
+void	execute_cmd(t_shell *shell, t_token *token)
+{
+	char	**value;
+	char	*cmd;
+	char	**args;
+	int		exit_code;
+
+	value = ms_split(token->value, ' ');
+	expand_input(shell, value);
+	cmd = ms_strdup(value[0]);
+	args = ms_arrdup(1, value);
 	ms_arrfree(value);
+	if (is_state_builtin(cmd))
+		exit_code = execute_state_builtins(shell, cmd, args);
+	else
+		fork_and_run(shell, cmd, args, &exit_code);
+	shell->last_exit_code = exit_code;
+	ms_arrfree(args);
+	free(cmd);
 }
 
 void	parse_cmd_input(t_shell *shell)

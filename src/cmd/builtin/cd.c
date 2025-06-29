@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 19:50:22 by rexposit          #+#    #+#             */
-/*   Updated: 2025/06/29 17:50:16 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/29 18:48:49 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,30 +18,29 @@ static char	*get_home(t_shell *shell)
 
 	home = env_get(shell, "HOME");
 	if (home == NULL)
-		ms_exit(EXEC_FAIL, NULL);
+		return (NULL);
 	return (home->value);
 }
 
-void	bltn_cd(t_shell *shell, char **args)
+int	bltn_cd(t_shell *shell, char **args)
 {
 	char	old_pwd[PATH_MAX];
 	char	new_pwd[PATH_MAX];
 	char	*path;
 
 	if (getcwd(old_pwd, PATH_MAX) == NULL)
-		ms_exit(EXEC_FAIL, NULL);
+		return (EXEC_FAIL);
 	if (args[0] == NULL)
 		path = get_home(shell);
 	else
 		path = args[0];
+	if (path == NULL)
+		return (EXEC_FAIL);
 	if (chdir(path) != 0)
-	{
-		perror("cd");
-		ms_exit(EXEC_FAIL, NULL);
-	}
+		return (perror("cd"), EXEC_FAIL);
 	if (getcwd(new_pwd, PATH_MAX) == NULL)
-		ms_exit(EXEC_FAIL, NULL);
+		return (EXEC_FAIL);
 	env_export(shell, ms_strjoin("OLDPWD", old_pwd, '='));
 	env_export(shell, ms_strjoin("PWD", new_pwd, '='));
-	ms_exit(EXEC_OK, NULL);
+	return (EXEC_FAIL);
 }

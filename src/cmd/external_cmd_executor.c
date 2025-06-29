@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 20:48:25 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/29 17:49:37 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/29 18:51:01 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,15 @@ void	execute_external(t_shell *shell, char *cmd, char **args)
 	ms_arrfree(args);
 	ms_arrfree(env);
 	if (code != EXECVE_ERRN)
+	{
+		free(cmd);
 		ms_exit(code, NULL);
+	}
 	if (errno == 2)
 		err = "command not found";
 	else
 		err = strerror(errno);
 	printf("minishell: %s: %s\n", cmd, err);
+	free(cmd);
 	exit(127);
 }

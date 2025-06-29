@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:17 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/29 17:49:09 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/29 18:57:00 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv, char **envp)
 	(void) argv;
 	shell = init_shell(envp);
 	init_sighandler();
-	while (shell->running)
+	while (true)
 	{
 		if (shell->last_input != NULL)
 			free(shell->last_input);
@@ -43,5 +43,4 @@ int	main(int argc, char **argv, char **envp)
 		parse_cmd_input(shell);
 		add_history(shell->last_input);
 	}
-	ms_exit(shell->last_exit_code, NULL);
 }

@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/29 18:01:13 by daniema3         ###   ########.fr        #
+#    Updated: 2025/06/29 21:39:47 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRCS =	minishell.c
 
 SRCS += cmd/builtin_cmd_executor.c \
 		cmd/cmd_executor.c \
+		cmd/cmd_handler.c \
 		cmd/external_cmd_executor.c \
 
 # > ~ Commands - Builtins

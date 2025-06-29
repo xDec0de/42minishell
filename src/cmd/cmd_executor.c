@@ -6,28 +6,11 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 22:00:01 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/29 19:34:19 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/29 21:42:21 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-#include <sys/wait.h>
-
-static void	expand_input(t_shell *shell, char **value)
-{
-	t_ulong	i;
-	char	*tmp;
-
-	i = 0;
-	while (value[i] != NULL)
-	{
-		tmp = expand(shell, value[i]);
-		free(value[i]);
-		value[i] = tmp;
-		i++;
-	}
-}
 
 static void	fork_and_run(t_shell *shell, char *cmd, char **args, int *exit_code)
 {
@@ -47,18 +30,18 @@ static void	fork_and_run(t_shell *shell, char *cmd, char **args, int *exit_code)
 	}
 }
 
-static void	execute_cmd(t_shell *shell, t_token *token)
+void	execute_cmd(t_shell *shell, t_token *token)
 {
-	char	**value;
+	char	**input;
 	char	*cmd;
 	char	**args;
 	int		exit_code;
 
-	value = ms_split(token->value, ' ');
-	expand_input(shell, value);
-	cmd = ms_strdup(value[0]);
-	args = ms_arrdup(1, value);
-	ms_arrfree(value);
+	input = ms_split(token->value, ' ');
+	expand_cmd_input(shell, input);
+	cmd = ms_strdup(input[0]);
+	args = ms_arrdup(1, input);
+	ms_arrfree(input);
 	if (is_state_builtin(cmd))
 		exit_code = execute_state_builtins(shell, cmd, args);
 	else
@@ -66,23 +49,4 @@ static void	execute_cmd(t_shell *shell, t_token *token)
 	shell->last_exit_code = exit_code;
 	ms_arrfree(args);
 	free(cmd);
-}
-
-void	parse_cmd_input(t_shell *shell)
-{
-	char	**token_arr;
-	t_token	*tokens;
-	t_token	*tmp;
-
-	token_arr = to_token_array(shell->last_input);
-	tokens = tokenize(token_arr);
-	tmp = tokens;
-	while (tmp != NULL)
-	{
-		execute_cmd(shell, tmp);
-		shell->cmd_pid = 0;
-		tmp = tmp->next;
-	}
-	free_token_list(tokens);
-	ms_arrfree(token_arr);
 }

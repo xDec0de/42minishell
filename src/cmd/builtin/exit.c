@@ -6,13 +6,13 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 14:50:17 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/27 21:21:42 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/29 17:36:43 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_cmd	*bltn_exit(t_shell *shell, char **args)
+void	bltn_exit(char **args)
 {
 	unsigned char	code;
 	char			*code_str;
@@ -29,6 +29,5 @@ t_cmd	*bltn_exit(t_shell *shell, char **args)
 		else
 			code = (unsigned char) ms_atoi(code_str);
 	}
-	shell->running = false;
-	return (build_cmd(code, NULL, true));
+	ms_exit(code, NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/27 21:00:40 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/29 17:06:22 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct s_shell
 	bool	running;
 	char	*last_input;
 	pid_t	cmd_pid;
-	t_cmd	*last_cmd;
+	int		last_exit_code;
 	t_env	*env;
 }			t_shell;
 

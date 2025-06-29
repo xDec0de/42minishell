@@ -1,4 +1,4 @@
-# 42minishell ![Code quality](https://app.codacy.com/project/badge/Grade/84a0ed73021a434384e03ccf107f1268) ![Test coverage](https://app.codacy.com/project/badge/Coverage/84a0ed73021a434384e03ccf107f1268)
+# 42minishell ![Code quality](https://app.codacy.com/project/badge/Grade/84a0ed73021a434384e03ccf107f1268) ![Test coverage](https://app.codacy.com/project/badge/Coverage/84a0ed73021a434384e03ccf107f1268) ![Workflow status](https://github.com/xdec0de/42minishell/actions/workflows/validate.yml/badge.svg)
 
 42 project "minishell", code follows the norm used at 42. The objective of
 this project is to create a basic replica of a bash shell, built in C.

@@ -6,24 +6,37 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 21:30:47 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/22 14:21:26 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/29 19:42:38 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ms_signal.h"
+#include "minishell.h"
 
-void	sig_handler(int signum)
+static void	sig_handler(int signum)
 {
+	t_shell	*shell;
+
+	shell = get_shell();
 	if (signum == SIGINT)
-		printf("\n");
-	rl_on_new_line();
-	if (signum == SIGQUIT)
 	{
+		printf("\n");
+		if (shell->cmd_pid != 0)
+			kill(shell->cmd_pid, SIGINT);
+		else
+		{
+			rl_replace_line("", 0);
+			rl_on_new_line();
+			rl_redisplay();
+		}
+	}
+	else if (signum == SIGQUIT)
+	{
+		rl_on_new_line();
 		rl_replace_line("  ", 0);
 		rl_redisplay();
+		rl_replace_line("", 0);
+		rl_redisplay();
 	}
-	rl_replace_line("", 0);
-	rl_redisplay();
 }
 
 void	init_sighandler(void)

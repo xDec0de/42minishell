@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 22:00:01 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/29 18:53:34 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/29 19:34:19 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include <sys/wait.h>
 
-void	expand_input(t_shell *shell, char **value)
+static void	expand_input(t_shell *shell, char **value)
 {
 	t_ulong	i;
 	char	*tmp;
@@ -29,7 +29,7 @@ void	expand_input(t_shell *shell, char **value)
 	}
 }
 
-void	fork_and_run(t_shell *shell, char *cmd, char **args, int *exit_code)
+static void	fork_and_run(t_shell *shell, char *cmd, char **args, int *exit_code)
 {
 	int		fork_val;
 
@@ -47,7 +47,7 @@ void	fork_and_run(t_shell *shell, char *cmd, char **args, int *exit_code)
 	}
 }
 
-void	execute_cmd(t_shell *shell, t_token *token)
+static void	execute_cmd(t_shell *shell, t_token *token)
 {
 	char	**value;
 	char	*cmd;
@@ -80,6 +80,7 @@ void	parse_cmd_input(t_shell *shell)
 	while (tmp != NULL)
 	{
 		execute_cmd(shell, tmp);
+		shell->cmd_pid = 0;
 		tmp = tmp->next;
 	}
 	free_token_list(tokens);

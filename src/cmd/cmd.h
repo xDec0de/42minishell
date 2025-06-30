@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 10:50:33 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/30 01:19:12 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/06/30 15:49:59 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define CMD_H
 
 struct	s_shell;
+typedef struct s_shell	t_shell;
+
 struct	s_token;
 
 /*
@@ -33,6 +35,12 @@ void	execute_cmd(struct s_shell *shell, struct s_token *token);
  */
 
 void	execute_external(struct s_shell *shell, struct s_token *token);
+
+/*
+ - Path finder
+*/
+
+char	*get_cmd_from_path(t_shell *shell, char *cmd);
 
 # define EXECVE_ERRN -1
 

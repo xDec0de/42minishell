@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   external_cmd_executor.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 20:48:25 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/30 15:40:09 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/06/30 18:22:59 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,14 @@ void	execute_external(t_shell *shell, t_token *token)
 	}
 	env = env_to_array(shell);
 	execve(path, token->args, env);
+	free(path);
 	ms_arrfree(env);
 	if (errno == EACCES)
+	{
+		fprintf(stderr, "minishell: %s: Permission denied\n", token->cmd);
 		exit(126);
+	}
 	err = strerror(errno);
 	fprintf(stderr, "minishell: %s: %s\n", token->cmd, err);
-	exit(127);
+	exit(errno);
 }

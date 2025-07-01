@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 10:50:33 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/30 16:35:26 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/07/01 16:52:49 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 struct	s_shell;
 struct	s_token;
+
+/** Exit code: Permission error. */
+# define EC_NO_PERM 126
+
+/** Exit code: Command not found. */
+# define EC_CMD_NOT_FOUND 127
 
 /*
  - Command handler

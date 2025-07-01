@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 17:57:40 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/30 01:14:54 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/01 16:53:14 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	execute_state_builtins(t_shell *shell, t_token *token)
 		return (bltn_unset(shell, token->args));
 	if (ms_strequals(token->cmd, "cd"))
 		return (bltn_cd(shell, token->args));
-	return (127);
+	return (EC_CMD_NOT_FOUND);
 }
 
 void	execute_fork_builtins(t_shell *shell, t_token *token)

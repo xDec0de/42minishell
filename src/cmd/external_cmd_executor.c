@@ -3,14 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   external_cmd_executor.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 20:48:25 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/01 16:51:46 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/04 16:05:10 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+char	**add_cmd_to_args(char *cmd, char	**args)
+{
+	char	**res;
+	t_ulong	res_i;
+	t_ulong	args_i;
+
+	res = ms_calloc(ms_arrlen((void **) args) + 2, sizeof(char **));
+	res_i = 0;
+	res[res_i] = ms_strdup(cmd);
+	res_i++;
+	args_i = 0;
+	while (args[args_i] != NULL)
+	{
+		res[res_i] = ms_strdup(args[args_i]);
+		args_i++;
+		res_i++;
+	}
+	res[res_i] = NULL;
+	ms_arrfree(args);
+	return (res);
+}
 
 void	execute_external(t_shell *shell, t_token *token)
 {
@@ -25,6 +47,7 @@ void	execute_external(t_shell *shell, t_token *token)
 		exit(EC_CMD_NOT_FOUND);
 	}
 	env = env_to_array(shell);
+	token->args = add_cmd_to_args(token->cmd, token->args);
 	execve(path, token->args, env);
 	free(path);
 	ms_arrfree(env);

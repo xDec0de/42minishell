@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_export.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 01:02:08 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/21 01:04:14 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/04 16:16:19 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ bool	env_export(t_shell *shell, char *env)
 	node = env_get(shell, key);
 	if (node != NULL)
 	{
-		free (node->value);
+		free(node->value);
 		node->value = ms_strdup(equal + 1);
 		return (true);
 	}

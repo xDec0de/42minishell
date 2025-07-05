@@ -3,21 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:17 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/29 21:39:16 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/05 11:09:08 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*get_prompt(void)
+char	*get_prompt(t_shell *shell)
 {
 	char	*prompt;
-	char	pwd[PATH_MAX];
+	char	pwd;
 
-	getcwd(pwd, PATH_MAX);
+	pwd = get_pwd(shell);
+	if (pwd == NULL)
+		pwd = ".";
 	prompt = ms_strreplace(SHELL_PROMPT, 10, 1, pwd);
 	return (prompt);
 }

@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:17 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/05 11:09:08 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/05 11:22:07 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*get_prompt(t_shell *shell)
 {
 	char	*prompt;
-	char	pwd;
+	char	*pwd;
 
 	pwd = get_pwd(shell);
 	if (pwd == NULL)
@@ -37,7 +37,7 @@ int	main(int argc, char **argv, char **envp)
 	{
 		if (shell->last_input != NULL)
 			free(shell->last_input);
-		prompt = get_prompt();
+		prompt = get_prompt(shell);
 		shell->last_input = readline(prompt);
 		free(prompt);
 		if (shell->last_input == NULL)

@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/05 09:53:33 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/05 12:16:40 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,12 @@
 
 /* errno */
 # include <errno.h>
+
+/* open */
+# include <fcntl.h>
+
+/* stat, lstat & fstat */
+# include <sys/stat.h>
 
 # define SHELL_PROMPT "minishell: $ "
 

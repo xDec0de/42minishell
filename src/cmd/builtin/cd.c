@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 19:50:22 by rexposit          #+#    #+#             */
-/*   Updated: 2025/07/05 12:36:50 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/05 13:22:55 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ int	bltn_cd(t_shell *shell, char **args)
 	else
 		path = args[0];
 	if (path == NULL)
-		return (EXEC_FAIL);
+		return (ms_print(FD_ERR, CD_NO_HOME), EXEC_FAIL);
 	chdir_res = chdir(path);
 	if (chdir_res != 0)
 		return (perror(CD_CHDIR_ERR), chdir_res);
 	path = getcwd(NULL, 0);
 	if (path == NULL)
-		return (EXEC_FAIL);
+		return (ms_print(FD_ERR, CD_PWD_ERR), EXEC_FAIL);
 	set_pwd(shell, path);
 	free(path);
 	return (EXEC_OK);

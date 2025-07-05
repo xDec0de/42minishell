@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 10:50:33 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/05 12:34:46 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/05 13:10:24 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,9 @@ void	execute_fork_builtins(struct s_shell *shell, struct s_token *token);
 
 int		bltn_cd(struct s_shell *shell, char **args);
 
-# define CD_CHDIR_ERR "cd: chdir error"
-# define CD_PWD_ERR "cd: could not obtain pwd"
+# define CD_NO_HOME "minishell: cd: HOME not set\n"
+# define CD_CHDIR_ERR "minishell: cd: chdir error"
+# define CD_PWD_ERR "minishell: cd: could not obtain pwd"
 
 /*
  - Builtins - echo

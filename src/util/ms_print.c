@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_utils.h                                         :+:      :+:    :+:   */
+/*   ms_print.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/22 13:23:59 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/05 13:13:47 by daniema3         ###   ########.fr       */
+/*   Created: 2025/07/05 13:11:24 by daniema3          #+#    #+#             */
+/*   Updated: 2025/07/05 13:13:16 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MS_UTILS_H
-# define MS_UTILS_H
+#include "str_utils.h"
 
-# include "ms_types.h"
-# include "array_utils.h"
-# include "char_utils.h"
-# include "mem_utils.h"
-# include "str_utils.h"
-
-void	ms_print(int fd, char *msg);
-
-#endif
+void	ms_print(int fd, char *msg)
+{
+	if (msg == NULL)
+		write(fd, "(null)", 6);
+	else
+		write(fd, msg, ms_strlen(msg));
+}

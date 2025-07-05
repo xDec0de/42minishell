@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/07/04 16:47:53 by daniema3         ###   ########.fr        #
+#    Updated: 2025/07/05 13:15:08 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,6 +80,7 @@ SRCS +=	signal/signal_handler.c
 # > ~ Util
 
 SRCS +=	util/ms_exit.c \
+		util/ms_print.c \
 		util/shell_getter.c
 
 # > ~ Array utils

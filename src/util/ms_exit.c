@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 20:46:52 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/30 00:37:12 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/05 11:11:14 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	ms_free(t_shell	*shell)
 		free(shell->last_input);
 	free_token_list(shell->last_tokens);
 	env_free(shell);
+	if (shell->pwd != NULL)
+		free(shell->pwd);
 	free(shell);
 }
 

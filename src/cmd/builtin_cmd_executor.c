@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_cmd_executor.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 17:57:40 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/01 16:53:14 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/05 10:20:35 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,5 @@ void	execute_fork_builtins(t_shell *shell, t_token *token)
 	if (ms_strequals(token->cmd, "echo"))
 		bltn_echo(token->args);
 	if (ms_strequals(token->cmd, "pwd"))
-		bltn_pwd();
+		bltn_pwd(shell);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell_getter.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 21:00:22 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/30 01:08:01 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/05 10:51:57 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_shell	*init_shell(char **env)
 	init->last_tokens = NULL;
 	init->last_exit_code = 0;
 	init->env = NULL;
+	init->pwd = NULL;
 	env_init(init, env);
 	return (store_shell(init));
 }

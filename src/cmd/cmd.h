@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 10:50:33 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/01 16:52:49 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/05 10:51:19 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,11 @@ int		bltn_export(struct s_shell *shell, char **args);
  - Builtins - pwd
  */
 
-void	bltn_pwd(void);
+char	*get_pwd(struct s_shell *shell);
+
+bool	set_pwd(t_shell *shell, char *pwd);
+
+void	bltn_pwd(struct s_shell *shell);
 
 /*
  - Builtins - unset

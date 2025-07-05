@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   char_utils.h                                       :+:      :+:    :+:   */
+/*   ms_isspecial.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/22 13:33:41 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/04 16:47:22 by daniema3         ###   ########.fr       */
+/*   Created: 2025/07/04 16:45:26 by daniema3          #+#    #+#             */
+/*   Updated: 2025/07/04 16:47:02 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHAR_UTILS_H
-# define CHAR_UTILS_H
+#include "ms_types.h"
 
-/* bool type */
-# include <stdbool.h>
-
-bool	ms_isdigit(char ch);
-
-bool	ms_isquote(char c);
-
-bool	ms_isspace(char ch);
-
-bool	ms_isspecial(char ch);
-
-#endif
+bool	ms_isspecial(char ch)
+{
+	return (ch == '|' || ch == '<' || ch == '>');
+}

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+         #
+#    By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/06/30 15:21:06 by rexposit         ###   ########.fr        #
+#    Updated: 2025/07/04 16:47:53 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,7 +93,8 @@ SRCS +=	util/array/ms_arradd.c \
 
 SRCS += util/char/ms_isdigit.c \
 		util/char/ms_isquote.c \
-		util/char/ms_isspace.c
+		util/char/ms_isspace.c \
+		util/char/ms_isspecial.c
 
 # > ~ Memory utils
 

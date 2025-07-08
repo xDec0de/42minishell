@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 19:15:18 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/26 19:18:01 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/08 13:30:09 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 
 int	main(void)
 {
-	FREE_ASSERT_STR_EQUALS(ms_strremchar("Hello world", 'l'), "Heo word", 1);
+	FREE_ASSERT_STR_EQUALS(ms_strremchar("Hello world", 'l'), "Heo word");
 }

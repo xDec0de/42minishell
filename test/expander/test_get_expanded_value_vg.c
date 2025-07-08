@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 12:40:43 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/29 17:55:07 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/08 13:25:08 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ int	main(int argc, char **argv, char **env)
 	shell = init_shell(env);
 	env_export(shell, "TEST_VAR=12345");
 	env_export(shell, "LONG_KEY_WITH_STR_VALUE=Hello");
-	FREE_ASSERT_STR_EQUALS(get_expanded_value(shell, "echo $TEST_VAR ...", 6), "12345", 1);
-	FREE_ASSERT_STR_EQUALS(get_expanded_value(shell, "echo $TEST_VAR", 6), "12345", 2);
-	FREE_ASSERT_STR_EQUALS(get_expanded_value(shell, "echo $?", 6), "0", 3);
-	FREE_ASSERT_STR_EQUALS(get_expanded_value(shell, "echo $DOESNT_EXIST", 6), "", 4);
-	FREE_ASSERT_STR_EQUALS(get_expanded_value(shell, "echo $LONG_KEY_WITH_STR_VALUE", 6), "Hello", 5);
+	FREE_ASSERT_STR_EQUALS(get_expanded_value(shell, "echo $TEST_VAR ...", 6), "12345");
+	FREE_ASSERT_STR_EQUALS(get_expanded_value(shell, "echo $TEST_VAR", 6), "12345");
+	FREE_ASSERT_STR_EQUALS(get_expanded_value(shell, "echo $?", 6), "0");
+	FREE_ASSERT_STR_EQUALS(get_expanded_value(shell, "echo $DOESNT_EXIST", 6), "");
+	FREE_ASSERT_STR_EQUALS(get_expanded_value(shell, "echo $LONG_KEY_WITH_STR_VALUE", 6), "Hello");
 	shell->last_exit_code = 42;
-	FREE_ASSERT_STR_EQUALS(get_expanded_value(shell, "echo $?", 6), "42", 6);
-	FREE_ASSERT_STR_EQUALS(get_expanded_value(shell, "echo $", 6), "$", 7);
+	FREE_ASSERT_STR_EQUALS(get_expanded_value(shell, "echo $?", 6), "42");
+	FREE_ASSERT_STR_EQUALS(get_expanded_value(shell, "echo $", 6), "$");
 	ms_exit(EXEC_OK, NULL);
 }

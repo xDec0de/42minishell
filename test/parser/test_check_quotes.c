@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 05:32:17 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/22 14:17:24 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/08 13:25:23 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 int	main(void)
 {
-	ASSERT_TRUE(check_quotes("Hello world"), 1);
-	ASSERT_TRUE(check_quotes("\"Hello world\""), 2);
-	ASSERT_TRUE(check_quotes("'\"Hello world\"'"), 3);
-	ASSERT_FALSE(check_quotes("'\"Hello world\""), 4);
+	ASSERT_TRUE(check_quotes("Hello world"));
+	ASSERT_TRUE(check_quotes("\"Hello world\""));
+	ASSERT_TRUE(check_quotes("'\"Hello world\"'"));
+	ASSERT_FALSE(check_quotes("'\"Hello world\""));
 }

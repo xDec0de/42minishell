@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 01:42:07 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/22 14:15:09 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/08 13:30:04 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	main(void)
 {
-	ASSERT_ULONG_EQUALS(ms_strlen(NULL), 0L, 1);
-	ASSERT_ULONG_EQUALS(ms_strlen(""), 0L, 2);
-	ASSERT_ULONG_EQUALS(ms_strlen("Hi"), 2L, 3);
+	ASSERT_ULONG_EQUALS(ms_strlen(NULL), 0L);
+	ASSERT_ULONG_EQUALS(ms_strlen(""), 0L);
+	ASSERT_ULONG_EQUALS(ms_strlen("Hi"), 2L);
 }

@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 05:07:26 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/29 22:09:45 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/08 13:13:23 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,13 @@ char			**to_token_array(const char *input);
  - Input validator
  */
 
+bool			check_special_char_count(const char *input);
+
+# define SCC_ERR "minishell: Syntax error: Unexpected special character.\n"
+
 bool			check_quotes(const char *line);
+
+bool			validate_input(const char *line);
 
 /*
  - Tokenizer

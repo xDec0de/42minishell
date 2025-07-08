@@ -6,11 +6,39 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 05:23:00 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/22 14:19:05 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/08 13:14:23 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ms_types.h"
+#include "minishell.h"
+
+bool	check_special_char_count(const char *input)
+{
+	t_ulong	i;
+
+	i = 0;
+	while (input[i] != '\0')
+	{
+		if (input[i] == '|' && ms_isspecial(input[i + 1]))
+			return (ms_print(FD_ERR, SCC_ERR), false);
+		if (input[i] == '>')
+		{
+			if (input[i + 1] == '>' && ms_isspecial(input[i + 2]))
+				return (ms_print(FD_ERR, SCC_ERR), false);
+			else if (input[i + 1] != '>' && ms_isspecial(input[i + 1]))
+				return (ms_print(FD_ERR, SCC_ERR), false);
+		}
+		if (input[i] == '<')
+		{
+			if (input[i + 1] == '<' && ms_isspecial(input[i + 2]))
+				return (ms_print(FD_ERR, SCC_ERR), false);
+			else if (input[i + 1] != '<' && ms_isspecial(input[i + 1]))
+				return (ms_print(FD_ERR, SCC_ERR), false);
+		}
+		i++;
+	}
+	return (true);
+}
 
 bool	check_quotes(const char *line)
 {
@@ -30,4 +58,9 @@ bool	check_quotes(const char *line)
 		i++;
 	}
 	return (!in_single && !in_double);
+}
+
+bool	validate_input(const char *line)
+{
+	return (check_quotes(line) && check_special_char_count(line));
 }

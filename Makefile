@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/07/05 13:15:08 by daniema3         ###   ########.fr        #
+#    Updated: 2025/07/12 17:18:51 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -196,7 +196,7 @@ norm:
 	@mkdir -p $(LOG_DIR)
 	@rm -rf $(NORM_ERRFILE)
 	@echo -n "\r⏳ $(YLW)Executing norminette on $(WNAME)$(GRAY)...$(RES)"
-	@norminette $(SRC_DIR) | grep "Error:" > $(NORM_ERRFILE) || true
+	@norminette $(SRC_DIR) | grep "Error" > $(NORM_ERRFILE) || true
 	@if [ -s $(NORM_ERRFILE) ]; then \
 		echo -n "\r❌ $(RED)Norm errors found on $(ERRNAME)$(GRAY):$(RES)\n";\
 		cat $(NORM_ERRFILE) | sed 's/^Error:/-/'; \

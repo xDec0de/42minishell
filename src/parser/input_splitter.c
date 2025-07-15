@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   input_splitter.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: rexposit <rexposit@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 14:47:59 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/27 18:18:37 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/15 19:26:10 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ms_types.h"
-#include "str_utils.h"
-#include "char_utils.h"
-/* free */
-#include <stdlib.h>
+#include "minishell.h"
 
 t_ulong	get_token_count(const char *input)
 {

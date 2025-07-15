@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 15:25:21 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/30 00:27:45 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/15 20:30:46 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ t_token	*add_token(t_token *head, char ***value, t_token_type type)
 	t_token	*new;
 
 	new = ms_malloc(sizeof(t_token));
-	new->cmd = ms_strdup(*value[0]);
+	if (*value == NULL)
+		new->cmd = NULL;
+	else
+		new->cmd = ms_strdup(*value[0]);
 	new->args = ms_arrdup(1, *value);
 	new->type = type;
 	new->next = NULL;

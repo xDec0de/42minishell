@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_executor.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 22:00:01 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/30 01:10:52 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/15 20:34:48 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	execute_cmd(t_shell *shell, t_token *token)
 {
 	int		exit_code;
 
+	if (token->cmd == NULL)
+		return ;
 	expand_token(shell, token);
 	if (is_state_builtin(token->cmd))
 		exit_code = execute_state_builtins(shell, token);

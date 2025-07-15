@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 05:23:00 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/15 19:04:04 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/07/15 20:10:35 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ bool	check_special_char_count(const char *input)
 	return (true);
 }
 
-bool	check_quotes(const char *line)
+bool	check_quotes(const char *input)
 {
 	t_ulong	i;
 	bool	in_single;
@@ -49,15 +49,22 @@ bool	check_quotes(const char *line)
 	i = 0;
 	in_single = false;
 	in_double = false;
-	while (line[i] != '\0')
+	while (input[i] != '\0')
 	{
-		if (!in_double && line[i] == '\'')
+		if (!in_double && input[i] == '\'')
 			in_single = !in_single;
-		else if (!in_single && line[i] == '"')
+		else if (!in_single && input[i] == '"')
 			in_double = !in_double;
 		i++;
 	}
 	return (!in_single && !in_double);
+}
+
+bool	check_first_special(const char *input)
+{
+	if (input[0] == '<')
+		return (input[1] == '<');
+	return (!ms_isspecial(input[0]));
 }
 
 bool	validate_input(const char *input)
@@ -69,7 +76,7 @@ bool	validate_input(const char *input)
 		ms_print(STDERR_FILENO, "minishell: Syntax error: Unclosed quotes.\n");
 		return (false);
 	}
-	if (ms_isspecial(input[0]))
+	if (check_first_special(input))
 		return (ms_print(FD_ERR, SCC_ERR), false);
 	if (!check_special_char_count(input))
 		return (false);

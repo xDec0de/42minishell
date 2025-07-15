@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 05:23:00 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/15 20:10:35 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/07/15 20:46:02 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ bool	validate_input(const char *input)
 		ms_print(STDERR_FILENO, "minishell: Syntax error: Unclosed quotes.\n");
 		return (false);
 	}
-	if (check_first_special(input))
+	if (!check_first_special(input))
 		return (ms_print(FD_ERR, SCC_ERR), false);
 	if (!check_special_char_count(input))
 		return (false);

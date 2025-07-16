@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   external_cmd_executor.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rexposit <rexposit@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 20:48:25 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/04 16:05:10 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/16 09:13:47 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,17 @@ char	**add_cmd_to_args(char *cmd, char	**args)
 	return (res);
 }
 
+void	check_null_path(t_token *token, char *path)
+{
+	if (path == NULL)
+	{
+		ms_print(FD_ERR, "minishell: ");
+		ms_print(FD_ERR, token->cmd);
+		ms_print(FD_ERR, ": command not found\n");
+		exit(EC_CMD_NOT_FOUND);
+	}
+}
+
 void	execute_external(t_shell *shell, t_token *token)
 {
 	char	**env;
@@ -41,11 +52,7 @@ void	execute_external(t_shell *shell, t_token *token)
 	char	*err;
 
 	path = get_cmd_from_path(shell, token->cmd);
-	if (path == NULL)
-	{
-		fprintf(stderr, "minishell: %s: command not found\n", token->cmd);
-		exit(EC_CMD_NOT_FOUND);
-	}
+	check_null_path(token, path);
 	env = env_to_array(shell);
 	token->args = add_cmd_to_args(token->cmd, token->args);
 	execve(path, token->args, env);
@@ -53,10 +60,16 @@ void	execute_external(t_shell *shell, t_token *token)
 	ms_arrfree(env);
 	if (errno == EACCES)
 	{
-		fprintf(stderr, "minishell: %s: Permission denied\n", token->cmd);
+		ms_print(FD_ERR, "minishell: ");
+		ms_print(FD_ERR, token->cmd);
+		ms_print(FD_ERR, ": Permission denied\n");
 		exit(EC_NO_PERM);
 	}
 	err = strerror(errno);
-	fprintf(stderr, "minishell: %s: %s\n", token->cmd, err);
+	ms_print(FD_ERR, "minishell: ");
+	ms_print(FD_ERR, token->cmd);
+	ms_print(FD_ERR, ": ");
+	ms_print(FD_ERR, err);
+	ms_print(FD_ERR, "\n");
 	exit(errno);
 }

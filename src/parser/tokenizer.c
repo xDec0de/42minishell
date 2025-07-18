@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 15:25:21 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/18 19:49:37 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/18 21:33:03 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,13 @@ void	free_token_list(t_token *head)
 	while (head != NULL)
 	{
 		tmp = head->next;
-		free(head->cmd);
+		if (head->cmd != NULL)
+			free(head->cmd);
 		ms_arrfree(head->args);
+		if (head->infile != NULL)
+			free(head->infile);
+		if (head->outfile != NULL)
+			free(head->outfile);
 		free(head);
 		head = tmp;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 10:50:33 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/05 13:10:24 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/18 20:09:20 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ struct	s_token;
  */
 
 void	handle_cmd_input(struct s_shell *shell);
+
+/*
+ - Redirections
+ */
+
+bool	setup_redirections(struct s_token *token);
 
 /*
  - Command executor

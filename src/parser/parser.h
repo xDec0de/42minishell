@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 05:07:26 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/08 13:13:23 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/18 19:46:03 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,6 @@
 # define PARSER_H
 
 # include "ms_types.h"
-
-/*
- - Parsed command
- */
-
-typedef struct s_command
-{
-	char				**argv;
-	char				*infile;
-	char				*outfile;
-	bool				is_append;
-	bool				is_heredoc;
-	struct s_command	*next;
-}	t_command;
 
 /*
  - Tokenizer
@@ -47,6 +33,8 @@ typedef struct s_token
 {
 	char			*cmd;
 	char			**args;
+	char			*infile;
+	char			*outfile;
 	t_token_type	type;
 	struct s_token	*next;
 }	t_token;

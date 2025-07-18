@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+         #
+#    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/07/12 17:18:51 by daniema3         ###   ########.fr        #
+#    Updated: 2025/07/18 20:09:46 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRCS += cmd/builtin_cmd_executor.c \
 		cmd/cmd_handler.c \
 		cmd/external_cmd_executor.c \
 		cmd/find_path.c \
+		cmd/redirections.c
 
 # > ~ Commands - Builtins
 

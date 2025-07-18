@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 15:25:21 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/15 20:30:46 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/18 19:49:37 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ t_token	*add_token(t_token *head, char ***value, t_token_type type)
 	new->args = ms_arrdup(1, *value);
 	new->type = type;
 	new->next = NULL;
+	new->infile = NULL;
+	new->outfile = NULL;
 	ms_arrfree(*value);
 	*value = NULL;
 	tmp = head;

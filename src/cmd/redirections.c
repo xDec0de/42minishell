@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 19:36:43 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/18 19:58:03 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/18 20:46:27 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ bool	open_input(char *infile)
 	if (fd == -1 || dup2(fd, FD_IN) == -1)
 		return (false);
 	close(fd);
-	return (0);
+	return (true);
 }
 
 bool	open_output(char *outfile, t_token *token)

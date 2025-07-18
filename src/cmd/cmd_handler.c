@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/29 21:35:57 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/18 20:23:56 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/18 20:44:07 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	handle_cmd_input(t_shell *shell)
 		return ;
 	og_stdin = dup(FD_IN);
 	og_stdout = dup(FD_OUT);
-	execute_cmd(shell, shell->last_tokens);
+	execute_tokens(shell, shell->last_tokens);
 	dup2(og_stdin, FD_IN);
 	dup2(og_stdout, FD_OUT);
 	close(og_stdin);

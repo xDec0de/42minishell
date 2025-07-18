@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 10:50:33 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/18 20:09:20 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/18 20:44:24 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ bool	setup_redirections(struct s_token *token);
  - Command executor
  */
 
-void	execute_cmd(struct s_shell *shell, struct s_token *token);
+void	execute_tokens(struct s_shell *shell, struct s_token *token);
 
 /*
  - External command executor

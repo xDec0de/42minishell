@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   external_cmd_executor.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rexposit <rexposit@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 20:48:25 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/16 09:13:47 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/07/18 21:28:46 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

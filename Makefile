@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/07/18 20:09:46 by daniema3         ###   ########.fr        #
+#    Updated: 2025/07/18 22:22:55 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,7 @@ SRCS +=	expander/expand_token.c \
 
 SRCS +=	parser/input_splitter.c \
 		parser/input_validator.c \
+		parser/token_cleaner.c \
 		parser/tokenizer.c
 
 # > ~ Signal

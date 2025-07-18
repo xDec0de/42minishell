@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 15:25:21 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/18 21:33:03 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/18 22:20:04 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,23 +94,4 @@ t_token	*tokenize(char **tokens)
 	if (value != NULL)
 		head = add_token(head, &value, T_END);
 	return (head);
-}
-
-void	free_token_list(t_token *head)
-{
-	t_token	*tmp;
-
-	while (head != NULL)
-	{
-		tmp = head->next;
-		if (head->cmd != NULL)
-			free(head->cmd);
-		ms_arrfree(head->args);
-		if (head->infile != NULL)
-			free(head->infile);
-		if (head->outfile != NULL)
-			free(head->outfile);
-		free(head);
-		head = tmp;
-	}
 }

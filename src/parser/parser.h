@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 05:07:26 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/18 19:46:03 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/18 22:22:35 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,12 @@ bool			check_special_char_count(const char *input);
 bool			check_quotes(const char *line);
 
 bool			validate_input(const char *line);
+
+/*
+ - Token cleaner
+ */
+
+void			clean_tokens(t_token *tokens);
 
 /*
  - Tokenizer

@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 22:00:01 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/18 21:31:40 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/18 22:42:20 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,18 @@
 
 static void	child_process(t_shell *shell, t_token *token, int *pipefd)
 {
+	if (!setup_redirections(token))
+		exit(1);
 	if (token->type == T_PIPE)
 	{
 		close(pipefd[FD_IN]);
-		dup2(pipefd[FD_OUT], FD_OUT);
+		if (dup2(pipefd[FD_OUT], FD_OUT) == -1)
+			ms_exit(EXEC_FAIL, NULL);
 		close(pipefd[FD_OUT]);
 	}
-	if (!setup_redirections(token))
-		exit(1);
 	execute_fork_builtins(shell, token);
 	execute_external(shell, token);
-	exit(0);
+	ms_exit(EXEC_OK, NULL);
 }
 
 static void	parent_process(t_shell *shell, t_token *token, int *ec, int *pipefd)
@@ -82,6 +83,7 @@ void	execute_tokens(t_shell *shell, t_token *token)
 		return ;
 	expand_token(shell, token);
 	fill_redirections(token);
+	clean_tokens(token);
 	if (is_state_builtin(token->cmd))
 		exit_code = execute_state_builtins(shell, token);
 	else

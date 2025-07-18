@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 22:00:01 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/18 22:42:20 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/18 23:42:58 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	child_process(t_shell *shell, t_token *token, int *pipefd)
 {
 	if (!setup_redirections(token))
-		exit(1);
+		ms_exit(EXEC_FAIL, NULL);
 	if (token->type == T_PIPE)
 	{
 		close(pipefd[FD_IN]);

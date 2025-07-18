@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 19:36:43 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/18 22:00:46 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/18 22:53:52 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ bool	open_output(char *outfile, t_token *token)
 
 bool	setup_redirections(t_token *token)
 {
-	if (token->infile && !open_input(token->infile))
+	if (token->infile != NULL && !open_input(token->infile))
 		return (false);
-	if (token->outfile && !open_output(token->outfile, token))
+	if (token->outfile != NULL && !open_output(token->outfile, token))
 		return (false);
 	return (true);
 }

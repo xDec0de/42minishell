@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 20:48:25 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/18 21:28:46 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/18 21:59:32 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	check_null_path(t_token *token, char *path)
 		ms_print(FD_ERR, "minishell: ");
 		ms_print(FD_ERR, token->cmd);
 		ms_print(FD_ERR, ": command not found\n");
-		exit(EC_CMD_NOT_FOUND);
+		ms_exit(EC_CMD_NOT_FOUND, NULL);
 	}
 }
 
@@ -63,7 +63,7 @@ void	execute_external(t_shell *shell, t_token *token)
 		ms_print(FD_ERR, "minishell: ");
 		ms_print(FD_ERR, token->cmd);
 		ms_print(FD_ERR, ": Permission denied\n");
-		exit(EC_NO_PERM);
+		ms_exit(EC_NO_PERM, NULL);
 	}
 	err = strerror(errno);
 	ms_print(FD_ERR, "minishell: ");
@@ -71,5 +71,5 @@ void	execute_external(t_shell *shell, t_token *token)
 	ms_print(FD_ERR, ": ");
 	ms_print(FD_ERR, err);
 	ms_print(FD_ERR, "\n");
-	exit(errno);
+	ms_exit(errno, NULL);
 }

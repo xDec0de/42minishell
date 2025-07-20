@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 10:50:33 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/18 20:44:24 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/20 17:13:11 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,15 @@ void	handle_cmd_input(struct s_shell *shell);
 /*
  - Redirections
  */
+
+/**
+ * File permission macro for Unix mode 0644:
+ * - User (U): (R)ead + (W)rite -> 6
+ * - Group (G): (R)ead only -> 4
+ * - Others (O): (R)ead only -> 4
+ * - Sections separated by underscores: URW_GR_OR
+ */
+#define PERM_URW_GR_OR 0644
 
 bool	setup_redirections(struct s_token *token);
 

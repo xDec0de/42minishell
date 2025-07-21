@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 10:50:33 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/20 17:13:11 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/21 21:15:43 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	handle_cmd_input(struct s_shell *shell);
  * - Others (O): (R)ead only -> 4
  * - Sections separated by underscores: URW_GR_OR
  */
-#define PERM_URW_GR_OR 0644
+# define PERM_URW_GR_OR 0644
 
 bool	setup_redirections(struct s_token *token);
 

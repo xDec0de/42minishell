@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rexposit <rexposit@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 10:50:33 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/21 21:15:43 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/22 01:25:35 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	*get_cmd_from_path(struct s_shell *shell, char *cmd);
 # define EXECVE_ERRN -1
 
 /*
- - Bultin command executor
+ - Builtin command executor
  */
 
 bool	is_state_builtin(char *cmd);

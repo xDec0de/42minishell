@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_executor.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: rexposit <rexposit@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 22:00:01 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/18 23:42:58 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/22 05:25:40 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,10 @@ void	fill_redirections(t_token *tokens)
 	token = tokens;
 	while (token != NULL && token->next != NULL)
 	{
-		if (token->type == T_REDIR_IN || token->type == T_HEREDOC)
+		if (token->type == T_REDIR_IN)
 			token->infile = ms_strdup(token->next->cmd);
+		else if (token->type == T_HEREDOC)
+			token->infile = create_heredoc(token->next->cmd);
 		else if (token->type == T_REDIR_OUT || token->type == T_REDIR_APPEND)
 			token->outfile = ms_strdup(token->next->cmd);
 		token = token->next;

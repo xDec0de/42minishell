@@ -6,16 +6,32 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 13:26:41 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/22 15:23:22 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/22 15:44:57 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test_exec.h"
 
+static char	*get_shlvl(char **env)
+{
+	for (int i = 0; env[i]; i++)
+		if (strncmp(env[i], "SHLVL=", 6) == 0)
+			return ms_strjoin("export SHLVL=", ms_itoa(ms_atoi(env[i] + 6)), '\0');
+	return ms_strdup("export SHLVL=1");
+}
+
 int	main(int argc, char **argv, char **env)
 {
+	char	*shlvl = get_shlvl(env);
+
 	MS_INIT(argc, argv, env);
+	// Fix SHLVL
+	MS_EXEC(shlvl);
+	free(shlvl);
+	// Non-state builtins
 	ASSERT_EXEC_EQUALS("echo Hello world");
+	ASSERT_EXEC_EQUALS("env");
+	// External commands
 	ASSERT_EXEC_EQUALS("ls");
 	ASSERT_EXEC_EQUALS("echo pipe | cat -e");
 	ASSERT_EXEC_EQUALS("cat < README.md | grep stdlib.h");

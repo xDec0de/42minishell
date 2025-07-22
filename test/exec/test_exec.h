@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 13:26:59 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/22 15:23:47 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/22 15:38:42 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@ t_shell *shell;
 	close(__old_stderr__);\
 } while (0)
 
+#define MS_EXEC(cmd) do {\
+	shell->last_input = (cmd);\
+	SILENCE_STDIO(handle_cmd_input(shell));\
+} while (0)
 
 #define ASSERT_EXEC_EQUALS(cmd) do {\
 	system("mkdir -p "LOG_PATH);\

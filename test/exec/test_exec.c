@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 13:26:41 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/22 16:02:17 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:15:03 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	main(int argc, char **argv, char **env)
 	// Non-state builtins
 	ASSERT_EXEC_EQUALS("echo Hello world");
 	ASSERT_EXEC_EQUALS("env");
+	ASSERT_EXEC_EQUALS("pwd");
 	// External commands
 	ASSERT_EXEC_EQUALS("ls");
 	ASSERT_EXEC_EQUALS("echo pipe | cat -e");

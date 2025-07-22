@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 13:26:59 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/22 16:07:34 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:13:59 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_shell *shell;
 	(void) (argc);\
 	(void) (argv);\
 	shell = init_shell((env));\
+	get_pwd(shell);\
 } while (0)
 
 #define SILENCE_STDIO(code) do {\

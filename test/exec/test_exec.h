@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 13:26:59 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/22 16:13:59 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:34:52 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,27 @@ t_shell *shell;
 	unlink((ms_file));\
 	unlink((sh_file));\
 } while(0)
+
+#define ASSERT_HEREDOC(input, expected_output) do {\
+	FILE *script = fopen("hd_input", "w");\
+	if (!script) {\
+		perror("fopen hd_input");\
+		exit(1);\
+	}\
+	fprintf(script, "%s\n", (input));\
+	fclose(script);\
+	SILENCE_STDIO(system("./minishell < hd_input"));\
+	FILE *expected = fopen("hd_expected", "w");\
+	if (!expected) {\
+		perror("fopen hd_expected");\
+		exit(1);\
+	}\
+	fprintf(expected, "%s\n", (expected_output));\
+	fclose(expected);\
+	ASSERT_FILE_EQUALS((input), "here_doc", "hd_expected");\
+	unlink("here_doc");\
+	unlink("hd_input");\
+	unlink("hd_expected");\
+} while (0)
 
 #endif

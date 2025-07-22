@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 13:26:41 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/22 16:36:57 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:55:50 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,9 @@ int	main(int argc, char **argv, char **env)
 	ASSERT_EXEC_EQUALS("cat < README.md | grep stdlib.h");
 	// Heredoc
 	ASSERT_HEREDOC("cat << EOF > here_doc\nHello world\nEOF", "Hello world");
+	// Some random command
+	ASSERT_EXEC_EXIT_CODE("unknown_random_command", EC_CMD_NOT_FOUND);
+	// Unset PATH
+	MS_EXEC("unset PATH");
+	ASSERT_EXEC_EXIT_CODE("ls", EC_CMD_NOT_FOUND);
 }

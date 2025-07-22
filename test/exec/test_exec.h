@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 13:26:59 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/22 16:34:52 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:53:28 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,16 @@ t_shell *shell;
 #define MS_EXEC(cmd) do {\
 	shell->last_input = (cmd);\
 	SILENCE_STDIO(handle_cmd_input(shell));\
+} while (0)
+
+#define ASSERT_EXEC_EXIT_CODE(cmd, expected_code) do {\
+	__TEST_NUMBER__++;\
+	shell->last_input = strdup(cmd);\
+	SILENCE_STDIO(handle_cmd_input(shell));\
+	if (shell->last_exit_code != (expected_code)) {\
+		fprintf(stderr, "Got exit code \"%d\" when expecting %d on %s", shell->last_exit_code, (expected_code), #cmd);\
+		exit(__TEST_NUMBER__);\
+	}\
 } while (0)
 
 #define ASSERT_EXEC_EQUALS(cmd) do {\

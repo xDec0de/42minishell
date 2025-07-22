@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_validator.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rexposit <rexposit@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 05:23:00 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/15 20:46:02 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/07/22 19:38:54 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,13 @@ bool	check_quotes(const char *input)
 	return (!in_single && !in_double);
 }
 
-bool	check_first_special(const char *input)
+static bool	check_limits_special(const char *input)
 {
 	if (input[0] == '<')
 		return (input[1] == '<');
-	return (!ms_isspecial(input[0]));
+	if (ms_isspecial(input[0]))
+		return (false);
+	return (!ms_isspecial(input[ms_strlen(input) - 1]));
 }
 
 bool	validate_input(const char *input)
@@ -76,7 +78,7 @@ bool	validate_input(const char *input)
 		ms_print(STDERR_FILENO, "minishell: Syntax error: Unclosed quotes.\n");
 		return (false);
 	}
-	if (!check_first_special(input))
+	if (!check_limits_special(input))
 		return (ms_print(FD_ERR, SCC_ERR), false);
 	if (!check_special_char_count(input))
 		return (false);

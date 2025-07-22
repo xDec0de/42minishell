@@ -42,6 +42,7 @@ void	handle_cmd_input(struct s_shell *shell);
 # define PERM_URW_GR_OR 0644
 
 bool	setup_redirections(struct s_token *token);
+char *create_heredoc(char *delimiter);
 
 /*
  - Command executor

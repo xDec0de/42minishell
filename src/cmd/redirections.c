@@ -12,6 +12,37 @@
 
 #include "minishell.h"
 
+char     *create_heredoc(char *delimiter)
+{
+        char    *line;
+        int             fd;
+        char    *tmpname;
+
+        tmpname = ms_strdup("/tmp/ms_hdXXXXXX");
+        fd = mkstemp(tmpname);
+        if (fd == -1)
+        {
+                free(tmpname);
+                return (NULL);
+        }
+        while (true)
+        {
+                line = readline("> ");
+                if (line == NULL)
+                        break ;
+                if (ms_strequals(line, delimiter))
+                {
+                        free(line);
+                        break ;
+                }
+                write(fd, line, ms_strlen(line));
+                write(fd, "\n", 1);
+                free(line);
+        }
+        close(fd);
+        return (tmpname);
+}
+
 bool	open_input(char *infile)
 {
 	int	fd;
@@ -56,9 +87,14 @@ bool	open_output(char *outfile, t_token *token)
 
 bool	setup_redirections(t_token *token)
 {
-	if (token->infile != NULL && !open_input(token->infile))
-		return (false);
-	if (token->outfile != NULL && !open_output(token->outfile, token))
-		return (false);
-	return (true);
+        if (token->infile != NULL)
+        {
+                if (!open_input(token->infile))
+                        return (false);
+                if (token->type == T_HEREDOC)
+                        unlink(token->infile);
+        }
+        if (token->outfile != NULL && !open_output(token->outfile, token))
+                return (false);
+        return (true);
 }

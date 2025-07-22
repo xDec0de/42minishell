@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 13:26:41 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/22 16:55:50 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/22 17:01:58 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ int	main(int argc, char **argv, char **env)
 	ASSERT_HEREDOC("cat << EOF > here_doc\nHello world\nEOF", "Hello world");
 	// Some random command
 	ASSERT_EXEC_EXIT_CODE("unknown_random_command", EC_CMD_NOT_FOUND);
+	// No permissions
+	MS_EXEC("touch no_perm");
+	MS_EXEC("chmod 0 no_perm");
+	ASSERT_EXEC_EXIT_CODE("./no_perm", EC_NO_PERM);
+	MS_EXEC("rm -rf no_perm");
+	// Execution error
+	ASSERT_EXEC_EXIT_CODE("cat -?", 1);
 	// Unset PATH
 	MS_EXEC("unset PATH");
 	ASSERT_EXEC_EXIT_CODE("ls", EC_CMD_NOT_FOUND);

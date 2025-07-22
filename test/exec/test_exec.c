@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 13:26:41 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/22 15:44:57 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/22 15:57:32 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static char	*get_shlvl(char **env)
 {
 	for (int i = 0; env[i]; i++)
 		if (strncmp(env[i], "SHLVL=", 6) == 0)
-			return ms_strjoin("export SHLVL=", ms_itoa(ms_atoi(env[i] + 6)), '\0');
-	return ms_strdup("export SHLVL=1");
+			return (ms_strjoin("export SHLVL=", ms_itoa(ms_atoi(env[i] + 6)), '\0'));
+	return (NULL);
 }
 
 int	main(int argc, char **argv, char **env)
@@ -26,8 +26,11 @@ int	main(int argc, char **argv, char **env)
 
 	MS_INIT(argc, argv, env);
 	// Fix SHLVL
-	MS_EXEC(shlvl);
-	free(shlvl);
+	if (shlvl != NULL)
+	{
+		MS_EXEC(shlvl);
+		free(shlvl);
+	}
 	// Non-state builtins
 	ASSERT_EXEC_EQUALS("echo Hello world");
 	ASSERT_EXEC_EQUALS("env");

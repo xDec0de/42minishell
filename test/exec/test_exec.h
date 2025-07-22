@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 13:26:59 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/22 15:59:52 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:07:34 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,20 +58,16 @@ t_shell *shell;
 	SILENCE_STDIO(handle_cmd_input(shell));\
 	SILENCE_STDIO(system(__aee_sh_cmd__));\
 	free(__aee_sh_cmd__);\
-	ASSERT_FILE_EQUALS(MS_OUT, SH_OUT);\
+	ASSERT_FILE_EQUALS(#cmd, MS_OUT, SH_OUT);\
 } while (0)
 
-#define ASSERT_FILE_EQUALS(ms_file, sh_file) do {\
+#define ASSERT_FILE_EQUALS(cmd, ms_file, sh_file) do {\
 	__TEST_NUMBER__++;\
 	char __cmd_diff__[256];\
 	snprintf(__cmd_diff__, sizeof(__cmd_diff__), "diff -q %s %s > /dev/null", (ms_file), (sh_file));\
 	int __afe_diff__ = system(__cmd_diff__);\
 	if (__afe_diff__ != 0) {\
-		fprintf(stderr, "Different command output. Check "LOG_PATH);\
-		system("echo ===== MINISHELL =====");\
-		system("cat "MS_OUT);\
-		system("echo ===== BASH =====");\
-		system("cat "SH_OUT);\
+		fprintf(stderr, "Different command output for %s. Check "LOG_PATH, cmd);\
 		exit(__TEST_NUMBER__);\
 	}\
 	unlink((ms_file));\

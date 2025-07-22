@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_strisnumeric.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 17:37:09 by daniema3          #+#    #+#             */
-/*   Updated: 2025/06/15 20:08:47 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/22 18:58:47 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ bool	ms_strisnumeric(const char *str, bool allow_spaces)
 		return (false);
 	if (allow_spaces == true)
 		i = skip_leading_spaces(str, i);
+	if (str[i] == '-' || str[i] == '+')
+		i++;
 	i = skip_digits(str, i, &found_digit);
 	if (found_digit == false)
 		return (false);

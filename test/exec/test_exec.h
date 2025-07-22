@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 13:26:59 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/22 15:54:40 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/22 15:59:52 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,9 @@ t_shell *shell;
 	int __afe_diff__ = system(__cmd_diff__);\
 	if (__afe_diff__ != 0) {\
 		fprintf(stderr, "Different command output. Check "LOG_PATH);\
+		system("echo ===== MINISHELL =====");\
 		system("cat "MS_OUT);\
+		system("echo ===== BASH =====");\
 		system("cat "SH_OUT);\
 		exit(__TEST_NUMBER__);\
 	}\

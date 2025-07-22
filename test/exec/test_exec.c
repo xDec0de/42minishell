@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 13:26:41 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/22 15:57:32 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:02:17 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	main(int argc, char **argv, char **env)
 		MS_EXEC(shlvl);
 		free(shlvl);
 	}
+	else
+		MS_EXEC("unset SHLVL");
 	// Non-state builtins
 	ASSERT_EXEC_EQUALS("echo Hello world");
 	ASSERT_EXEC_EQUALS("env");

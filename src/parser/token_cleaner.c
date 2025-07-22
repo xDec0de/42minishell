@@ -30,17 +30,34 @@ void	clean_tokens(t_token *tokens)
 	t_token	*to_delete;
 
 	current = tokens;
-	while (current != NULL && current->next != NULL)
-	{
-		if (current->type == T_REDIR_IN || current->type == T_REDIR_OUT
-			|| current->type == T_REDIR_APPEND || current->type == T_HEREDOC)
-		{
-			to_delete = current->next;
-			current->next = to_delete->next;
-			free_token(to_delete);
-		}
-		current = current->next;
-	}
+       while (current != NULL && current->next != NULL)
+       {
+               if (current->type == T_REDIR_IN || current->type == T_REDIR_OUT
+                       || current->type == T_REDIR_APPEND || current->type == T_HEREDOC)
+               {
+                       to_delete = current->next;
+                       current->next = to_delete->next;
+                       if (to_delete->infile != NULL)
+                       {
+                               if (current->infile != NULL)
+                                       free(current->infile);
+                               current->infile = to_delete->infile;
+                               to_delete->infile = NULL;
+                       }
+                       if (to_delete->outfile != NULL)
+                       {
+                               if (current->outfile != NULL)
+                                       free(current->outfile);
+                               current->outfile = to_delete->outfile;
+                               to_delete->outfile = NULL;
+                       }
+                       if (to_delete->type == T_PIPE)
+                               current->type = T_PIPE;
+                       free_token(to_delete);
+               }
+               else
+                       current = current->next;
+       }
 }
 
 void	free_token_list(t_token *head)

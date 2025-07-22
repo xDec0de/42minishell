@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 13:26:41 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/22 16:15:03 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/22 16:29:47 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,17 @@ int	main(int argc, char **argv, char **env)
 	ASSERT_EXEC_EQUALS("ls");
 	ASSERT_EXEC_EQUALS("echo pipe | cat -e");
 	ASSERT_EXEC_EQUALS("cat < README.md | grep stdlib.h");
+	// Heredoc
+	FILE *script = fopen("hd_input", "w");
+	fprintf(script,
+		"cat << EOF > here_doc\n"
+		"Hello world\n"
+		"EOF\n");
+	fclose(script);
+	SILENCE_STDIO(system("./minishell < hd_input"));
+	system("echo Hello world > hd_expected");
+	ASSERT_FILE_EQUALS("heredoc", "here_doc", "hd_expected");
+	unlink("here_doc");
+	unlink("hd_input");
+	unlink("hd_expected");
 }

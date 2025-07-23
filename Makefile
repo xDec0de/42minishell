@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/07/18 22:22:55 by daniema3         ###   ########.fr        #
+#    Updated: 2025/07/23 20:57:31 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -211,6 +211,38 @@ norm:
 build:
 	@$(MAKE) norm 2>/dev/null || true
 	@$(MAKE) re
+
+# > ~ Valgrind check
+
+VG_LOG = ./logs/valgrind.log
+
+valgrind:
+	@mkdir -p $(LOG_DIR)
+	@valgrind --leak-check=full --show-leak-kinds=all --log-file=$(VG_LOG) ./$(NAME)
+	@awk " \
+		/^==[0-9]+== [0-9,]+ bytes in/ { \
+			if (bytes) { \
+				if (is_readline) readline_total += bytes; \
+				else program_total += bytes; \
+			} \
+			line = \$$0; \
+			sub(/^==[0-9]+== /, \"\", line); \
+			sub(/ bytes.*/, \"\", line); \
+			gsub(\",\", \"\", line); \
+			bytes = line + 0; \
+			is_readline = 0; \
+			next; \
+		} \
+		/libreadline\\.so/ { is_readline = 1; } \
+		END { \
+			if (bytes) { \
+				if (is_readline) readline_total += bytes; \
+				else program_total += bytes; \
+			} \
+			printf \"Original valgrind log saved at $(VG_LOG)\n\"; \
+			printf \"Leaks from readline: %d bytes\\n\", readline_total; \
+			printf \"Leaks from $(NAME): %d bytes\\n\", program_total; \
+		}" $(VG_LOG)
 
 # > ~ Tests
 

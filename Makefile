@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/07/23 20:57:31 by daniema3         ###   ########.fr        #
+#    Updated: 2025/07/23 21:32:30 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -128,14 +128,16 @@ OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 # > ~ Colors!
 
-RED = \e[0;31m
-BRED = \e[1;31m
-GREEN = \e[1;32m
-YLW = \e[0;33m
-BYLW = \e[1;33m
-BLUE = \e[1;36m
-GRAY = \e[0;30m
-RES = \e[0m                                                                   
+RED = \033[0;31m
+BRED = \033[1;31m
+GREEN = \033[0;32m
+BGREEN = \033[1;32m
+YLW = \033[0;33m
+BYLW = \033[1;33m
+BLUE = \033[0;36m
+BBLUE = \033[1;36m
+GRAY = \033[0;30m
+RES = \033[0m                                                                   
 
 WNAME = $(BYLW)$(NAME)$(YLW)
 OKNAME = $(BLUE)$(NAME)$(GREEN)
@@ -219,30 +221,38 @@ VG_LOG = ./logs/valgrind.log
 valgrind:
 	@mkdir -p $(LOG_DIR)
 	@valgrind --leak-check=full --show-leak-kinds=all --log-file=$(VG_LOG) ./$(NAME)
-	@awk " \
+	@awk ' \
 		/^==[0-9]+== [0-9,]+ bytes in/ { \
 			if (bytes) { \
 				if (is_readline) readline_total += bytes; \
 				else program_total += bytes; \
 			} \
-			line = \$$0; \
-			sub(/^==[0-9]+== /, \"\", line); \
-			sub(/ bytes.*/, \"\", line); \
-			gsub(\",\", \"\", line); \
+			line = $$0; \
+			sub(/^==[0-9]+== /, "", line); \
+			sub(/ bytes.*/, "", line); \
+			gsub(/,/, "", line); \
 			bytes = line + 0; \
 			is_readline = 0; \
 			next; \
 		} \
-		/libreadline\\.so/ { is_readline = 1; } \
+		/libreadline\.so/ { is_readline = 1; next; } \
 		END { \
 			if (bytes) { \
 				if (is_readline) readline_total += bytes; \
 				else program_total += bytes; \
 			} \
-			printf \"Original valgrind log saved at $(VG_LOG)\n\"; \
-			printf \"Leaks from readline: %d bytes\\n\", readline_total; \
-			printf \"Leaks from $(NAME): %d bytes\\n\", program_total; \
-		}" $(VG_LOG)
+			printf "$(BLUE)Original valgrind log saved at$(GRAY): $(BBLUE)$(VG_LOG)\n"; \
+			if (readline_total > 0) \
+				printf("$(YLW)Readline leaks$(GRAY): $(BYLW)%d bytes$(RES)\n", readline_total); \
+			else \
+				printf("$(GREEN)Readline leaks$(GRAY): $(BGREEN)0 bytes$(RES)\n"); \
+			if (program_total > 0) { \
+				printf("$(RED)$(NAME) leaks$(GRAY): $(BRED)%d bytes$(RES)\n", program_total); \
+				exit 1; \
+			} else { \
+				printf("$(GREEN)$(NAME) leaks$(GRAY): $(BGREEN)0 bytes$(RES)\n"); \
+			} \
+		}' $(VG_LOG)
 
 # > ~ Tests
 

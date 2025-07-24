@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/05 12:16:40 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/24 17:33:25 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,21 @@
 /* stat, lstat & fstat */
 # include <sys/stat.h>
 
+/**
+ * @brief Default prompt displayed by minishell.
+ */
 # define SHELL_PROMPT "minishell: $ "
 
-/*
- - Minishell struct
+/**
+ * @brief Main minishell struct storing global state.
+ *
+ * - last_input: Last raw command line entered by the user.
+ * - last_tokens: Token list from the last parsed command.
+ * - cmd_pid: PID of the last executed command.
+ * - last_exit_code: Exit code of the last executed command.
+ * - env: Linked list of environment variables.
+ * - pwd: Current working directory.
  */
-
 typedef struct s_shell
 {
 	char	*last_input;
@@ -73,37 +82,60 @@ typedef struct s_shell
 	char	*pwd;
 }			t_shell;
 
-/*
- - Signal
- */
 
+/**
+ * @brief Initializes custom signal handling for the shell.
+ *
+ * Sets up proper handling for SIGINT and ignores SIGQUIT.
+ */
 void	init_sighandler(void);
 
-/*
- - Shell instance
+/**
+ * @brief Exits the shell, freeing all resources.
+ *
+ * @param code The exit code to return to the system.
+ * @param err Optional error message to print before exiting (can be NULL).
  */
-
 void	ms_exit(int code, char *err);
 
+/**
+ * @brief Gets the global shell instance (singleton pattern).
+ *
+ * @return Pointer to the global t_shell instance.
+ */
 t_shell	*get_shell(void);
 
+/**
+ * @brief Initializes the shell with the given environment variables.
+ *
+ * @param env The environment variables (from main).
+ *
+ * @return Pointer to the initialized t_shell struct.
+ */
 t_shell	*init_shell(char **env);
 
 /*
  - Execution codes
  */
 
-/** Command or program execution was successful. */
+/**
+ * @brief Command or program execution was successful.
+ */
 # define EXEC_OK 0
 
-/** Command or program execution failed (Default). */
+/**
+ * @brief Command or program execution failed (default error code).
+ */
 # define EXEC_FAIL 1
 
-/*
- - Internal error codes
+/**
+ * @brief Error code: Malloc failed.
  */
-
 # define MALLOC_ERRN 1
+
+/**
+ * @brief Error message: Malloc failed.
+ */
 # define MALLOC_ERR "Error: Malloc failed\n"
 
 #endif

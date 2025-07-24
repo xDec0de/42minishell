@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 13:33:41 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/24 18:10:12 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/24 18:16:06 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ bool	ms_isdigit(char ch);
  * @return `true` if the character is allowed as an environment
  * key character, `false` otherwise.
  */
-bool	is_envkeychar(const char ch);
+bool	ms_isenvkeychar(const char ch);
 
 /**
  * @brief Checks if a character is a quote (' or ").

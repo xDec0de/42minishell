@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_export.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 13:03:09 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/08 13:03:13 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/24 18:18:58 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,20 @@ void	env_addnew(t_shell *shell, char *key, char *value)
 	}
 }
 
+static bool	check_env_chars(const char *key)
+{
+	t_ulong	i;
+
+	i = 0;
+	while (key[i] != '\0')
+	{
+		if (!ms_isenvkeychar(key[i]))
+			return (false);
+		i++;
+	}
+	return (true);
+}
+
 bool	env_export(t_shell *shell, char *env)
 {
 	char	*key;
@@ -42,6 +56,8 @@ bool	env_export(t_shell *shell, char *env)
 	if (equal == NULL)
 		return (false);
 	key = ms_substr(env, 0, equal - env);
+	if (!check_env_chars(key))
+		return (free(key), false);
 	node = env_get(shell, key);
 	if (node != NULL)
 	{

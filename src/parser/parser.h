@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 05:07:26 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/24 17:21:00 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/07/24 17:26:24 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ typedef struct s_token
 	struct s_token	*next;
 }	t_token;
 
-
 /**
  * @brief Splits a raw input line into an array of string tokens.
  *
@@ -88,7 +87,8 @@ bool			check_quotes(const char *line);
 bool			validate_input(const char *line);
 
 /**
- * @brief Frees all allocated memory inside a token list (but not the list itself).
+ * @brief Frees all allocated memory inside a token list
+ *        (but not the list itself).
  *
  * @param tokens The token list to clean.
  */

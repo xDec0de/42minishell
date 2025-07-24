@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_types.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 13:43:04 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/05 13:21:29 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/24 17:31:12 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,25 @@
 /** NULL, STDERR_FILENO, STDIN_FILENO & STDOUT_FILENO */
 # include <unistd.h>
 
-/** Unsigned long long type. */
+/**
+ * @brief Unsigned long long type used for sizes and indexes in minishell.
+ */
 typedef unsigned long long	t_ulong;
 
+
+/**
+ * @brief File descriptor for error output (stderr).
+ */
 # define FD_ERR STDERR_FILENO
+
+/**
+ * @brief File descriptor for standard input (stdin).
+ */
 # define FD_IN STDIN_FILENO
+
+/**
+ * @brief File descriptor for standard output (stdout).
+ */
 # define FD_OUT STDOUT_FILENO
 
 #endif

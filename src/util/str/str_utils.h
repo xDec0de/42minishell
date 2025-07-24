@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 13:29:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/24 17:29:35 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/07/24 17:35:16 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
  * @return The integer representation of the string.
  */
 int		ms_atoi(const char *str);
-
 
 /**
  * @brief Converts an integer to a string.
@@ -129,7 +128,6 @@ t_ulong	ms_strlcpy(char *dest, const char *src, t_ulong dstsize);
  * @return The number of characters in the string.
  */
 t_ulong	ms_strlen(const char *str);
-
 
 /**
  * @brief Removes all occurrences of a character from a string.

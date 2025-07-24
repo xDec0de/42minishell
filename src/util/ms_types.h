@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 13:43:04 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/24 17:31:12 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/07/24 17:34:41 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
  * @brief Unsigned long long type used for sizes and indexes in minishell.
  */
 typedef unsigned long long	t_ulong;
-
 
 /**
  * @brief File descriptor for error output (stderr).

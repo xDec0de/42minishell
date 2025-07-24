@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   char_utils.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 13:33:41 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/24 17:23:20 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/07/24 18:10:12 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,18 @@
  * @return true if the character is a digit, false otherwise.
  */
 bool	ms_isdigit(char ch);
+
+/**
+ * @brief Checks if `ch` is a valid character for an environment
+ * key, following this pattern: [a-zA-Z0-9_], so alphanumeric
+ * characters and the '_' character.
+ * 
+ * @param ch The character to check
+ * 
+ * @return `true` if the character is allowed as an environment
+ * key character, `false` otherwise.
+ */
+bool	is_envkeychar(const char ch);
 
 /**
  * @brief Checks if a character is a quote (' or ").

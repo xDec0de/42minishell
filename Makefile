@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
+#    By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/07/23 21:34:37 by daniema3         ###   ########.fr        #
+#    Updated: 2025/07/24 18:12:55 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -95,6 +95,7 @@ SRCS +=	util/array/ms_arradd.c \
 # > ~ Char utils
 
 SRCS += util/char/ms_isdigit.c \
+		util/char/ms_isenvkeychar.c \
 		util/char/ms_isquote.c \
 		util/char/ms_isspace.c \
 		util/char/ms_isspecial.c

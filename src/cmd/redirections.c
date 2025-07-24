@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 19:36:43 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/22 13:16:56 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/24 21:08:39 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ char	*create_heredoc(char *delimiter)
 			free(line);
 			break ;
 		}
+		line = expand(get_shell(), line);
 		write(fd, line, ms_strlen(line));
 		write(fd, "\n", 1);
 		free(line);

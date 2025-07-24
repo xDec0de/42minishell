@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 13:03:09 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/24 18:18:58 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/24 19:08:44 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,12 @@ static bool	check_env_chars(const char *key)
 	while (key[i] != '\0')
 	{
 		if (!ms_isenvkeychar(key[i]))
+		{
+			ms_print(FD_ERR, "minishell: export: `");
+			ms_print(FD_ERR, key);
+			ms_print(FD_ERR, "`: not a valid identifier\n");
 			return (false);
+		}
 		i++;
 	}
 	return (true);

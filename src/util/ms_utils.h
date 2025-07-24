@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_utils.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 13:23:59 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/24 17:30:16 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/07/24 19:08:00 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@
  * @param fd The file descriptor to print to (1 for stdout, 2 for stderr).
  * @param msg The message to print (NULL-terminated string).
  */
-void	ms_print(int fd, char *msg);
+void	ms_print(const int fd, const char *msg);
 
 #endif

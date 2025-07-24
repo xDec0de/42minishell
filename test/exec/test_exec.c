@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 13:26:41 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/22 17:01:58 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/22 17:11:35 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,9 @@ int	main(int argc, char **argv, char **env)
 	}
 	else
 		MS_EXEC("unset SHLVL");
-	// Non-state builtins
+	// Builtins
 	ASSERT_EXEC_EQUALS("echo Hello world");
 	ASSERT_EXEC_EQUALS("env");
-	ASSERT_EXEC_EQUALS("pwd");
 	// External commands
 	ASSERT_EXEC_EQUALS("ls");
 	ASSERT_EXEC_EQUALS("echo pipe | cat -e");
@@ -55,4 +54,8 @@ int	main(int argc, char **argv, char **env)
 	// Unset PATH
 	MS_EXEC("unset PATH");
 	ASSERT_EXEC_EXIT_CODE("ls", EC_CMD_NOT_FOUND);
+	// cd & pwd - Last so other commands aren't affected
+	MS_EXEC("cd ..");
+	system("cd ..");
+	ASSERT_EXEC_EQUALS("pwd");
 }

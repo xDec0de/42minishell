@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 21:11:00 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/24 20:46:49 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/24 21:02:34 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static t_ulong	get_key_size(char *str, t_ulong from)
 	t_ulong	size;
 
 	size = 0;
+	if (str[from + size] == '?')
+		return (1);
 	while (ms_isenvkeychar(str[from + size]) && str[from + size] != '\0'
 		&& str[from + size] != '\'')
 		size++;

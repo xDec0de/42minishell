@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 15:25:21 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/25 13:05:37 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/07/25 13:23:55 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,6 @@ t_token	*add_token(t_token *head, char ***value, t_token_type type)
 	return (head);
 }
 
-static char	*remove_quotes(char *arg)
-{
-	char	*clean;
-
-	clean = ms_strremchar(arg, '"');
-	return (clean);
-}
-
 void	tokenize_one(t_token **head, char *token, char ***value)
 {
 	char			**tmp;
@@ -72,7 +64,7 @@ void	tokenize_one(t_token **head, char *token, char ***value)
 		*head = add_token(*head, value, type);
 	else
 	{
-		arg = remove_quotes(token);
+		arg = ms_strremchar(token, '"');
 		if (*value == NULL)
 			*value = ms_arradd(*value, arg);
 		else

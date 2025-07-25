@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/30 21:00:22 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/05 10:51:57 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/25 16:31:25 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ t_shell	*init_shell(char **env)
 	init->last_input = NULL;
 	init->last_tokens = NULL;
 	init->last_exit_code = 0;
+	init->cmd_pid = 0;
+	init->heredoc_pid = 0;
 	init->env = NULL;
 	init->pwd = NULL;
 	env_init(init, env);

@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:17 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/25 12:26:41 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/25 16:09:39 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*cut_home(t_shell *shell, const char *pwd)
 		return (ms_strdup(pwd));
 	home_len = ms_strlen(home->value);
 	if (ms_strequals(pwd, home->value))
-		return (ms_strjoin("~", "", '\0'));
+		return (ms_strdup("~"));
 	if (ms_strncmp(pwd, home->value, home_len) == 0 && pwd[home_len] == '/')
 		return (ms_strjoin("~", pwd + home_len, '\0'));
 	return (ms_strdup(pwd));

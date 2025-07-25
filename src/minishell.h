@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/25 12:30:41 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/07/25 16:30:16 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct s_shell
 	char	*last_input;
 	t_token	*last_tokens;
 	pid_t	cmd_pid;
+	pid_t	heredoc_pid;
 	int		last_exit_code;
 	t_env	*env;
 	char	*pwd;

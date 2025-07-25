@@ -3,64 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   redirections.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 19:36:43 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/24 21:08:39 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/25 16:32:55 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-static char	*generate_tempfile_path(void)
-{
-	int		tmp_num;
-	int		fd;
-	char	*tmp_num_str;
-	char	*path;
-
-	tmp_num = 0;
-	while (true)
-	{
-		tmp_num_str = ms_itoa(tmp_num);
-		path = ms_strjoin(HD_TEMP_PATH, tmp_num_str, '\0');
-		free(tmp_num_str);
-		fd = open(path, O_CREAT | O_EXCL | O_RDWR, PERM_URW_GR_OR);
-		if (fd != -1)
-			return (close(fd), path);
-		free(path);
-		tmp_num++;
-	}
-}
-
-char	*create_heredoc(char *delimiter)
-{
-	char	*path;
-	char	*line;
-	int		fd;
-
-	path = generate_tempfile_path();
-	fd = open(path, O_WRONLY | O_TRUNC);
-	if (fd == -1)
-		return (free(path), NULL);
-	while (true)
-	{
-		line = readline("> ");
-		if (line == NULL)
-			break ;
-		if (ms_strequals(line, delimiter))
-		{
-			free(line);
-			break ;
-		}
-		line = expand(get_shell(), line);
-		write(fd, line, ms_strlen(line));
-		write(fd, "\n", 1);
-		free(line);
-	}
-	close(fd);
-	return (path);
-}
 
 bool	open_input(char *infile)
 {

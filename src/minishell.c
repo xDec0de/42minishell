@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:17 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/05 11:22:07 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/25 00:11:18 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,20 @@ char	*get_prompt(t_shell *shell)
 {
 	char	*prompt;
 	char	*pwd;
+	char	*colored_pwd;
+	char	*tmp;
 
 	pwd = get_pwd(shell);
 	if (pwd == NULL)
 		pwd = ".";
-	prompt = ms_strreplace(SHELL_PROMPT, 10, 1, pwd);
+	colored_pwd = ms_strjoin("\033[94m", pwd, '\0');
+	tmp = colored_pwd;
+	colored_pwd = ms_strjoin(colored_pwd, "\033[0m", '\0');
+	free(tmp);
+	tmp = ms_strjoin("\033[92mminishell\033[0m: ", colored_pwd, '\0');
+	free(colored_pwd);
+	prompt = ms_strjoin(tmp, " $ ", '\0');
+	free(tmp);
 	return (prompt);
 }
 

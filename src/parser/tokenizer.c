@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tokenizer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 15:25:21 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/18 22:20:04 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/25 13:05:37 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,31 +47,38 @@ t_token	*add_token(t_token *head, char ***value, t_token_type type)
 	tmp = head;
 	if (head == NULL)
 		return (new);
-	else
-	{
-		while (tmp->next != NULL)
-			tmp = tmp->next;
-		tmp->next = new;
-	}
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	tmp->next = new;
 	return (head);
+}
+
+static char	*remove_quotes(char *arg)
+{
+	char	*clean;
+
+	clean = ms_strremchar(arg, '"');
+	return (clean);
 }
 
 void	tokenize_one(t_token **head, char *token, char ***value)
 {
 	char			**tmp;
 	t_token_type	type;
+	char			*arg;
 
 	type = get_token_type(token);
 	if (type != T_END)
 		*head = add_token(*head, value, type);
 	else
 	{
+		arg = remove_quotes(token);
 		if (*value == NULL)
-			*value = ms_arradd(*value, ms_strdup(token));
+			*value = ms_arradd(*value, arg);
 		else
 		{
 			tmp = *value;
-			*value = ms_arradd(*value, ms_strdup(token));
+			*value = ms_arradd(*value, arg);
 			free(tmp);
 		}
 	}

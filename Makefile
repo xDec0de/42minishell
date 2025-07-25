@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/07/24 18:12:55 by daniema3         ###   ########.fr        #
+#    Updated: 2025/07/25 09:36:33 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,8 +65,7 @@ SRCS +=	env/env_export.c \
 
 # > ~ Expander
 
-SRCS +=	expander/expand_token.c \
-		expander/expander.c
+SRCS +=	expander/expander.c
 
 # > ~ Parser
 

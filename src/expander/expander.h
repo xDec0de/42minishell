@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 21:11:47 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/24 17:18:30 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/07/25 09:35:38 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,5 @@ t_ulong	get_expanded_size(struct s_shell *shell, char *str);
  * @return A newly allocated string with all expansions applied.
  */
 char	*expand(struct s_shell *shell, char *str);
-
-/**
- * @brief Expands variables inside a token (only if allowed).
- *
- * - Double-quoted tokens allow expansion.
- * - Single-quoted tokens remain unchanged.
- *
- * @param shell The main minishell struct.
- * @param token The token to process and expand in-place.
- */
-void	expand_token(struct s_shell *shell, struct s_token *token);
 
 #endif

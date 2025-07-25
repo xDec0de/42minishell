@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:17 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/25 00:11:18 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/07/25 11:49:31 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ char	*get_prompt(t_shell *shell)
 	tmp = colored_pwd;
 	colored_pwd = ms_strjoin(colored_pwd, "\033[0m", '\0');
 	free(tmp);
-	tmp = ms_strjoin("\033[92mminishell\033[0m: ", colored_pwd, '\0');
+	tmp = ms_strjoin("\033[92mminishell\033[0m:", colored_pwd, '\0');
 	free(colored_pwd);
-	prompt = ms_strjoin(tmp, " $ ", '\0');
+	prompt = ms_strjoin(tmp, "$ ", '\0');
 	free(tmp);
 	return (prompt);
 }
@@ -37,6 +37,7 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_shell	*shell;
 	char	*prompt;
+	char	*input;
 
 	(void) argc;
 	(void) argv;
@@ -46,12 +47,15 @@ int	main(int argc, char **argv, char **envp)
 	{
 		if (shell->last_input != NULL)
 			free(shell->last_input);
+		shell->last_input = NULL;
 		prompt = get_prompt(shell);
-		shell->last_input = readline(prompt);
+		input = readline(prompt);
 		free(prompt);
-		if (shell->last_input == NULL)
+		if (input == NULL)
 			ms_exit(EXEC_OK, NULL);
+		add_history(input);
+		shell->last_input = expand(shell, input);
+		free(input);
 		handle_cmd_input(shell);
-		add_history(shell->last_input);
 	}
 }

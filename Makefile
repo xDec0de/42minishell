@@ -6,7 +6,7 @@
 #    By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/07/25 09:36:33 by daniema3         ###   ########.fr        #
+#    Updated: 2025/07/25 12:28:01 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -118,6 +118,7 @@ SRCS +=	util/str/ms_atoi.c \
 		util/str/ms_strjoin.c \
 		util/str/ms_strlcpy.c \
 		util/str/ms_strlen.c \
+		util/str/ms_strncmp.c \
 		util/str/ms_strremchar.c \
 		util/str/ms_strreplace.c \
 		util/str/ms_substr.c

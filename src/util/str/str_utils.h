@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   str_utils.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/22 13:29:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/24 17:35:16 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/07/25 12:27:44 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,8 @@ t_ulong	ms_strlcpy(char *dest, const char *src, t_ulong dstsize);
  * @return The number of characters in the string.
  */
 t_ulong	ms_strlen(const char *str);
+
+int		ms_strncmp(const char *s1, const char *s2, t_ulong n);
 
 /**
  * @brief Removes all occurrences of a character from a string.

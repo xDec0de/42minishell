@@ -6,7 +6,7 @@
 /*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/24 17:35:07 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/07/24 17:33:25 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ typedef struct s_shell
 	t_env	*env;
 	char	*pwd;
 }			t_shell;
+
 
 /**
  * @brief Initializes custom signal handling for the shell.

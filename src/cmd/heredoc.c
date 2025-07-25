@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 13:29:19 by rexposit          #+#    #+#             */
-/*   Updated: 2025/07/25 18:29:37 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/25 18:58:55 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,9 @@ int	wait_heredoc_child(pid_t pid, char *path)
 		shell->last_exit_code = 130;
 		unlink(path);
 		free(path);
+		rl_replace_line("", 0);
+		rl_on_new_line();
+		rl_redisplay();
 		return (1);
 	}
 	if (WIFEXITED(status) && WEXITSTATUS(status) != 0)

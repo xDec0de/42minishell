@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_splitter.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 14:47:59 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/22 11:30:28 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/25 13:02:16 by rexposit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,7 @@ char	**to_token_array(const char *input)
 			break ;
 		end = get_token_end(input, i);
 		tmp = ms_substr(input, i, end - i);
-		tokens[j] = ms_strremchar(tmp, '"');
-		free(tmp);
+		tokens[j] = tmp;
 		i = end;
 		j++;
 	}

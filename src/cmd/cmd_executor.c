@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 22:00:01 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/25 09:36:45 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/25 13:50:05 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	child_process(t_shell *shell, t_token *token, int *pipefd)
 static void	parent_process(t_shell *shell, t_token *token, int *ec, int *pipefd)
 {
 	waitpid(shell->cmd_pid, ec, 0);
+	shell->cmd_pid = 0;
 	*ec = WEXITSTATUS(*ec);
 	if (token->type == T_PIPE)
 	{

@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 13:29:19 by rexposit          #+#    #+#             */
-/*   Updated: 2025/07/25 18:58:55 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/27 22:50:53 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	write_heredoc_lines(int fd, char *delimiter)
 	t_shell	*shell;
 
 	shell = get_shell();
-	while (1)
+	while (true)
 	{
 		line = readline("> ");
-		if (!line || ms_strequals(line, delimiter))
+		if (line == NULL || ms_strequals(line, delimiter))
 		{
 			free(line);
 			break ;
@@ -54,7 +54,7 @@ char	*generate_tempfile_path(void)
 	}
 }
 
-int	wait_heredoc_child(pid_t pid, char *path)
+bool	wait_heredoc_child(pid_t pid, char *path)
 {
 	t_shell	*shell;
 	int		status;
@@ -64,22 +64,22 @@ int	wait_heredoc_child(pid_t pid, char *path)
 	shell->heredoc_pid = 0;
 	if (WIFSIGNALED(status) && WTERMSIG(status) == SIGINT)
 	{
-		shell->last_exit_code = 130;
+		shell->last_exit_code = HEREDOC_SIGINT_ERRN;
 		unlink(path);
 		free(path);
 		rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
-		return (1);
+		return (false);
 	}
 	if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
 	{
 		shell->last_exit_code = WEXITSTATUS(status);
 		unlink(path);
 		free(path);
-		return (1);
+		return (false);
 	}
-	return (0);
+	return (true);
 }
 
 pid_t	fork_heredoc_process(char *delimiter, char *path, int fd)
@@ -98,7 +98,7 @@ pid_t	fork_heredoc_process(char *delimiter, char *path, int fd)
 		signal(SIGINT, SIG_DFL);
 		write_heredoc_lines(fd, delimiter);
 		close(fd);
-		exit(0);
+		exit(EXIT_SUCCESS);
 	}
 	return (pid);
 }
@@ -119,7 +119,7 @@ char	*create_heredoc(char *delimiter)
 	if (pid == -1)
 		return (NULL);
 	shell->heredoc_pid = pid;
-	if (wait_heredoc_child(pid, path))
+	if (!wait_heredoc_child(pid, path))
 		return (NULL);
 	close(fd);
 	return (path);

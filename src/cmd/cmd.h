@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 10:50:33 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/24 15:16:17 by rexposit         ###   ########.fr       */
+/*   Updated: 2025/07/27 21:46:41 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	handle_cmd_input(struct s_shell *shell);
  * @return true if all redirections were successfully set, false otherwise.
  */
 bool	setup_redirections(struct s_token *token);
+
+# define HEREDOC_SIGINT_ERRN 130
 
 /**
  * @brief Creates and writes a heredoc temporary file.

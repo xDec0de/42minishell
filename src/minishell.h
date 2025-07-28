@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:27 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/25 16:30:16 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/28 11:50:39 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@
  *
  * - last_input: Last raw command line entered by the user.
  * - last_tokens: Token list from the last parsed command.
- * - cmd_pid: PID of the last executed command.
+ * - cmd_pid: PID of the current command being executed (0 by default).
+ * - heredoc_pid: PID of the current heredoc (0 by default).
  * - last_exit_code: Exit code of the last executed command.
  * - env: Linked list of environment variables.
  * - pwd: Current working directory.

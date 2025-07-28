@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rexposit <rexposit@student.42madrid.com    +#+  +:+       +#+         #
+#    By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/07/25 13:37:10 by rexposit         ###   ########.fr        #
+#    Updated: 2025/07/28 11:57:30 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,8 +41,12 @@ SRCS += cmd/builtin_cmd_executor.c \
 		cmd/cmd_handler.c \
 		cmd/external_cmd_executor.c \
 		cmd/find_path.c \
-		cmd/redirections.c \
-		cmd/heredoc.c
+		cmd/redirections.c
+
+# > ~ Commands - Heredoc
+
+SRCS +=	cmd/heredoc/heredoc.c \
+		cmd/heredoc/heredoc_reader.c
 
 # > ~ Commands - Builtins
 

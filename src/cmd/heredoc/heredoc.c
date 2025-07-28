@@ -3,37 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 13:29:19 by rexposit          #+#    #+#             */
-/*   Updated: 2025/07/27 22:50:53 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/28 12:13:22 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	write_heredoc_lines(int fd, char *delimiter)
+static void	write_heredoc_lines(int fd, char *delimiter)
 {
-	char	*line;
 	t_shell	*shell;
+	char	*line;
+	char	*expanded;
 
 	shell = get_shell();
 	while (true)
 	{
-		line = readline("> ");
-		if (line == NULL || ms_strequals(line, delimiter))
+		write(FD_OUT, "> ", 2);
+		line = read_heredoc_line();
+		if (line == NULL)
+			break ;
+		if (ms_strequals(line, delimiter))
 		{
 			free(line);
 			break ;
 		}
-		line = expand(shell, line);
-		write(fd, line, ms_strlen(line));
+		expanded = expand(shell, line);
+		write(fd, expanded, ms_strlen(expanded));
 		write(fd, "\n", 1);
 		free(line);
+		free(expanded);
 	}
 }
 
-char	*generate_tempfile_path(void)
+static char	*generate_tempfile_path(void)
 {
 	int		tmp_num;
 	int		fd;
@@ -54,7 +59,7 @@ char	*generate_tempfile_path(void)
 	}
 }
 
-bool	wait_heredoc_child(pid_t pid, char *path)
+static bool	wait_heredoc_child(pid_t pid, char *path)
 {
 	t_shell	*shell;
 	int		status;
@@ -67,9 +72,6 @@ bool	wait_heredoc_child(pid_t pid, char *path)
 		shell->last_exit_code = HEREDOC_SIGINT_ERRN;
 		unlink(path);
 		free(path);
-		rl_replace_line("", 0);
-		rl_on_new_line();
-		rl_redisplay();
 		return (false);
 	}
 	if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
@@ -82,7 +84,7 @@ bool	wait_heredoc_child(pid_t pid, char *path)
 	return (true);
 }
 
-pid_t	fork_heredoc_process(char *delimiter, char *path, int fd)
+static pid_t	fork_heredoc_process(char *delimiter, char *path, int fd)
 {
 	pid_t	pid;
 
@@ -105,9 +107,9 @@ pid_t	fork_heredoc_process(char *delimiter, char *path, int fd)
 
 char	*create_heredoc(char *delimiter)
 {
+	t_shell	*shell;
 	char	*path;
 	int		fd;
-	t_shell	*shell;
 	pid_t	pid;
 
 	shell = get_shell();

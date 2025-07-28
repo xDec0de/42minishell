@@ -3,14 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   input_validator.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 05:23:00 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/22 19:38:54 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/28 16:41:01 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+bool	check_empty_special_chars(const char *input)
+{
+	t_ulong	i;
+	t_ulong	j;
+
+	i = 0;
+	while (input[i] != '\0')
+	{
+		if (ms_isspecial(input[i]))
+		{
+			if ((input[i] == '<' || input[i] == '>')
+				&& input[i + 1] == input[i])
+				i++;
+			j = i + 1;
+			while (input[j] == ' ')
+				j++;
+			if (ms_isspecial(input[j]))
+				return (ms_print(FD_ERR, SCC_ERR), false);
+		}
+		i++;
+	}
+	return (true);
+}
 
 bool	check_special_char_count(const char *input)
 {
@@ -82,5 +106,5 @@ bool	validate_input(const char *input)
 		return (ms_print(FD_ERR, SCC_ERR), false);
 	if (!check_special_char_count(input))
 		return (false);
-	return (true);
+	return (check_empty_special_chars(input));
 }

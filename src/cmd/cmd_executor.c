@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_executor.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 22:00:01 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/25 13:50:05 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/28 17:51:40 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void	fork_and_run(t_shell *shell, t_token *token, int *exit_code)
 		*exit_code = 1;
 }
 
-void	fill_redirections(t_token *tokens)
+bool	fill_redirections(t_shell *shell, t_token *tokens)
 {
 	t_token	*token;
 
@@ -71,11 +71,16 @@ void	fill_redirections(t_token *tokens)
 		if (token->type == T_REDIR_IN)
 			token->infile = ms_strdup(token->next->cmd);
 		else if (token->type == T_HEREDOC)
+		{
 			token->infile = create_heredoc(token->next->cmd);
+			if (shell->last_exit_code == HEREDOC_SIGINT_ERRN)
+				return (false);
+		}
 		else if (token->type == T_REDIR_OUT || token->type == T_REDIR_APPEND)
 			token->outfile = ms_strdup(token->next->cmd);
 		token = token->next;
 	}
+	return (true);
 }
 
 void	execute_tokens(t_shell *shell, t_token *token)
@@ -84,7 +89,8 @@ void	execute_tokens(t_shell *shell, t_token *token)
 
 	if (token == NULL || token->cmd == NULL)
 		return ;
-	fill_redirections(token);
+	if (!fill_redirections(shell, token))
+		return ;
 	clean_tokens(token);
 	if (is_state_builtin(token->cmd))
 		exit_code = execute_state_builtins(shell, token);

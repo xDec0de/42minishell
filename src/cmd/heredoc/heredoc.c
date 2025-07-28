@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 13:29:19 by rexposit          #+#    #+#             */
-/*   Updated: 2025/07/28 16:28:20 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/28 18:04:15 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,10 @@ static bool	wait_heredoc_child(pid_t pid, char *path)
 
 	shell = get_shell();
 	waitpid(pid, &status, 0);
+	while (errno == EINTR)
+		waitpid(pid, &status, 0);
 	shell->heredoc_pid = 0;
-	if (WIFSIGNALED(status) && WTERMSIG(status) == SIGINT)
+	if (WIFSIGNALED(status))
 	{
 		shell->last_exit_code = HEREDOC_SIGINT_ERRN;
 		unlink(path);
@@ -123,7 +125,7 @@ char	*create_heredoc(char *delimiter)
 		return (free(path), NULL);
 	shell->heredoc_pid = pid;
 	if (!wait_heredoc_child(pid, path))
-		return (free(path), NULL);
+		return (NULL);
 	close(fd);
 	return (path);
 }

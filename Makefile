@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+         #
+#    By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/03 20:23:54 by daniema3          #+#    #+#              #
-#    Updated: 2025/07/28 11:57:30 by daniema3         ###   ########.fr        #
+#    Updated: 2025/07/28 16:05:12 by daniema3         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -223,16 +223,29 @@ build:
 # > ~ Valgrind check
 
 VG_LOG = ./logs/valgrind.log
+VG_SUMMARY = ./logs/$(NAME)_leaks.txt
 
 valgrind:
 	@mkdir -p $(LOG_DIR)
+	@rm -f $(VG_SUMMARY)
 	@valgrind --leak-check=full --show-leak-kinds=all --log-file=$(VG_LOG) ./$(NAME)
-	@awk ' \
+	@awk -v outfile="$(VG_SUMMARY)" ' \
+		BEGIN { \
+			bytes = 0; \
+			block = ""; \
+			is_readline = 0; \
+		} \
 		/^==[0-9]+== [0-9,]+ bytes in/ { \
 			if (bytes) { \
-				if (is_readline) readline_total += bytes; \
-				else program_total += bytes; \
+				if (is_readline) \
+					readline_total += bytes; \
+				else { \
+					program_total += bytes; \
+					print block >> outfile; \
+					print "" >> outfile; \
+				} \
 			} \
+			block = $$0 "\n"; \
 			line = $$0; \
 			sub(/^==[0-9]+== /, "", line); \
 			sub(/ bytes.*/, "", line); \
@@ -241,11 +254,33 @@ valgrind:
 			is_readline = 0; \
 			next; \
 		} \
-		/libreadline\.so/ { is_readline = 1; next; } \
+		/^==[0-9]+==$$/ || /^$$/ { \
+			block = block $$0 "\n"; \
+			if (bytes) { \
+				if (is_readline) \
+					readline_total += bytes; \
+				else { \
+					program_total += bytes; \
+					print block >> outfile; \
+					print "" >> outfile; \
+				} \
+			} \
+			block = ""; \
+			bytes = 0; \
+			is_readline = 0; \
+			next; \
+		} \
+		/libreadline\.so/ { is_readline = 1; } \
+		{ block = block $$0 "\n"; } \
 		END { \
 			if (bytes) { \
-				if (is_readline) readline_total += bytes; \
-				else program_total += bytes; \
+				if (is_readline) \
+					readline_total += bytes; \
+				else { \
+					program_total += bytes; \
+					print block >> outfile; \
+					print "" >> outfile; \
+				} \
 			} \
 			printf "$(BLUE)Original valgrind log saved at$(GRAY): $(BBLUE)$(VG_LOG)\n"; \
 			if (readline_total > 0) \
@@ -253,11 +288,11 @@ valgrind:
 			else \
 				printf("$(GREEN)Readline leaks$(GRAY): $(BGREEN)0 bytes$(RES)\n"); \
 			if (program_total > 0) { \
-				printf("$(RED)$(NAME) leaks$(GRAY): $(BRED)%d bytes$(RES)\n", program_total); \
+				printf("$(RED)$(NAME) leaks$(GRAY): $(BRED)%d bytes", program_total); \
+				printf("$(GRAY) - $(RED)Check $(BBLUE)%s$(RES)\n", outfile); \
 				exit 1; \
-			} else { \
+			} else \
 				printf("$(GREEN)$(NAME) leaks$(GRAY): $(BGREEN)0 bytes$(RES)\n"); \
-			} \
 		}' $(VG_LOG)
 
 # > ~ Tests

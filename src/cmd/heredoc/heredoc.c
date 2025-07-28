@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   heredoc.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 13:29:19 by rexposit          #+#    #+#             */
-/*   Updated: 2025/07/28 12:13:22 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/28 15:50:13 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ static pid_t	fork_heredoc_process(char *delimiter, char *path, int fd)
 		signal(SIGINT, SIG_DFL);
 		write_heredoc_lines(fd, delimiter);
 		close(fd);
-		exit(EXIT_SUCCESS);
+		ms_exit(EXIT_SUCCESS, NULL);
 	}
 	return (pid);
 }

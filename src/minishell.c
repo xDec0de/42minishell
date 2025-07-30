@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/03 20:22:17 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/25 16:09:39 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/30 18:00:08 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,22 @@ char	*get_prompt(t_shell *shell)
 	return (prompt);
 }
 
+void	filter_add_history(const char *input)
+{
+	t_ulong	i;
+
+	i = 0;
+	while (input[i] != '\0')
+	{
+		if (input[i] != ' ')
+		{
+			add_history(input);
+			break ;
+		}
+		i++;
+	}
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	t_shell	*shell;
@@ -71,7 +87,7 @@ int	main(int argc, char **argv, char **envp)
 		free(prompt);
 		if (input == NULL)
 			ms_exit(EXEC_OK, NULL);
-		add_history(input);
+		filter_add_history(input);
 		shell->last_input = expand(shell, input);
 		free(input);
 		handle_cmd_input(shell);

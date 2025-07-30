@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniema3 <daniema3@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/21 10:50:33 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/28 12:10:18 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/30 17:36:04 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	handle_cmd_input(struct s_shell *shell);
  */
 bool	setup_redirections(struct s_token *token);
 
-# define HEREDOC_SIGINT_ERRN 130
+# define EXIT_SIGINT 130
 
 char	*read_heredoc_line(void);
 

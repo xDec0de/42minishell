@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 13:29:19 by rexposit          #+#    #+#             */
-/*   Updated: 2025/07/28 18:04:15 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/30 17:35:54 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static bool	wait_heredoc_child(pid_t pid, char *path)
 	shell->heredoc_pid = 0;
 	if (WIFSIGNALED(status))
 	{
-		shell->last_exit_code = HEREDOC_SIGINT_ERRN;
+		shell->last_exit_code = EXIT_SIGINT;
 		unlink(path);
 		free(path);
 		return (false);

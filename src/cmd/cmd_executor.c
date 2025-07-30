@@ -6,7 +6,7 @@
 /*   By: daniema3 <daniema3@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/24 22:00:01 by daniema3          #+#    #+#             */
-/*   Updated: 2025/07/28 17:51:40 by daniema3         ###   ########.fr       */
+/*   Updated: 2025/07/30 17:39:35 by daniema3         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ bool	fill_redirections(t_shell *shell, t_token *tokens)
 		else if (token->type == T_HEREDOC)
 		{
 			token->infile = create_heredoc(token->next->cmd);
-			if (shell->last_exit_code == HEREDOC_SIGINT_ERRN)
+			if (shell->last_exit_code == EXIT_SIGINT)
 				return (false);
 		}
 		else if (token->type == T_REDIR_OUT || token->type == T_REDIR_APPEND)
